@@ -1,0 +1,57 @@
+<app-healder></app-healder>
+
+<main>
+    <div id="chatRebord"></div>
+    <div id="container">
+        <div id="UnderContainer" class="d-flex ">
+            <h1>Déjà inscrit ?</h1>
+            <form id="Connexion" [formGroup]="inscriptionForm" (ngSubmit)="login()">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" formControlName="login"
+                        placeholder="Adresse e-mail" width="90%">
+                    <label for="floatingInput">Adresse e-mail</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" formControlName="password"
+                        placeholder="Password">
+                    <label for="floatingPassword">Mot de passe</label>
+                </div>
+                <button type="submit" [disabled]="inscriptionForm.invalid" class="btn btn-secondary">C'est parti
+                    !</button>
+            </form>
+        </div>
+        <div id="UnderContainer">
+            <h1>Première fois , c’est ici !</h1>
+            <form id="inscription" action="index.html" method="post">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="Nom" width="90%">
+                    <label for="floatingInput">Nom</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="Nom" width="90%">
+                    <label for="floatingInput">Prenom</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="Nom" width="90%">
+                    <label for="floatingInput">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingInput" placeholder="Nom" width="90%">
+                    <label for="floatingInput">Mot de passe</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingInput" placeholder="Nom" width="90%">
+                    <label for="floatingInput">Confirmer mot de passe</label>
+                </div>
+                <button type="submit" class="btn btn-secondary">Inscription</button>
+            </form>
+        </div>
+
+
+    </div>
+    <div id="logo">
+        <p></p>JavaCatCafe <img src="../../../assets/img/patoune.png">
+    </div>
+
+
+</main>
