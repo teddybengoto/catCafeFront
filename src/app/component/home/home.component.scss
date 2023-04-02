@@ -149,6 +149,13 @@ button {
 
 }
 
+#ourResidentArrayImage img {
+    height: 55.39679718017578px;
+    width: 74.35260009765625px;
+    border-radius: 0px;
+
+}
+
 #ourMatonsArray {
     display: flex;
     /*flex-direction: column;*/
@@ -226,9 +233,233 @@ button {
 #location {
 
     background: linear-gradient(180deg, #ECE0C9 0%, #EFD4A0 100%);
+    background: linear-gradient(0deg, #EFD4A0, #EFD4A0);
+
+
     height: 797px;
     border-radius: 0px;
 
 
+
+}
+
+/* nos espaces*/
+
+#barre {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    height: 35px;
+    font-size: 35px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#tout {
+    background-color: black;
+    height: 1016px;
+}
+
+#barreNosEspaces {
+    display: flex;
+    background-color: black;
+    height: 100px;
+}
+
+#barreNosEspacesGauche {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+}
+
+#barreNosEspacesTexte {
+    color: white;
+    font-size: 40px;
+}
+
+#barreNosEspacesDroite {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 45%;
+}
+
+#barreNosEspacesBtn {
+    color: white;
+    background-color: black;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-radius: 10px;
+    border-color: white;
+    font-size: 20px;
+    height: 60px;
+    width: 300px;
+}
+
+#futureCarousel {
+    display: flex;
+}
+
+#divImg1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+}
+
+#divImg2 {
+    width: 50%;
+}
+
+#img1 {
+    width: 100%;
+    border-radius: 20px;
+}
+
+#img2 {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.divNomEspaceFlex {
+    position: relative;
+    width: 99.5%;
+}
+
+.divNomEspaceRelative {
+    position: absolute;
+    background-color: grey;
+    opacity: 0.8;
+    width: 99%;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-radius: 10px;
+    border-color: white;
+}
+
+.nomEspace {
+    color: white;
+    text-align: center;
+}
+
+#carteEspaceRelative {
+    position: relative;
+    bottom: 40%;
+    left: 30%;
+    z-index: 1;
+}
+
+#carteEspaceAbsolute {
+    position: absolute;
+    width: 40%;
+    top: 200px;
+    background-color: #D3AC71;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-radius: 10px;
+}
+
+#carteEspaceFlex {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.salle {
+    display: flex;
+
+
+}
+
+.texteSalle {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 470px;
+}
+
+/*Vacances*/
+
+#gauche {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: justify;
+    width: 50%;
+}
+
+#droite {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+.texte {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    margin-top: 15%;
+    margin-left: 15%;
+}
+
+.titre {
+    font-family: "Amatic SC";
+    font-size: 50px;
+    text-align: center;
+}
+
+
+#chatNoir {
+    height: 120px;
+    width: 200px;
+    object-fit: scale-down;
+    margin-bottom: -7%;
+    margin-left: 30%;
+    z-index: 1;
+}
+
+.custumBtn {
+    border-color: black !important;
+    border-radius: 10px;
+    background-color: rgba(133, 126, 115, 1);
+    width: 350px;
+    height: 100px;
+    color: white !important;
+    vertical-align: middle;
+    font-size: 18px;
+}
+
+
+.frame {
+    width: 450px;
+    height: 350px;
+    border: 3px solid black;
+    border-radius: 20px;
+    background: rgba(211, 172, 113, 1);
+    padding: 15px 25px;
+}
+
+img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border: 3px hidden;
+    border-radius: 20px;
+}
+
+#vacances {
+
+    background-color: rgba(239, 212, 160, 1);
 
 }
