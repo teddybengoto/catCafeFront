@@ -1,0 +1,175 @@
+#tout{
+    background-color:#ECE0C9;
+  }
+  
+  #titre{
+  
+    display: flex;
+  align-items: center;
+  flex-direction:column;
+  
+  
+  }
+  
+  #titreChat{
+        width: 315px;
+        height: 145px;
+        left: 1011px;
+        top: 104px;
+        margin-bottom: -28.9px;
+        margin-right: -395px;
+        z-index: 1;
+  }
+  
+  #titreText{
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 700px;
+        height: 70px;
+        left: 455px;
+        top: 206px;
+        background-color: #D3AC71;
+        border-bottom-style: solid;
+        border-top-style: solid;
+        border-left-style: solid;
+        border-right-style: solid;
+        border-radius: 20px;
+        font-size: 40px;
+  }
+  
+  #separationbas{
+    border-top-style: solid;
+    margin-inline-start: 76px;
+    margin-inline-end: 76px;
+  }
+  .separationhaut{
+    border-top-style: solid;
+    margin-inline-start: 76px;
+    margin-inline-end: 76px;
+  }
+  
+  .casesAdoption{
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .caseChat{
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    width: 20%;
+    background-color: #9A8873;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-radius: 20px;
+  }
+  
+  .nomChat{
+    background-color: #D3AC71;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-radius: 20px;
+    width:90%;
+    text-align:center;
+    font-size:20px;
+    font-family: 'Abel';
+  }
+  
+  .imgChat{
+    height: 199px;
+    width: 280px;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-radius: 20px;
+  }
+  
+  .boutonVoirPlus{
+    background-color: #857E73;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-radius: 20px;
+    color:white;
+    width:90%;
+    font-size:20px;
+  }
+  
+  .caseChatDetail{
+    display: flex;
+    align-items: flex-start;
+    background-color: #9A8873;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-radius: 20px;
+  }
+  
+  .caseChatInfo{
+    display: flex;
+    width:97%;
+  }
+  
+  .caseChatDetailGauche{
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    width: 40%;
+  }
+  
+  .imgChatDetail{
+    height:100%;
+    width: 90%;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-radius: 20px;
+  }
+  
+  .boutonAdoption{
+    background-color: #857E73;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-radius: 20px;
+    color:white;
+    font-size:20px;
+    width:90%;
+  }
+  
+  .caseChatDetailDroite{
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    width: 55%;
+    background-color: #ECE0C9;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-radius: 20px;
+    text-align:center;
+  }
+  
+  .X{
+    display: flex;
+    justify-content: space-around;
+    background-color: #D3AC71;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-radius: 20px;
+    color:#857E73;
+    font-size:30px;
+  }

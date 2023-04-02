@@ -12,6 +12,7 @@ import { HomeComponent } from './component/home/home.component';
 import { CatButtonComponent } from './component/cat-button/cat-button.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { CompteComponent } from './component/compte/compte.component';
+import { AdoptionComponent } from './component/adoption/adoption.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CompteComponent } from './component/compte/compte.component';
     CatButtonComponent,
     FooterComponent,
     CompteComponent,
+    AdoptionComponent,
     
   ],
   imports: [
