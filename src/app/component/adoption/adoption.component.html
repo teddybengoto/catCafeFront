@@ -1,0 +1,65 @@
+<app-healder></app-healder>
+<main>
+    <body id="tout">
+
+        <div id="titre">
+            <img id="titreChat" src="../../../assets/img/image 24.png">
+            <h1 id="titreText"> NOS CHATS A L'ADOPTION</h1>
+            <br><br>
+        </div>
+        <div id=lignesAdoption>
+
+            <div class="ligneadoption">
+
+                <h2 class="separationhaut"></h2>
+
+                <div class="casesAdoption">
+
+                    <div class="caseChat" *ngFor="let chats of findAllAdoptable()">
+                        <h3 class="nomChat">{{ chats.nom }}</h3>
+                        <img class="imgChat" src="../../../assets/img/image25.png">
+                        <br>
+                        <input class="boutonVoirPlus" value="VOIR PLUS" type="button">
+                        <br>
+                    </div>
+
+                    <div class="caseChat">
+                        <h3 class="nomChat">NOM DU CHAT</h3>
+                        <img class="imgChat" src="assiste/img/image25.png">
+                        <br>
+                        <input class="boutonVoirPlus" value="VOIR PLUS" type="button">
+                        <br>
+                    </div>
+
+                </div>
+
+                <br>
+                <br>
+                <br>
+
+                <div class="caseChatDetail">
+                    <div class="caseChatInfo">
+                        <div class="caseChatDetailGauche">
+                            <h3 class="nomChat">Nom du chat</h3>
+                            <img class="imgChatDetail" src="assiste/img/image26.png">
+                            <br>
+                            <input class="boutonAdoption" value="ADOPTER MOI" type="button">
+                            <br>
+                        </div>
+                        <p class="caseChatDetailDroite">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                            anim id est laborum.</p>
+                    </div>
+                    <input type="button" id="btnFerme" value="X" class="X">
+                </div>
+            </div>
+
+
+            <h2 id="separationbas"></h2>
+        </div>
+
+    </body>
+</main>
