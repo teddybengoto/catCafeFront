@@ -11,6 +11,7 @@ import { HealderComponent } from './component/healder/healder.component';
 import { HomeComponent } from './component/home/home.component';
 import { CatButtonComponent } from './component/cat-button/cat-button.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { CompteComponent } from './component/compte/compte.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FooterComponent } from './component/footer/footer.component';
     HomeComponent,
     CatButtonComponent,
     FooterComponent,
+    CompteComponent,
     
   ],
   imports: [
@@ -30,7 +32,7 @@ import { FooterComponent } from './component/footer/footer.component';
     
   ],
   // why do I need to put module in providers ?
-  providers: [CompteService,InscriptionComponent],
+  providers: [CompteService,InscriptionComponent,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

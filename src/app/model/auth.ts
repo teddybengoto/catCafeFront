@@ -2,17 +2,31 @@ export class Auth {
 
     token: string;
     success: boolean;
+    id: number;
+    /*login: string;
+    nom: string;
+    prenom: string;
+    password: string;*/
+
+    constructor(
+        id?: number,
+        success?: boolean,
+        token?: string,
+        /*login?: string,
+        nom?: string,
+        prenom?: string,
+        password?: string,*/
+    ) {
 
 
-
-    constructor(login?: string, nom?: string, prenom?: string, password?: string, success?: boolean) {
-
+        this.id = id;
+        this.token= token;
+        this.success= success;
+        /*this.login= login;
+        this.nom= nom;
+        this.prenom= prenom;
+        this.password= password;*/
     }
 
-    /*public getToken(): string {
-        return this.token;
-    }
-    public setToken(login: string): void {
-        this.token = this.token;
-    }*/
+
 }
