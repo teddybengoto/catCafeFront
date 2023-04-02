@@ -13,7 +13,9 @@ export class InscriptionComponent /*implements OnInit */ {
 
   inscriptionForm: FormGroup;
   client: ClientRequest;
-  public auth: Auth = new Auth();
+  //is use to display connexion or login form
+  connexion: boolean = true;
+
 
 
   constructor(private formBuilder: FormBuilder, private compteService: CompteService) {
@@ -22,7 +24,10 @@ export class InscriptionComponent /*implements OnInit */ {
       login: this.formBuilder.control(''),
       prenom: this.formBuilder.control(''),
       nom: this.formBuilder.control(''),
-      password: this.formBuilder.control('')
+      password: this.formBuilder.control(''),
+      confPassword: this.formBuilder.control('')
+
+
     });
 
   }
@@ -32,5 +37,23 @@ export class InscriptionComponent /*implements OnInit */ {
     this.compteService.login(this.inscriptionForm.value)
 
   }
+  showSigning(val: boolean) { this.connexion = val }
+
+  creat() {
+
+    console.log("this.inscriptionForm.value: ", this.inscriptionForm.value);
+    this.compteService.create(this.inscriptionForm.value).subscribe(resp => {
+      console.log("resp: ", resp);
+
+      if (resp?.id) {
+        this.showSigning(true);
+      }
+      else { alert("Une erreur se produit lors de la creation du compte ") }
+    });
+
+
+  }
+
+
 
 }

@@ -9,7 +9,7 @@
             <button class="btn btn-outline-dark ">Reservation </button>
             <button class="btn btn-outline-dark " [routerLink]="['/profil']" >Mes Infos </button>
             <img id="navLine" src="../../../assets/img/Line_30.png" alt="" srcset="">
-            <button class="btn btn-outline-dark" [routerLink]="['/connexion']" > {{textButtomConnexion}} </button>
+            <button class="btn btn-outline-dark" [routerLink]="['/connexion']" (click)="logOut()" > {{textButtomConnexion}} </button>
 
         </div>
     </nav>

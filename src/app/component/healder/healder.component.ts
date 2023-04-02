@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CompteService } from 'src/app/sevice.api/compte.service';
 import { InscriptionComponent } from '../inscription/inscription.component';
 
 @Component({
@@ -8,9 +9,9 @@ import { InscriptionComponent } from '../inscription/inscription.component';
 })
 export class HealderComponent {
 
-  textButtomConnexion:string= this.auth?.auth?.success ? "Déconnexion": "Connexion";
+  textButtomConnexion:string= this.compteService?.auth?.id ? "Déconnexion": "Connexion";
 
-  constructor(private auth:InscriptionComponent ){
+  constructor(private compteService:CompteService ){
     this.test();
 
   }
@@ -19,6 +20,10 @@ export class HealderComponent {
     console.log("textButtomConnexion: ",this.textButtomConnexion);
   }
 
+  logOut(){
+    this.compteService.auth=null;
+    this.compteService.compte=null;
+  }
   
   
   

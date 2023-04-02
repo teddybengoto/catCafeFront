@@ -2,10 +2,10 @@
 
 <main>
     <div id="chatRebord"></div>
-    <div id="container">
-        <div id="UnderContainer" class="d-flex ">
+    <div id="container"  >
+        <div id="UnderContainer"  *ngIf="connexion" class="d-flex  ">
             <h1>Déjà inscrit ?</h1>
-            <form id="Connexion" [formGroup]="inscriptionForm" (ngSubmit)="login()">
+            <form id="Connexion" class="" [formGroup]="inscriptionForm" (ngSubmit)="login()">
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" formControlName="login"
                         placeholder="Adresse e-mail" width="90%">
@@ -19,33 +19,42 @@
                 <button type="submit" [disabled]="inscriptionForm.invalid" class="btn btn-secondary">C'est parti
                     !</button>
             </form>
+
+            <p (click)="showSigning(false)">Créé un compte </p>
         </div>
-        <div id="UnderContainer">
+        
+        <div id="UnderContainer"  *ngIf="!connexion"  >
             <h1>Première fois , c’est ici !</h1>
-            <form id="inscription" action="index.html" method="post">
+            <form id="inscription" [formGroup]="inscriptionForm" (ngSubmit)="creat()">
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="Nom" width="90%">
+                    <input type="email" class="form-control" id="floatingInput" formControlName="nom" placeholder="Nom" width="90%">
                     <label for="floatingInput">Nom</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="Nom" width="90%">
+                    <input type="email" class="form-control" id="floatingInput" formControlName="prenom" placeholder="Nom" width="90%">
                     <label for="floatingInput">Prenom</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="Nom" width="90%">
+                    <input type="email" class="form-control" id="floatingInput" formControlName="login" placeholder="Nom" width="90%">
                     <label for="floatingInput">Email</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingInput" placeholder="Nom" width="90%">
+                    <input type="password" class="form-control" id="floatingInput" formControlName="password" placeholder="Nom" width="90%">
                     <label for="floatingInput">Mot de passe</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingInput" placeholder="Nom" width="90%">
+                    <input type="password" class="form-control" id="floatingInput" formControlName="confPassword" placeholder="Nom" width="90%">
                     <label for="floatingInput">Confirmer mot de passe</label>
                 </div>
                 <button type="submit" class="btn btn-secondary">Inscription</button>
             </form>
+            <p (click)="showSigning(true)">connectez vous </p>
+
         </div>
+
+
+
+
 
 
     </div>

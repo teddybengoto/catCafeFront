@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Auth } from 'src/app/model/auth';
+import { Router } from '@angular/router';
 import { CompteService } from 'src/app/sevice.api/compte.service';
-import { InscriptionComponent } from '../inscription/inscription.component';
 
 @Component({
   selector: 'app-compte',
@@ -11,12 +10,18 @@ import { InscriptionComponent } from '../inscription/inscription.component';
 export class CompteComponent {
 
 
-  constructor(private compteService: CompteService){
+  constructor(private compteService: CompteService, private router:Router ){
 
     
     
+    if (!compteService.auth?.id) {
+      this.router.navigate(['/connexion']);
+      
+    }
     this.getClient()
     console.log("this.compteService.auth?.id: ", this.compteService.auth.id);
+
+
 
    
 
