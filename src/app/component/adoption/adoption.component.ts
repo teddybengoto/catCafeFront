@@ -9,7 +9,8 @@ import { ChatService } from 'src/app/sevice.api/chat.service';
 })
 export class AdoptionComponent {
 
-  chats : Array<Chat>;
+  chats : Array<Chat> = new Array<Chat>;
+  taille : number = 0;
 
   constructor(private chatService: ChatService){}
 
