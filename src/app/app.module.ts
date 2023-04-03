@@ -41,7 +41,7 @@ import { AdoptionService } from './sevice.api/adoption.service';
     
   ],
   // why do I need to put module in providers ?
-  providers: [CompteService,InscriptionComponent,ReservationService],
+  providers: [CompteService,InscriptionComponent,ReservationService,AdoptionService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
