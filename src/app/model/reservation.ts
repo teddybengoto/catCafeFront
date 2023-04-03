@@ -1,5 +1,3 @@
-import { Time } from "@angular/common";
-import { ClientRequest } from "./clientRequest";
 import { Espace } from "./espace";
 
 export class Reservation{
