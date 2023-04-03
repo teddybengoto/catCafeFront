@@ -14,6 +14,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { CompteComponent } from './component/compte/compte.component';
 import { AdoptionComponent } from './component/adoption/adoption.component';
 import { ReservationComponent } from './component/reservation/reservation.component';
+import { GardeComponent } from './component/garde/garde.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ReservationComponent } from './component/reservation/reservation.compon
     CompteComponent,
     AdoptionComponent,
     ReservationComponent,
+    GardeComponent,
     
   ],
   imports: [

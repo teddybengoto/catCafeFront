@@ -5,6 +5,7 @@ import { CompteComponent } from './component/compte/compte.component';
 import { HomeComponent } from './component/home/home.component';
 import { InscriptionComponent } from './component/inscription/inscription.component';
 import { AdoptionComponent } from './component/adoption/adoption.component';
+import { GardeComponent } from './component/garde/garde.component';
 import { ReservationComponent } from './component/reservation/reservation.component';
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path : "profil", component: CompteComponent},
   {path : "adoption", component: AdoptionComponent},
   {path : "reservation", component: ReservationComponent},
+  {path : "garde", component: GardeComponent},
 
 
 ];

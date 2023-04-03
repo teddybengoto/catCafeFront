@@ -1,4 +1,4 @@
-<app-healder></app-healder>
+
 <main>
     <body id="tout">
 
@@ -13,10 +13,12 @@
 
                 <h2 class="separationhaut"></h2>
 
-                <div class="casesAdoption">
+                <h1 *ngIf="taille == 0">AUCUN CHAT ADOPTABLE</h1>
 
-                    <div class="caseChat" *ngFor="let chats of findAllAdoptable()">
-                        <h3 class="nomChat">{{ chats.nom }}</h3>
+                <div class="casesAdoption" *ngIf="taille != 0">
+
+                    <div class="caseChat" *ngFor="let element of findAllAdoptable()">
+                        <h3 class="nomChat">{{ element.nom }}</h3>
                         <img class="imgChat" src="../../../assets/img/image25.png">
                         <br>
                         <input class="boutonVoirPlus" value="VOIR PLUS" type="button">
@@ -25,7 +27,7 @@
 
                     <div class="caseChat">
                         <h3 class="nomChat">NOM DU CHAT</h3>
-                        <img class="imgChat" src="assiste/img/image25.png">
+                        <img class="imgChat" src="../../../assets/img/image25.png">
                         <br>
                         <input class="boutonVoirPlus" value="VOIR PLUS" type="button">
                         <br>
@@ -41,7 +43,7 @@
                     <div class="caseChatInfo">
                         <div class="caseChatDetailGauche">
                             <h3 class="nomChat">Nom du chat</h3>
-                            <img class="imgChatDetail" src="assiste/img/image26.png">
+                            <img class="imgChatDetail" src="../../../assets/img/image25.png">
                             <br>
                             <input class="boutonAdoption" value="ADOPTER MOI" type="button">
                             <br>
