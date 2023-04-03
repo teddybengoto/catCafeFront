@@ -5,11 +5,12 @@ import { CompteComponent } from './component/compte/compte.component';
 import { HomeComponent } from './component/home/home.component';
 import { InscriptionComponent } from './component/inscription/inscription.component';
 import { AdoptionComponent } from './component/adoption/adoption.component';
+import { TestComponent } from './component/test/test.component';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full'},
   {path : "connexion", component: InscriptionComponent},
-  {path : "bt", component: CatButtonComponent},
+  {path : "test", component: TestComponent},
   {path : "profil", component: CompteComponent},
   {path : "adoption", component: AdoptionComponent},
 
