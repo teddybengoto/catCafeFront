@@ -1,4 +1,4 @@
-<app-healder></app-healder>
+
 <main>
     <body id="tout">
 
@@ -13,10 +13,12 @@
 
                 <h2 class="separationhaut"></h2>
 
-                <div class="casesAdoption">
+                <h1 *ngIf="taille == 0">AUCUN CHAT ADOPTABLE</h1>
 
-                    <div class="caseChat" *ngFor="let chats of findAllAdoptable()">
-                        <h3 class="nomChat">{{ chats.nom }}</h3>
+                <div class="casesAdoption" *ngIf="taille != 0">
+
+                    <div class="caseChat" *ngFor="let element of findAllAdoptable()">
+                        <h3 class="nomChat">{{ element.nom }}</h3>
                         <img class="imgChat" src="../../../assets/img/image25.png">
                         <br>
                         <input class="boutonVoirPlus" value="VOIR PLUS" type="button">
