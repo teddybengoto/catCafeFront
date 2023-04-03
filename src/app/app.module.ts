@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule }from '@angular/common/http';
 
@@ -13,6 +13,7 @@ import { CatButtonComponent } from './component/cat-button/cat-button.component'
 import { FooterComponent } from './component/footer/footer.component';
 import { CompteComponent } from './component/compte/compte.component';
 import { AdoptionComponent } from './component/adoption/adoption.component';
+import { ReservationComponent } from './component/reservation/reservation.component';
 import { GardeComponent } from './component/garde/garde.component';
 
 @NgModule({
@@ -25,6 +26,7 @@ import { GardeComponent } from './component/garde/garde.component';
     FooterComponent,
     CompteComponent,
     AdoptionComponent,
+    ReservationComponent,
     GardeComponent,
     
   ],
@@ -33,6 +35,7 @@ import { GardeComponent } from './component/garde/garde.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule
     
   ],
   // why do I need to put module in providers ?
