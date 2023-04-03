@@ -1,4 +1,4 @@
-
+<app-healder></app-healder>
 <main>
     <body id="tout">
 
@@ -15,6 +15,7 @@
 
                 <h1 *ngIf = "findAllAdoptable().length == 0" >RUPTURE DE STOCK</h1>
 
+
                 <div class="casesAdoption">
                     <div class="caseChat" *ngFor="let element of findAllAdoptable()">
                         <h3 class="nomChat">{{ element.nom }}</h3>
@@ -25,6 +26,7 @@
                     </div>
                 </div>
 
+                <!--<h1 *ngFor="let element of findAll()"> {{element.nom}}</h1>-->
 
                 <br>
                 <br>
