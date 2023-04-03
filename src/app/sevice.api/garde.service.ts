@@ -3,6 +3,7 @@ import { Garde } from '../model/garde';
 import { HttpClient } from '@angular/common/http';
 import { CompteService } from './compte.service';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,12 @@ export class GardeService {
   private garde: Garde;
   private gardes: Array<Garde>;
 
-  constructor(private http: HttpClient, private clientService: CompteService) {
+  constructor(private router: Router, private http: HttpClient, private clientService: CompteService) {
+    if (!clientService.auth?.id) {
+      alert("veuillez vous connecter pour utiliser les services");
+      this.router.navigate(['/connexion']);
+      
+    }
     this.gardeApiPath = ("http://localhost:8080/api" + "/garde"); { }
   }
 

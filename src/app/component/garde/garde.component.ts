@@ -6,6 +6,7 @@ import { Garde } from 'src/app/model/garde';
 import { ChatService } from 'src/app/sevice.api/chat.service';
 import { CompteService } from 'src/app/sevice.api/compte.service';
 import { GardeService } from 'src/app/sevice.api/garde.service';
+import { ValidatorFn } from '@angular/forms';
 
 
 @Component({
@@ -25,7 +26,9 @@ export class GardeComponent {
 
     this.garde.prix = 0;
     this.gardeForm = this.formBuilder.group({
-      dateDebut: this.formBuilder.control(''),
+      dateDebut: this.formBuilder.control(Date.now(), [
+        Validators.required
+    ]),
       dateFin: this.formBuilder.control(''),
       chatId: this.formBuilder.control(''),
     });
