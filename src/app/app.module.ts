@@ -16,6 +16,7 @@ import { AdoptionComponent } from './component/adoption/adoption.component';
 import { TestComponent } from './component/test/test.component';
 import { GardeComponent } from './component/garde/garde.component';
 import { ReservationComponent } from './component/reservation/reservation.component';
+import { ReservationService } from './sevice.api/reservation.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { ReservationComponent } from './component/reservation/reservation.compon
     
   ],
   // why do I need to put module in providers ?
-  providers: [CompteService,InscriptionComponent,],
+  providers: [CompteService,InscriptionComponent,ReservationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
