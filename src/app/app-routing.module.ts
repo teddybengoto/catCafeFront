@@ -6,6 +6,7 @@ import { HomeComponent } from './component/home/home.component';
 import { InscriptionComponent } from './component/inscription/inscription.component';
 import { AdoptionComponent } from './component/adoption/adoption.component';
 import { TestComponent } from './component/test/test.component';
+import { GardeComponent } from './component/garde/garde.component';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path : "test", component: TestComponent},
   {path : "profil", component: CompteComponent},
   {path : "adoption", component: AdoptionComponent},
+  {path : "garde", component: GardeComponent},
 
 
 ];

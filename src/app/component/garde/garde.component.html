@@ -1,0 +1,38 @@
+<app-healder></app-healder>
+<main>
+    <div id="GardeHeader">
+      <div id="GardeTitle">
+            <h1>Faire garder son chat</h1>
+      </div>
+      <div id="GardeTitleIllust"><img src="assiste/img/chat_rebord_1.png"></div>
+    </div>
+
+    <div id="content">
+      <div id="ColumnLeft">
+        <img src="assiste/img/chat_chill.jpg" alt="test">
+        <br>
+        <p>Nous nous chargeons de votre matou pendant votre abscence, croquettes et carresses comprises. Remplissez le formulaire et nous vous proposerons un tarrif adapté à votre besoin</p>
+      </div>
+
+      <div id="ColumnRight">
+        <form class="formulaireGarde" action="index.html" method="post">
+        <h2>Formulaire de garde</h2><br>
+
+              <p>Selectionnez le chat : </p>
+              <select class="InputPerso" id="SelectChat" name="Chat" placeholder="Choix du chat">
+                <option value="Frimousse" selected>Frimousse</option>
+                <option value="Gros Matou">Gros Matou</option>
+                <option value="Felix">Felix</option>
+              </select>
+              <p>Date de début :</p>
+              <input type="text" class="InputPerso" id="dateDebut" name="dateDebut" placeholder="Début de la garde" onfocus="(this.type='date')" onblur="(this.type='text')">
+              <p>Date de fin :</p>
+              <input type="text" class="InputPerso" id="dateFin" name="dateDebut" placeholder="Fin de la garde" onfocus="(this.type='date')" onblur="(this.type='text')">
+              <br>
+              <p>Prix pour cette garde : </p><p>50,00€</p>
+
+              <input type="button" class="bouton" name="valider" value="C'est parti">
+        </form>
+      </div>
+    </div>
+  </main>

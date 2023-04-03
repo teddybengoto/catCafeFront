@@ -1,0 +1,203 @@
+@font-face {
+    font-family: 'Abel';
+    src: url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
+}
+@font-face {
+    font-family: 'Amatic';
+    src : url('https://fonts.googleapis.com/css2?family=Abel&family=Amatic+SC:wght@400;700&display=swap')
+}
+@font-face {
+    font-family: 'AmaticBold';
+    src : url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap")
+}
+
+body
+{
+  min-width: 1200px;
+  display: flex;
+  flex-direction:column;
+  background: linear-gradient(0deg, #ECE0C9, #ECE0C9), #000000;
+}
+
+header
+{
+  height:80px;
+  background-color : black;
+  color : white;
+  font-family: "Amatic";
+}
+main
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#GardeHeader
+{
+  margin-top: 100px;
+  margin-bottom: 15px;
+  width: 600px;
+  height: 80px;
+
+  background: #D3AC71;
+  border: 3px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+#GardeTitle
+{
+
+  display: flex;
+  align-items : center;
+  justify-content: center;
+  width: 600px;
+  height: 80px;
+}
+#GardeTitleIllust
+{
+  width: 344px;
+  height: 144px;
+  position: relative;
+  top : -199px;
+  Left : 300px;
+  background-size: 100% 100%;
+  //background-image: url("assiste/img/chat_rebord_1.png");
+}
+#content
+{
+    width : 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+#ColumnLeft
+{
+  margin: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: top;
+  flex-direction: column;
+  width :45%;
+
+}
+
+#ColumnLeft p
+{
+  width: 45%;
+display: block;
+text-align: justify;
+font-size: 20px;
+font-family: "Abel"
+}
+
+#ColumnRight
+{
+  margin: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: top;
+  flex-direction: column;
+  width : 45%;
+  border: 3px solid #000000;
+  border-radius: 20px;
+  background: #D3AC71;
+}
+
+
+#SelectChat::selection {
+  color: white;
+  background-color: black;
+}
+.formulaireGarde
+{
+  display: flex;
+  align-items: center;
+  justify-content: top;
+  flex-direction: column;
+}
+
+.InputPerso
+{
+
+    display: block;
+    width : 400px;
+    height: 40px;
+    font-size :20px;
+    text-align: center;
+    font-family:"Abel"  ;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-color: black;
+    background: #EEE8DD;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+.bouton:hover
+{
+  background-color: black;
+  color : white;
+  border-color: white;
+}
+.InputPerso:focus-visible{
+    outline: 5px solid grey;
+
+}
+.InputPerso:hover{
+  background-color: white;
+  border-width: 4px;
+  color : grey;
+
+}
+
+.bouton
+{
+  display: block;
+  width : 150px;
+  height: 50px;
+  font-size :20px;
+  text-align: center;
+  font-family:"Abel"  ;
+  color: black;
+  cursor: text;
+  margin: 15px;
+  border-width: 4px;
+  border-color: black;
+  background: #9A8873;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  transition: 0.3s;
+
+}
+
+h1, h2, p
+{
+    font-family: 'Abel';
+}
+#ColumnLeft img
+{
+  width: 400px;
+  height: 300px;
+  border: 3px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+#ColumnRight h2
+{
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-family: 'Abel';
+  font-size: 35px;
+}
+#ColumnRight p
+{
+  margin: 5px;
+  font-family: 'Abel';
+  font-size: 20px;
+}

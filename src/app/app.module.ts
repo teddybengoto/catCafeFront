@@ -14,6 +14,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { CompteComponent } from './component/compte/compte.component';
 import { AdoptionComponent } from './component/adoption/adoption.component';
 import { TestComponent } from './component/test/test.component';
+import { GardeComponent } from './component/garde/garde.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { TestComponent } from './component/test/test.component';
     CompteComponent,
     AdoptionComponent,
     TestComponent,
+    GardeComponent,
     
   ],
   imports: [
