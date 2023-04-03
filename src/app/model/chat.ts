@@ -1,5 +1,5 @@
 export class Chat {
-    id:number;
+    id: number;
     nom : string;
     sexe : string;
     race : string;
