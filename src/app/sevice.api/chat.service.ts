@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Chat } from '../model/chat';
 import { Observable } from 'rxjs';
 import { CompteService } from './compte.service';
+import { ClientRequest } from '../model/clientRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class ChatService {
   private chatsAdoptable: Array<Chat> = new Array<Chat>;
   private chatsPermanent: Array<Chat> = new Array<Chat>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private clientService : CompteService) {
     this.chatApiPath = "http://localhost:8080/api" + "/chat";
     this.loadAdoptable();
     this.loadAll();
@@ -36,16 +37,11 @@ export class ChatService {
   findAllPermanent(): any {
     return this.chatsPermanent;
   }
-  findAllByClientId(id: number): any {
-    this.http.get<Array<Chat>>(this.chatApiPath + "/by-client-id/" + id).subscribe(resp => {
-      this.chats = resp;
-      return this.chats;
-    })
-  }
+  
   findAllByClientId(): Array<Chat>{
 
     return this.chatsById;
-    });
+  
   }
 
   findById(id: number): Observable<Chat> {
