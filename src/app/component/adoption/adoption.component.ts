@@ -32,6 +32,7 @@ export class AdoptionComponent {
 
 
   findAllAdoptable(): Array<Chat>{
+    console.log(this.chats.length)
     this.chats=this.chatService.findAllAdoptable();
     
     return this.chats

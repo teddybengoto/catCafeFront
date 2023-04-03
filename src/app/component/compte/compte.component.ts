@@ -13,17 +13,10 @@ export class CompteComponent {
   constructor(private compteService: CompteService, private router:Router ){
 
     
-    
     if (!compteService.auth?.id) {
       this.router.navigate(['/connexion']);
-      
     }
-    this.getClient()
-    console.log("this.compteService.auth?.id: ", this.compteService.auth.id);
-
-
-
-   
+    this.getClient()  
 
   }
 
