@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Adoption } from 'src/app/model/adoption';
 import { Chat } from 'src/app/model/chat';
+import { AdoptionService } from 'src/app/sevice.api/adoption.service';
 import { ChatService } from 'src/app/sevice.api/chat.service';
 
 @Component({
@@ -11,19 +13,33 @@ import { ChatService } from 'src/app/sevice.api/chat.service';
 export class AdoptionComponent {
 
   chats : Array<Chat> = new Array<Chat>;
-  taille : number = -1;
-  searched = false;
+  adoption : Adoption = new Adoption();
+  
 
-  constructor(private chatService: ChatService){
+  constructor(private chatService: ChatService, private adoptionService : AdoptionService){
   }
 
 
   findAllAdoptable(): Array<Chat>{
-    console.log(this.chats.length)
     this.chats=this.chatService.findAllAdoptable();
-    console.log(this.chats.length)
-    //this.taille=this.chats.length;
-    return this.chatService.findAllAdoptable();
+    return this.chats
+  }
+
+  test(chat : Chat): void{
+    //chat.nom = chat.nom+" hello";
+    chat.adoptable=false;
+    chat.permanent=false;
+    console.log("hello");
+    this.chatService.update(chat);
+    this.adoption.idChat=chat.id;
+    this.adoption.idClient=1;
+    this.adoption.prix=10;
+    this.adoptionService.create(this.adoption);
+    alert("vous avez  adopté un chat §§§§111");
+  }
+
+  allAdoption(): Array<Adoption>{
+    return this.adoptionService.findAll();
   }
 
 }

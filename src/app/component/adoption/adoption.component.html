@@ -13,27 +13,18 @@
 
                 <h2 class="separationhaut"></h2>
 
-                <h1 *ngIf="taille == 0">AUCUN CHAT ADOPTABLE</h1>
+                <h1 *ngIf = "findAllAdoptable().length == 0" >RUPTURE DE STOCK</h1>
 
-                <div class="casesAdoption" *ngIf="taille != 0">
-
+                <div class="casesAdoption">
                     <div class="caseChat" *ngFor="let element of findAllAdoptable()">
                         <h3 class="nomChat">{{ element.nom }}</h3>
                         <img class="imgChat" src="../../../assets/img/image25.png">
                         <br>
-                        <input class="boutonVoirPlus" value="VOIR PLUS" type="button">
+                        <input class="boutonVoirPlus" value="ADOPTION" type="button" (click)="test(element)">
                         <br>
                     </div>
-
-                    <div class="caseChat">
-                        <h3 class="nomChat">NOM DU CHAT</h3>
-                        <img class="imgChat" src="../../../assets/img/image25.png">
-                        <br>
-                        <input class="boutonVoirPlus" value="VOIR PLUS" type="button">
-                        <br>
-                    </div>
-
                 </div>
+
 
                 <br>
                 <br>
