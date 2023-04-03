@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Chat } from 'src/app/model/chat';
 import { Garde } from 'src/app/model/garde';
 import { ChatService } from 'src/app/sevice.api/chat.service';
 import { CompteService } from 'src/app/sevice.api/compte.service';
 import { GardeService } from 'src/app/sevice.api/garde.service';
+
 
 @Component({
   selector: 'garde',
@@ -12,27 +15,60 @@ import { GardeService } from 'src/app/sevice.api/garde.service';
 })
 export class GardeComponent {
 
+  gardeForm: FormGroup;
   gardes: Array<Garde>;
-  garde: Garde;
+  garde: Garde = new Garde();
   chats: Array<Chat>;
   
-  constructor(private gardeService: GardeService, private clientService: CompteService, private chatService: ChatService){
+  constructor(private router: Router, private formBuilder: FormBuilder, private gardeService: GardeService, private clientService: CompteService, private chatService: ChatService){
+    
 
+    this.garde.prix = 0;
+    this.gardeForm = this.formBuilder.group({
+      dateDebut: this.formBuilder.control(''),
+      dateFin: this.formBuilder.control(''),
+      chatId: this.formBuilder.control(''),
+    });
 
-    //alert("id du client : " + clientService.compte.id);
+ 
   }
 
   ngOnInit(): void{
 
-    console.log("id du client :");
-    console.log(this.clientService.auth.id);
-    this.chats = this.chatService.findAll(); 
-    //this.chats = this.chatService.findAllByClientId(this.clientService.auth.id);
-    //console.log("ca marche :" + this.chats[0].nom);
-    /*for(let c of this.chats){
-      console.log(c.nom);
-    }*/
+
 
   }
+
+  createGarde(){
+
+
+    this.garde.chatId = this.gardeForm.value.chatId;
+    this.garde.dateDebut = this.gardeForm.value.dateDebut;
+    this.garde.dateFin = this.gardeForm.value.dateFin;
+    this.garde.clientId = 4;
+    this.garde.prix = this.garde.prix;
+    this.gardeService.create(this.garde);
+    this.router.navigate(["/"]);
+
+  }
+
+  listChats(): Array<Chat> {
+
+    return this.chatService.findAllByClientId();
+  }
+
+  @HostListener('change', ['$event.target'])
+  modifPrix(): void {
+    if (this.gardeForm.value.dateDebut == "" || this.gardeForm.value.dateDebut == "") { this.garde.prix = 122; }
+    else {
+      let dDebut = new Date(this.gardeForm.value.dateDebut);
+      let dFin = new Date(this.gardeForm.value.dateFin);
+      this.garde.prix = (dFin.getTime() - dDebut.getTime()) / (1000 * 3600 * 24) * 10;
+      console.log(this.garde.prix)
+    }
+
+  }
+
+
 
 }

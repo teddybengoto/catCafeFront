@@ -1,19 +1,22 @@
+import { formatDate } from "@angular/common";
+
 export class Garde {
-    dateDebut: Date;
-    dateFin: Date;
+    dateDebut: String;
+    dateFin: String;
     prix: number;
     clientId: number;
     chatId: number;
 
     constructor(
-        dateDebut?: Date,
-        dateFin?: Date,
+        dateDebut: Date = new Date(Date.now()),
+        dateFin: Date = new Date(Date.now()),
         prix?: number,
         clientId?: number,
         chatId?: number
-         ){
-            this.dateDebut = dateDebut;
-            this.dateFin = dateFin;
+         )
+         {
+            this.dateDebut = "";
+            this.dateFin = "";
             this.prix = prix;
             this.clientId = clientId;
             this.chatId = chatId;

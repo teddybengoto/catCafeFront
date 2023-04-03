@@ -12,26 +12,24 @@
         <img src="assiste/img/chat_chill.jpg" alt="test">
         <br>
         <p>Nous nous chargeons de votre matou pendant votre abscence, croquettes et carresses comprises. Remplissez le formulaire et nous vous proposerons un tarrif adapté à votre besoin</p>
+        <p>Prix par jour : 10,00€</p>
       </div>
 
       <div id="ColumnRight">
-        <form class="formulaireGarde" action="index.html" method="post">
+        <form class="formulaireGarde" [formGroup]="gardeForm" (ngSubmit)="createGarde()">
         <h2>Formulaire de garde</h2><br>
 
               <p>Selectionnez le chat : </p>
-              <select class="InputPerso" id="SelectChat" name="Chat" placeholder="Choix du chat">
-                <option value="Frimousse" selected>Frimousse</option>
-                <option value="Gros Matou">Gros Matou</option>
-                <option value="Felix">Felix</option>
+              <select class="InputPerso" id="SelectChat" name="Chat" placeholder="Choix du chat" formControlName="chatId">
+                <option *ngFor="let c of listChats()" value="{{c.id}}">{{c.nom}}</option>
               </select>
               <p>Date de début :</p>
-              <input type="text" class="InputPerso" id="dateDebut" name="dateDebut" placeholder="Début de la garde" onfocus="(this.type='date')" onblur="(this.type='text')">
+              <input type="text" class="InputPerso" formControlName="dateDebut" [(ngModel)]="garde.dateDebut"  id="dateDebut" name="dateDebut" placeholder="Début de la garde" onfocus="(this.type='date')" onblur="(this.type='text')">
               <p>Date de fin :</p>
-              <input type="text" class="InputPerso" id="dateFin" name="dateDebut" placeholder="Fin de la garde" onfocus="(this.type='date')" onblur="(this.type='text')">
+              <input type="text" class="InputPerso" formControlName="dateFin"  [(ngModel)]="garde.dateFin"id="dateFin" name="dateDebut" placeholder="Fin de la garde" onfocus="(this.type='date')" onblur="(this.type='text')">
               <br>
-              <p>Prix pour cette garde : </p><p>50,00€</p>
-
-              <input type="button" class="bouton" name="valider" value="C'est parti">
+              <p>Prix pour cette garde : </p><p>{{garde.prix}},00€</p>
+              <input type="submit" class="bouton" name="valider" value="C'est parti"  >
         </form>
       </div>
     </div>
