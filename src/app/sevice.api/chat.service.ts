@@ -16,22 +16,22 @@ export class ChatService {
     this.load();
   }
 
-  findAll(): Array<Chat>{
+  findAll(): any{
     this.http.get<Array<Chat>>(this.chatApiPath).subscribe(resp =>{
       this.chats = resp;
+      return this.chats;
     })
-    return this.chats;
   }
 
   findAllAdoptable(): Array<Chat>{
     return this.chats;
   }
 
-  findAllPermanent(): Array<Chat>{
+  findAllPermanent(): any{
     this.http.get<Array<Chat>>(this.chatApiPath+ "/permanent").subscribe(resp =>{
       this.chats = resp;
+      return this.chats;
     })
-    return this.chats;
   }
   findAllByClientId(id : number): Array<Chat>{
     this.http.get<Array<Chat>>(this.chatApiPath+"/by-client-id/"+id).subscribe(resp =>{
