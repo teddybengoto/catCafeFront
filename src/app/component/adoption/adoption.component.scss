@@ -51,14 +51,15 @@
   
   .casesAdoption{
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
+      flex-wrap: wrap;
   }
   
   .caseChat{
     display: flex;
     align-items: center;
     flex-direction:column;
-    width: 20%;
+    width: 21%;
     background-color: #9A8873;
     border-bottom-style: solid;
     border-top-style: solid;

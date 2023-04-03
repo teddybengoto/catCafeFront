@@ -8,30 +8,36 @@ import { CompteService } from './compte.service';
   providedIn: 'root'
 })
 export class ChatService {
-  
-  private chatApiPath : string;
-  private chats : Array<Chat> = new Array<Chat>;
   private chatsById : Array<Chat> = new Array<Chat>;
 
-  constructor(private http: HttpClient, private clientService: CompteService) { 
-    this.chatApiPath = "http://localhost:8080/api" +"/chat";
-    this.load();
+  private chatApiPath: string;
+  private chats: Array<Chat> = new Array<Chat>;
+  private chatsAll: Array<Chat> = new Array<Chat>;
+  private chatsAdoptable: Array<Chat> = new Array<Chat>;
+  private chatsPermanent: Array<Chat> = new Array<Chat>;
+
+  constructor(private http: HttpClient) {
+    this.chatApiPath = "http://localhost:8080/api" + "/chat";
+    this.loadAdoptable();
+    this.loadAll();
+    this.loadPermanent();
     this.loadById();
   }
 
-  findAll(): any{
-    this.http.get<Array<Chat>>(this.chatApiPath).subscribe(resp =>{
-      this.chats = resp;
-      return this.chats;
-    })
+  findAll(): any {
+    return this.chatsAll
+    
   }
 
-  findAllAdoptable(): Array<Chat>{
-    return this.chats;
+  findAllAdoptable(): Array<Chat> {
+    return this.chatsAdoptable;
   }
 
-  findAllPermanent(): any{
-    this.http.get<Array<Chat>>(this.chatApiPath+ "/permanent").subscribe(resp =>{
+  findAllPermanent(): any {
+    return this.chatsPermanent;
+  }
+  findAllByClientId(id: number): any {
+    this.http.get<Array<Chat>>(this.chatApiPath + "/by-client-id/" + id).subscribe(resp => {
       this.chats = resp;
       return this.chats;
     })
@@ -39,27 +45,40 @@ export class ChatService {
   findAllByClientId(): Array<Chat>{
 
     return this.chatsById;
+    });
   }
 
-  findById(id : number):Observable<Chat>{
-    return this.http.get<Chat>(this.chatApiPath+"/"+id);
+  findById(id: number): Observable<Chat> {
+    return this.http.get<Chat>(this.chatApiPath + "/" + id);
   }
 
-  create(chat : Chat):void{
-    this.http.post<Chat>(this.chatApiPath, chat);
+  create(chat: Chat): void {
+    this.http.post<Chat>(this.chatApiPath, chat).subscribe(resp => {
+      this.loadAdoptable();
+    this.loadAll();
+    this.loadPermanent();
+    });
   }
 
-  update(chat : Chat):void{
-    this.http.put<Chat>(this.chatApiPath+"/"+chat.id,chat);
+  update(chat: Chat): void {
+    this.http.put<Chat>(this.chatApiPath + "/" + chat.id, chat).subscribe(resp => {
+      this.loadAdoptable();
+    this.loadAll();
+    this.loadPermanent();
+    });
   }
 
-  remove(id :number):void{
-this.http.delete<boolean>(this.chatApiPath+"/"+id);
+  remove(id: number): void {
+    this.http.delete<boolean>(this.chatApiPath + "/" + id).subscribe(resp => {
+      this.loadAdoptable();
+    this.loadAll();
+    this.loadPermanent();
+    });
   }
 
-  private load():void{
-    this.http.get<Array<Chat>>(this.chatApiPath+ "/adoptable").subscribe(resp =>{
-      this.chats = resp;
+  private loadAll(): void {
+    this.http.get<Array<Chat>>(this.chatApiPath).subscribe(resp => {
+      this.chatsAll = resp;
     })
   }
 
@@ -69,10 +88,18 @@ this.http.delete<boolean>(this.chatApiPath+"/"+id);
     });
 
   }
-
+  private loadAdoptable(): void {
+    this.http.get<Array<Chat>>(this.chatApiPath + "/adoptable").subscribe(resp => {
+      this.chatsAdoptable = resp;
+    })
+  }
+  private loadPermanent(): void {
+    this.http.get<Array<Chat>>(this.chatApiPath + "/permanent").subscribe(resp => {
+      this.chatsPermanent = resp;
+    })
+  }
   getChats() : Array<Chat>
   {
     return this.chats;
   }
-
 }
