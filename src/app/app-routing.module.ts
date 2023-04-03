@@ -7,6 +7,7 @@ import { InscriptionComponent } from './component/inscription/inscription.compon
 import { AdoptionComponent } from './component/adoption/adoption.component';
 import { TestComponent } from './component/test/test.component';
 import { GardeComponent } from './component/garde/garde.component';
+import { ReservationComponent } from './component/reservation/reservation.component';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path : "profil", component: CompteComponent},
   {path : "adoption", component: AdoptionComponent},
   {path : "garde", component: GardeComponent},
+  {path : "reservation", component: ReservationComponent},
 
 
 ];
