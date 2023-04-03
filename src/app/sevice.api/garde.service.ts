@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Garde } from '../model/garde';
 import { HttpClient } from '@angular/common/http';
 import { CompteService } from './compte.service';
+import { FormBuilder } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,14 @@ export class GardeService {
       this.gardes = resp;
     })
     return this.gardes;
+  }
+
+  create(g: Garde)
+  {
+    let ok: boolean;
+    this.http.post<Garde>(this.gardeApiPath, g).subscribe(resp => {
+
+      alert("Garde programmée du :" + resp.dateDebut + " au " + resp.dateFin);
+    });
   }
 }

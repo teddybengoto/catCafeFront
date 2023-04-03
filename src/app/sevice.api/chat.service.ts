@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Chat } from '../model/chat';
 import { Observable } from 'rxjs';
+import { CompteService } from './compte.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,12 @@ export class ChatService {
   
   private chatApiPath : string;
   private chats : Array<Chat> = new Array<Chat>;
+  private chatsById : Array<Chat> = new Array<Chat>;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private clientService: CompteService) { 
     this.chatApiPath = "http://localhost:8080/api" +"/chat";
     this.load();
+    this.loadById();
   }
 
   findAll(): any{
@@ -33,11 +36,9 @@ export class ChatService {
       return this.chats;
     })
   }
-  findAllByClientId(id : number): Array<Chat>{
-    this.http.get<Array<Chat>>(this.chatApiPath+"/by-client-id/"+id).subscribe(resp =>{
-      this.chats= resp;
-    });
-    return this.chats;
+  findAllByClientId(): Array<Chat>{
+
+    return this.chatsById;
   }
 
   findById(id : number):Observable<Chat>{
@@ -60,6 +61,18 @@ this.http.delete<boolean>(this.chatApiPath+"/"+id);
     this.http.get<Array<Chat>>(this.chatApiPath+ "/adoptable").subscribe(resp =>{
       this.chats = resp;
     })
+  }
+
+  private loadById():void{
+    this.http.get<Array<Chat>>(this.chatApiPath+"/by-client-id/" + this.clientService.auth.id).subscribe(resp =>{
+      this.chatsById = resp;
+    });
+
+  }
+
+  getChats() : Array<Chat>
+  {
+    return this.chats;
   }
 
 }
