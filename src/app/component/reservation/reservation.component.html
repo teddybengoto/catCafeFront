@@ -1,0 +1,44 @@
+<app-healder></app-healder>
+
+<main>
+    <body>
+        <div id="main">
+            <div id="images">
+                <img src="../../../assets/img/catCafe_plan.jpg" alt="Plan du cafe" width="450px">
+            </div>
+
+            <div id="reservation">
+                <h4 align="center"><u>Réservation :</u></h4>
+
+                <div id="espace">
+                    <h6 align="center">Espace</h6>
+                    
+                    <select class="bouton" id="espace" name="espace" [(ngModel)]="reservationForm.espace">
+                        <option *ngFor="let espace of keys(espaces)" [ngValue]="espace">{{espace}}</option>
+                    </select>
+
+
+                </div>
+
+                <div id="date" name="date">
+                    <h6 align="center">Date</h6>
+                    <input class="bouton" type="date" name="date" [(ngModel)]="reservationForm.jour">
+                </div>
+
+                <div id="heure" name="heure">
+                    <h6 align="center">Heure</h6>
+                    <input class="bouton" type="time" name="heure" [(ngModel)]="reservationForm.heure">
+                </div>
+
+                <div id="effectif" name="effectif">
+                    <h6 align="center">Nombre de personne</h6>
+                    <input class="bouton" type="number" name="effectif" [(ngModel)]="reservationForm.effectif">
+                </div>
+
+                <div id="reserver">
+                    <input class="boutonNoir" type="submit" value="Réservez maintenant" (click)="create()">
+                </div>
+            </div>
+        </div>
+    </body>
+</main>
