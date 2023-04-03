@@ -25,7 +25,11 @@ export class ReservationComponent {
   create(){
     this.reservationForm.client_id = this.compteService.auth.id;
     this.reservationService.create(this.reservationForm);
+    alert("Votre réservation a bien été pris en compte. Merci !");
+    this.router.navigate(['/']);
   }
+
+
 
 
 
