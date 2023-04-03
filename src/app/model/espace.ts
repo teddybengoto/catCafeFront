@@ -1,6 +1,6 @@
 export enum Espace{
-    Jeu="Jeu", 
-    Coworking="Coworking", 
-    Chill="Chill", 
+    Jeu="Salle de Jeu", 
+    Coworking="Salle de Coworking", 
+    Chill="Salle Chill", 
     SalonDeThe="Salon de thé",
 }
