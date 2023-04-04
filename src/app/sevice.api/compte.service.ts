@@ -29,7 +29,6 @@ export class CompteService {
         this.router.navigate(['/']);
         this.auth = resp;
         this.loadCurrentCompte();
-        console.log("connecté : " + this.compte.nom)
         return this.auth;
       }
       else {
