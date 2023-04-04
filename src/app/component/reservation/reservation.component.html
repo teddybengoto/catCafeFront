@@ -16,34 +16,33 @@
 
             <div id="reservation">
                 <img id="chat" src="../../../assets/img/image 16.png">
-                <h2 align="center"><u>Réservation :</u></h2>
+                <h2><u>Réservation :</u></h2>
 
                 <div id="espace">
-                    <h6 align="center">Espace</h6>
-                    
+                    <h6>Espace</h6>
                     <select class="bouton" id="espace" name="espace" [(ngModel)]="reservationForm.espace">
                         <option *ngFor="let espace of keys(espaces)" [ngValue]="espace">{{espace}}</option>
                     </select>
-
                 </div>
 
                 <div id="date" name="date">
-                    <h6 align="center">Date</h6>
+                    <h6>Date</h6>
                     <input class="bouton" type="date" name="date" [(ngModel)]="reservationForm.jour">
                 </div>
 
                 <div id="heure" name="heure">
-                    <h6 align="center">Heure</h6>
+                    <h6>Heure</h6>
                     <input class="bouton" type="time" name="heure" [(ngModel)]="reservationForm.heure">
                 </div>
 
                 <div id="effectif" name="effectif">
-                    <h6 align="center">Nombre de personne</h6>
+                    <h6>Nombre de personne</h6>
                     <input class="bouton" type="number" name="effectif" [(ngModel)]="reservationForm.effectif">
                 </div>
 
                 <div id="reserver">
-                    <input class="boutonNoir" type="submit" value="Réservez maintenant" (click)="create()">
+                    <button type="button" class="btn btn-dark" type="submit" (click)="create()">Réservez maintenant !</button>
+                    <!-- <input class="boutonNoir" type="submit" value="Réservez maintenant" (click)="create()"> -->
                 </div>
             </div>
         </div>
