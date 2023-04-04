@@ -11,12 +11,7 @@
 
         <table class="table table-hover">
             <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                </tr>
+
               </thead>
             <tbody>
                 <tr>
@@ -35,43 +30,48 @@
                     <td>Login</td>
                     <td>{{myCompte?.login}}</td>
                 </tr>
-                <!--
-                    <tr>
-                    <td>mot de passe</td>
-                    <td>{{myCompte?.password}}</td>
-                </tr>
-                -->
+  
                 
             </tbody>
-            <tfoot>
+            <span class="badge badge-secondary" >Modifier mes informations</span>
 
-            </tfoot>
+               
         </table>
 
 
     </div>
 
-    <div class="card mt-3" *ngIf="myCompte">
-        <div class="card-header bg-primary text-white display-6">Edition d'un produit</div>
-        <div class="card-body">
-            <div class="form-group">
-                <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" readonly [(ngModel)]="myCompte.id"/>
-            </div>
-            <div class="form-group">
-                <label for="libelle">Libellé:</label> <input type="text" class="form-control" id="libelle" name="libelle" [(ngModel)]="myCompte.nom"/>
-            </div>
-            <div class="form-group">
-                <label for="prix">Prix:</label> <input type="number" class="form-control" id="prix" name="prix" [(ngModel)]="myCompte.prenom" step="0.01"/>
-            </div>
-
-        </div>
-        <div class="card-footer">
-            <div class="btn-group btn-group-lg float-right">
-                <a class="btn btn-success" ><i class="bi bi-check-square-fill"></i></a>
-                <a class="btn btn-warning" ><i class="bi bi-backspace-fill"></i></a>
+    <form (ngSubmit)="update()" [formGroup]="updateCompte">
+        <div class="form-group">
+            <label>Nom </label>
+            <input  class="form-control" formControlName="nom" />
+            <div class="text-danger" *ngIf="updateCompte.get('nom')?.hasError('required')&&updateCompte.get('nom')?.dirty">
+                Le nom est obligatoire
             </div>
         </div>
-    </div>
+        <div class="form-group">
+            <label>Prénom </label>
+            <input  class="form-control" formControlName="prenom" />
+            <div class="text-danger" *ngIf="updateCompte.get('prenom')?.hasError('required')&&updateCompte.get('prenom')?.dirty">
+                Le prénom est obligatoire
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Enter email">
+            <div  class="text-danger" *ngIf="updateCompte.get('email')?.hasError('email')">
+                Email Incorrecte
+            </div>
+          </div>
+        <div class="form-group">
+            <label>Télephone</label>
+            <input  class="form-control"  type="tel" formControlName="telephone" />
+            <div  class="text-danger" *ngIf="updateCompte.get('telephone')?.hasError('telephone')&&updateCompte.get('telephone')?.dirty">
+                Le numero de télephone est obligatoire
+            </div>
+        </div>
+        <input type="submit" class="btn btn-primary mt-3" [disabled]="updateCompte.invalid" value="Modifier !" />
+    </form>
 
 
 
