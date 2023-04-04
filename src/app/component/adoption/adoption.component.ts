@@ -16,10 +16,6 @@ export class AdoptionComponent {
 
   chats : Array<Chat> = new Array<Chat>;
   adoption : Adoption = new Adoption();
-  //bol : Array<boolean> = new Array<boolean>;
-  //w : string = "10%";
-  
-  
 
   constructor(private chatService: ChatService,
     private adoptionService : AdoptionService,
@@ -27,26 +23,15 @@ export class AdoptionComponent {
     private router : Router){
     if (!compteService.auth?.id) {
       this.router.navigate(['/connexion']);
-      
     }
   }
 
-  initBol():void{
-    
-  }
-
-
   findAllAdoptable(): Array<Chat>{
-    //console.log(this.chats.length)
     this.chats=this.chatService.findAllAdoptable();
-    //for (let i:number=0;i<this.chatService.findAllAdoptable().length;i++){
-    //  this.bol.push(false)
-   //}
     return this.chats
   }
 
-  test(chat : Chat): void{
-    //chat.nom = chat.nom+" hello";
+  adopter(chat : Chat): void{
     chat.adoptable=false;
     chat.permanent=false;
     chat.clientId=this.compteService.auth?.id;
@@ -55,22 +40,7 @@ export class AdoptionComponent {
     this.adoption.idClient=this.compteService.auth?.id;
     this.adoption.prix=10;
     this.adoptionService.create(this.adoption);
-    alert("Vous avez adopter "+chat.nom);
-  }
-
-  show(id : number):void{
-    //for (let i:number=0;i<this.chats.length;i++){
-    //  this.bol[i]=false;
-    //}
-    //this.bol[id] = true;
-  }
-
-  allAdoption(): Array<Adoption>{
-    return this.adoptionService.findAll();
-  }
-
-  findAll():Array<Chat>{
-    return this.chatService.findAll();
+    alert("Votre demande d'adoption pour "+chat.nom+" à bien été pris en compte.");
   }
 
 }

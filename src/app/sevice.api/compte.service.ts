@@ -60,6 +60,7 @@ export class CompteService {
     this.http.get<Compte>(this.clientApiPath + "/client/" + this.auth.id).subscribe(resp => {
       this.compte = resp;
             console.log("connecté : " + this.compte.nom)
+            console.log("compteservice : " , this.compte)
    })
   }
 

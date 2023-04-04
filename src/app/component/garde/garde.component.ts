@@ -20,6 +20,7 @@ export class GardeComponent {
   gardes: Array<Garde>;
   garde: Garde = new Garde();
   chats: Array<Chat>;
+  validation: boolean = false;
   
   constructor(private router: Router, private formBuilder: FormBuilder, private gardeService: GardeService, private clientService: CompteService, private chatService: ChatService){
     if (!clientService.auth?.id) {
@@ -53,7 +54,7 @@ export class GardeComponent {
     this.garde.chatId = this.gardeForm.value.chatId;
     this.garde.dateDebut = this.gardeForm.value.dateDebut;
     this.garde.dateFin = this.gardeForm.value.dateFin;
-    this.garde.clientId = 4;
+    this.garde.clientId = this.clientService.compte.id;
     this.garde.prix = this.garde.prix;
     this.gardeService.create(this.garde);
     this.router.navigate(["/"]);
@@ -67,12 +68,18 @@ export class GardeComponent {
 
   @HostListener('change', ['$event.target'])
   modifPrix(): void {
-    if (this.gardeForm.value.dateDebut == "" || this.gardeForm.value.dateDebut == "") { this.garde.prix = 122; }
+    if (this.gardeForm.value.dateDebut ==""|| this.gardeForm.value.dateDebut =="" ) { this.garde.prix = 0; console.log("vrai ou pas : ", this.gardeForm.value.dateDebut )}
     else {
       let dDebut = new Date(this.gardeForm.value.dateDebut);
       let dFin = new Date(this.gardeForm.value.dateFin);
+      
       this.garde.prix = (dFin.getTime() - dDebut.getTime()) / (1000 * 3600 * 24) * 10;
-      console.log(this.garde.prix)
+      let compare = dDebut.getTime() - dFin.getTime();
+      console.log(compare)
+      if(compare>0)
+      {this.validation = false}
+      else
+      {this.validation = true}
     }
 
   }
