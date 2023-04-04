@@ -12,7 +12,7 @@ export class Chat {
     commentaire : string;
     image : string;
     naissance : string;
-    clientId : string;
+    clientId : number;
 
     constructor(id?: number,
         nom ?: string,
@@ -27,7 +27,7 @@ export class Chat {
         commentaire ?: string,
         image ?: string,
         naissance ?: string,
-        clientId ?: string){
+        clientId ?: number){
             this.nom=nom;
             this.sexe=sexe;
             this.race=race;
