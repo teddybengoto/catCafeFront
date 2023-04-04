@@ -11,15 +11,17 @@ import { Compte } from 'src/app/model/compte';
 })
 export class HealderComponent {
   auth : Auth = null;
-  compte: Compte;
+  compte: Compte = new Compte();
+  
 
   textButtomConnexion:string= this.compteService?.auth?.id ? "Déconnexion": "Connexion";
 
   constructor(private compteService:CompteService ){
+    //this.compte.nom = "pas bon";
     this.test();
-    this.auth = compteService.auth;
     this.compte = compteService.compte;
-    console.log("test :"  + this.compte);
+    //console.log("test accueil :" +  this.compte.nom);
+
 
   }
 
