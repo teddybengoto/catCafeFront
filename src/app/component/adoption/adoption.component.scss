@@ -78,6 +78,10 @@
     width: 21%;
   }
 
+  .upercase{
+    text-transform: capitalize;
+  }
+
   .liste{
     list-style: none;
   }
@@ -98,11 +102,7 @@
   .imgChat{
     height: 250px;
     width: 100%;
-    border-bottom-style: solid;
-    border-top-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-radius: 20px;
+    
   }
   
   .boutonVoirPlus{

@@ -19,11 +19,11 @@
             <div class="card-deck customdeck">
                 <div class="card customcard border-dark bg-light mb-3" *ngFor="let element of findAllAdoptable(); let i = index">
                     <img class="card-img-top imgChat" [src]="element.image" alt="Card image cap">
-                    <div class="card-header  text-center">{{element.nom}}</div>
+                    <div class="card-header  text-center upercase">{{element.nom}}</div>
                     <div class="card-body">
                         <ul class="liste">
                             <li>Race : {{element.race}}</li>
-                            <li>{{element.sexe}}</li>
+                            <li class="upercase">{{element.sexe}}</li>
                             <li>Née le : {{element.naissance}}</li>
                             <li>Stérile : {{element.sterile}}</li>
                             <li>Problème de santé : {{element.pbSante}}</li>
