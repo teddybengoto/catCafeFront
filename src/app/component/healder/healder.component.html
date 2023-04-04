@@ -2,14 +2,17 @@
     <nav>
     
         <img class="NavImg" src="assets/img/patoune withe.png" [routerLink]="['/']" alt="Logo du site">
-        <button class="btnNavBar " [routerLink]="['/']"> Accueil </button>
-        <button class="btnNavBar " [routerLink]="['/adoption']"> Adopter un chat </button>
-        <button class="btnNavBar" [routerLink]="['/garde']"> Faire garder son chat </button>
-        <button class="btnNavBar " [routerLink]="['/reservation']">Reservation </button>
-        <button class="btnNavBar " [routerLink]="['/profil']">Mes Infos </button>
-        <div id="connexion">
-            <button *ngIf="!auth" class="btnNavBar" [routerLink]="['/connexion']" (click)="logOut()"> Connexion</button>
-            <button *ngIf="auth"class="btnNavBarConnected" [routerLink]="['/connexion']" (click)="logOut()"> Deconnexion</button>
+        <p *ngIf="!compte.id">Connectez vous pour profitez de tous nos services : </p>
+        <button *ngIf="!compte.id" class="btnNavBar" [routerLink]="['/connexion']" (click)="logOut()"> Connexion</button>
+        <button *ngIf="compte.id" class="btnNavBar " [routerLink]="['/']"> Accueil </button>
+        <button *ngIf="compte.id" class="btnNavBar " [routerLink]="['/adoption']"> Adopter un chat </button>
+        <button *ngIf="compte.id" class="btnNavBar" [routerLink]="['/garde']"> Faire garder son chat </button>
+        <button *ngIf="compte.id" class="btnNavBar " [routerLink]="['/reservation']">Reservation </button>
+        <button *ngIf="compte.id" class="btnNavBar " [routerLink]="['/profil']">Mes Infos </button>
+        <div id="connexion" *ngIf="compte.id">
+            <p >Bienvenue {{compte.prenom}} !</p>
+            <div class="btnNavBar ">Deconnexion </div>
+            
       
         </div>
     </nav>
