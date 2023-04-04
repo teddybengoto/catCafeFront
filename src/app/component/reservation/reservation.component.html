@@ -10,9 +10,12 @@
 
         <div id="main">
             <div id="images">
-                <img src="../../../assets/img/catCafe_plan.jpg" alt="Plan du cafe" width="450px">
+                <img [src]="plan" alt="Plan du cafe" width="450px">
+                <p *ngIf="!reservationForm.espace">Choisissez un espace</p>
                 <p>{{reservationForm.espace}}</p>
             </div>
+            <br>
+
 
             <div id="reservation">
                 <img id="chat" src="../../../assets/img/image 16.png">
