@@ -1,1 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+//Polices globales du site web 
+
+@font-face {
+	font-family: 'Abel';
+	src: url(assets/polices/Abel/Abel-Regular.ttf),
+}
+@font-face {
+	font-family: 'AmaticStandard';
+	src: url(assets/polices/Amatic_SC/AmaticSC-Regular.ttf),
+}
+@font-face {
+	font-family: 'AmaticBold';
+	src: url(assets/polices/Amatic_SC/AmaticSC-Bold.ttf),
+}
+
+p{
+    font-family: Abel;
+    font-size: 1.2em;
+    text-align : justify;
+}
+
+h1{
+    font-family: AmaticBold;
+    font-size: 3em!important;
+}
+
+h2{
+    font-family: AmaticStandard;
+    font-size: 3em!important;
+}
+
+.TitleHeader
+{
+  margin-top: 100px;
+  margin-bottom: 15px;
+  width: 600px;
+  height: 80px;
+
+  background: #D3AC71;
+  border: 3px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+.Title
+{
+
+  display: flex;
+  align-items : center;
+  justify-content: center;
+ width: 600px;
+  height: 80px;
+}
+.TitleIllust
+{
+  width: 344px;
+  height: 144px;
+  position: relative;
+  top : -184px;
+  Left : 250px;
+  background-size: 100% 100%;
+  //background-image: url("assiste/img/chat_rebord_1.png");
+}

@@ -1,8 +1,12 @@
 nav {
     
-    background-color: rgb(0, 0, 0);
-    height: 100px;
-    width: 1600px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    background: transparent;
+     height: 100px;
+    width: 100%;
     max-width: 100%;
     min-width: 1200px;
     display: flex;
@@ -13,6 +17,19 @@ nav {
     border-color: rgb(255, 255, 255);
 
 
+
+}
+
+nav::after{
+    position : absolute;
+    z-index: -1;
+    content:"";
+    background-color: rgb(0, 0, 0);
+    opacity:70%;
+    height: 100px;
+    width: 1600px;
+    max-width: 100%;
+    min-width: 1200px;
 }
 
 
@@ -37,25 +54,31 @@ nav {
     transition: all 0.2s linear 0s;
     cursor: pointer;
 
+
 }
 
 .btnNavBar:hover, .btnNavBarConnected:hover  {
     width: 206px;
     height: 56px;
-    margin: 7px;
     border-width: 4px;
     color: white;
     border-color: white;
     font-size: 21px;
+
 }
+
 .btn{
     border: 1px white!important;
     color: white;
     font-size: larger;
-    font-weight: bold;
+    font-weight: bold;}
 
+
+.btnNavBarConnected {
+   // margin-left: 40px;
 }
-    
+
+   
 
 .NavImg {
     border:none;
@@ -66,16 +89,20 @@ nav {
 #connexion{
     display: flex;
     justify-content: center;
+    align-items: end;
     width : 100%;
-
+    max-width: 300px;
+    margin-left: 20px;
     border:solid;
     border-width: 0px;
     border-left-width: 2px;
     border-color: rgb(255, 255, 255);
 
+
 }
 
 .navLine{
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 150px!important;
+    margin-right: 50px!important;
+
 }
