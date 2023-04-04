@@ -75,8 +75,12 @@ nav::after{
    
 
 .NavImg {
-    border:none;
+    border:solid;
     border-width: 0;
+    transform: rotate(-30deg);
+    cursor: pointer;
+    margin-left: 15px;
+    margin-right: 15px;
 
 }
 

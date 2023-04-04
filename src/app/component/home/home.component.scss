@@ -95,7 +95,11 @@ button {
 }
 
 #aboutUsArrayTop {
-    width: 48%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 #aboutUsArrayTop p {
@@ -105,9 +109,9 @@ button {
 
 }
 
-/*#aboutUsArrayRight {
+#aboutUsArrayRight {
     width: 48%;
-}*/
+}
 
 #aboutUsArray,
 #ourMatonsArray {
@@ -277,7 +281,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 45%;
+    width: 65%;
 }
 
 #barreNosEspacesTexte {
