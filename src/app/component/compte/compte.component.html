@@ -1,32 +1,78 @@
 <app-healder></app-healder>
 
-<main>
-    <h1>Information du compte:</h1>
-    <h2 class="my-5 ">Information du compte: </h2>
+<main class="d-flex flex-column  flex-direction-center align-items-center">
+
+    <h1>Bienvenue: {{myCompte?.nom}} </h1>
 
 
-    <p>
-        Id: {{myCompte?.id}}
 
-    </p>
+    <div>
+        <h2 class="my-5 ">Information personnelles </h2>
 
-    <p>
-        nom: {{myCompte?.nom}}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+            <tbody>
+                <tr>
+                    <td>Nom</td>
+                    <td> {{myCompte?.nom}}</td>
+                </tr>
+                <tr>
+                    <td>Prenom</td>
+                    <td>{{myCompte?.prenom}}</td>
+                </tr>
+                <tr>
+                    <td>Télephone</td>
+                    <td>{{myCompte?.telephone}}</td>
+                </tr>
+                <tr>
+                    <td>Login</td>
+                    <td>{{myCompte?.login}}</td>
+                </tr>
+                <!--
+                    <tr>
+                    <td>mot de passe</td>
+                    <td>{{myCompte?.password}}</td>
+                </tr>
+                -->
+                
+            </tbody>
+            <tfoot>
 
-    </p>
-    <p>
-        nom: {{myCompte?.prenom}}
+            </tfoot>
+        </table>
 
-    </p>
-    <p>
-        login: {{myCompte?.login}}
-    </p>
-    <p>
-        password: {{myCompte?.password}}
-    </p>
-    <p>
-        telephone: {{myCompte?.telephone}}
-    </p>
+
+    </div>
+
+    <div class="card mt-3" *ngIf="myCompte">
+        <div class="card-header bg-primary text-white display-6">Edition d'un produit</div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" readonly [(ngModel)]="myCompte.id"/>
+            </div>
+            <div class="form-group">
+                <label for="libelle">Libellé:</label> <input type="text" class="form-control" id="libelle" name="libelle" [(ngModel)]="myCompte.nom"/>
+            </div>
+            <div class="form-group">
+                <label for="prix">Prix:</label> <input type="number" class="form-control" id="prix" name="prix" [(ngModel)]="myCompte.prenom" step="0.01"/>
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <div class="btn-group btn-group-lg float-right">
+                <a class="btn btn-success" ><i class="bi bi-check-square-fill"></i></a>
+                <a class="btn btn-warning" ><i class="bi bi-backspace-fill"></i></a>
+            </div>
+        </div>
+    </div>
+
 
 
 
