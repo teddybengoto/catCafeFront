@@ -1,14 +1,12 @@
 #tout{
-    background-color:#ECE0C9;
+    //background-color:#ECE0C9;
+    background: linear-gradient(180deg, #ECE0C9 0%, #EFD4A0 100%);
   }
   
-  #titre{
-  
-    display: flex;
+  .titre{
+  display: flex;
   align-items: center;
   flex-direction:column;
-  
-  
   }
   
   #titreChat{
@@ -23,20 +21,34 @@
   
   #titreText{
     display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 700px;
-        height: 70px;
-        left: 455px;
-        top: 206px;
-        background-color: #D3AC71;
-        border-bottom-style: solid;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 70px;
+    left: 455px;
+    top: 206px;
+    background-color: #D3AC71;
+   border-bottom-style: solid;
         border-top-style: solid;
         border-left-style: solid;
         border-right-style: solid;
         border-radius: 20px;
         font-size: 40px;
   }
+
+  .btnNavBar{
+    background-color: #D3AC71;
+  }
+  .btnNavBar:hover {
+    //width: 206px;
+    //height: 56px;
+    //border-width: 2px;
+    //color: white;
+    border-color:white;
+    background-color: #EFD4A0;
+    //font-size: 21px;
+
+}
   
   #separationbas{
     border-top-style: solid;
@@ -49,25 +61,6 @@
     margin-inline-end: 76px;
   }
   
-  .casesAdoption{
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-  }
-  
-  .caseChat{
-    display: flex;
-    align-items: center;
-    flex-direction:column;
-    width: 21%;
-    background-color: #9A8873;
-    border-bottom-style: solid;
-    border-top-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-radius: 20px;
-  }
-
   .customdeck{
     display: flex;
     justify-content: space-around;
@@ -78,113 +71,16 @@
     width: 21%;
   }
 
+  .upercase{
+    text-transform: capitalize;
+  }
+
   .liste{
     list-style: none;
-  }
-  
-  .nomChat{
-    background-color: #D3AC71;
-    border-bottom-style: solid;
-    border-top-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-radius: 20px;
-    width:90%;
-    text-align:center;
-    font-size:20px;
-    font-family: 'Abel';
   }
   
   .imgChat{
     height: 250px;
     width: 100%;
-    border-bottom-style: solid;
-    border-top-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-radius: 20px;
-  }
-  
-  .boutonVoirPlus{
-    background-color: #857E73;
-    border-bottom-style: solid;
-    border-top-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-radius: 20px;
-    color:white;
-    width:90%;
-    font-size:20px;
-  }
-  
-  .caseChatDetail{
-    display: flex;
-    align-items: flex-start;
-    background-color: #9A8873;
-    border-bottom-style: solid;
-    border-top-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-radius: 20px;
-  }
-  
-  .caseChatInfo{
-    display: flex;
-    width:97%;
-  }
-  
-  .caseChatDetailGauche{
-    display: flex;
-    align-items: center;
-    flex-direction:column;
-    width: 40%;
-  }
-  
-  .imgChatDetail{
-    height:100%;
-    width: 90%;
-    border-bottom-style: solid;
-    border-top-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-radius: 20px;
-  }
-  
-  .boutonAdoption{
-    background-color: #857E73;
-    border-bottom-style: solid;
-    border-top-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-radius: 20px;
-    color:white;
-    font-size:20px;
-    width:90%;
-  }
-  
-  .caseChatDetailDroite{
-    display: flex;
-    align-items: center;
-    flex-direction:column;
-    width: 55%;
-    background-color: #ECE0C9;
-    border-bottom-style: solid;
-    border-top-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-radius: 20px;
-    text-align:center;
-  }
-  
-  .X{
-    display: flex;
-    justify-content: space-around;
-    background-color: #D3AC71;
-    border-bottom-style: solid;
-    border-top-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-radius: 20px;
-    color:#857E73;
-    font-size:30px;
+    
   }
