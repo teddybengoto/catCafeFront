@@ -5,19 +5,30 @@
     <div id="container"  >
         <div id="UnderContainer"  *ngIf="connexion" class="d-flex  ">
             <h1>Déjà inscrit ?</h1>
-            <form id="Connexion" class="" [formGroup]="inscriptionForm" (ngSubmit)="login()">
+            <form id="Connexion" class="" [formGroup]="connexionForm" (ngSubmit)="login()">
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" formControlName="login"
                         placeholder="Adresse e-mail" width="90%">
                     <label for="floatingInput">Adresse e-mail</label>
+                    <span *ngIf="connexionForm.get('login')?.dirty && connexionForm.get('login')?.hasError('required')" class="text-danger">
+                        Le login (sous forme d'adresse mail) est obligatoire.
+                    </span>
+                    <span *ngIf="connexionForm.get('login')?.hasError('email')" class="text-danger">
+                        Le login doit être une adresse email valide.
+                    </span>
                 </div>
                 <div class="form-floating">
                     <input type="password" class="form-control" id="floatingPassword" formControlName="password"
                         placeholder="Password">
                     <label for="floatingPassword">Mot de passe</label>
+                    <span *ngIf="connexionForm.get('password')?.dirty && connexionForm.get('password')?.hasError('required')" class="text-danger">
+                        Le mot de passe est obligatoire.
+                    </span>
+                    <span *ngIf="connexionForm.get('password')?.hasError('minlength')" class="text-danger">
+                        Le mot de passe doit faire minimum 6 caractères.
+                    </span>
                 </div>
-                <button type="submit" [disabled]="inscriptionForm.invalid" class="btn btn-secondary">C'est parti
-                    !</button>
+                <button type="submit" [disabled]="connexionForm.invalid" class="btn btn-secondary">C'est parti !</button>
             </form>
 
             <p (click)="showSigning(false)">Créé un compte </p>
@@ -27,26 +38,52 @@
             <h1>Première fois , c’est ici !</h1>
             <form id="inscription" [formGroup]="inscriptionForm" (ngSubmit)="creat()">
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" formControlName="nom" placeholder="Nom" width="90%">
-                    <label for="floatingInput">Nom</label>
+                    <input type="text" class="form-control" id="nom" formControlName="nom" placeholder="Nom" width="90%">
+                    <label for="nom">Nom</label>
+                    <span *ngIf="inscriptionForm.get('nom')?.dirty && inscriptionForm.get('nom')?.hasError('required')" class="text-danger">
+                        Le nom est obligatoire.
+                    </span>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" formControlName="prenom" placeholder="Nom" width="90%">
-                    <label for="floatingInput">Prenom</label>
+                    <input type="text" class="form-control" id="prenom" formControlName="prenom" placeholder="Nom" width="90%">
+                    <label for="prenom">Prenom</label>
+                    <span *ngIf="inscriptionForm.get('prenom')?.dirty && inscriptionForm.get('prenom')?.hasError('required')" class="text-danger">
+                        Le prénom est obligatoire.
+                    </span>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" formControlName="login" placeholder="Nom" width="90%">
-                    <label for="floatingInput">Email</label>
+                    <input type="email" class="form-control" id="login" formControlName="login" placeholder="Nom" width="90%">
+                    <label for="login">Email</label>
+                    <span *ngIf="inscriptionForm.get('login')?.dirty && inscriptionForm.get('login')?.hasError('required')" class="text-danger">
+                        Le login (sous forme d'adresse mail) est obligatoire.
+                    </span>
+                    <span *ngIf="inscriptionForm.get('login')?.hasError('login')" class="text-danger">
+                        Le login doit être une adresse email valide.
+                    </span>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingInput" formControlName="password" placeholder="Nom" width="90%">
-                    <label for="floatingInput">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" formControlName="password" placeholder="Nom" width="90%">
+                    <label for="password">Mot de passe</label>
+                    <span *ngIf="inscriptionForm.get('password')?.dirty && inscriptionForm.get('password')?.hasError('required')" class="text-danger">
+                        Le mot de passe est obligatoire.
+                    </span>
+                    <span *ngIf="inscriptionForm.get('password')?.hasError('minlength')" class="text-danger">
+                        Le mot de passe doit faire minimum 6 caractères.
+                    </span>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingInput" formControlName="confPassword" placeholder="Nom" width="90%">
-                    <label for="floatingInput">Confirmer mot de passe</label>
+                    <input type="password" class="form-control" id="confirmMdp" formControlName="confirmMdp" placeholder="Nom" width="90%">
+                    <label for="confirmMdp">Confirmer mot de passe</label>
+                    <span *ngIf="inscriptionForm.get('confirmMdp')?.dirty && inscriptionForm.get('confirmMdp')?.hasError('required')" class="text-danger">
+                        La confirmation du mot de passe est obligatoire.
+                    </span>
+                    <span *ngIf="inscriptionForm.get('confirmMdp')?.hasError('confirmedValidator')" class="text-danger">
+                        Le mot de passe n'est pas identique.
+                    </span>
+
+
                 </div>
-                <button type="submit" class="btn btn-secondary">Inscription</button>
+                <button type="submit" class="btn btn-secondary" [disabled]="inscriptionForm.invalid">Inscription</button>
             </form>
             <p (click)="showSigning(true)">connectez vous </p>
 
