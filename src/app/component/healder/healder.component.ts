@@ -18,19 +18,12 @@ export class HealderComponent {
 
   constructor(private compteService:CompteService ){
     
-    this.test();
     console.log("auth : ", compteService.auth)
     if(compteService.auth?.id){   console.log("login");this.login();}
-    
-
 
 
   }
 
-  
-  test(){
-    console.log("textButtomConnexion: ",this.textButtomConnexion);
-  }
 
   login(){
  
@@ -41,6 +34,8 @@ export class HealderComponent {
   logOut(){
     this.compteService.auth=null;
     this.compteService.compte=null;
+    alert("vous vous êtes déconnectés");
+    
   }
   
   

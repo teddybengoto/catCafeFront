@@ -19,7 +19,7 @@
             </div>
         </div>
         <div id="btArray" class="d-flex flex-column  flex-direction-center align-items-center ">
-            <button class="btnPrincipal" id="Reservation">Reserver maintenant </button>
+            <button class="btnPrincipal" id="Reservation" [routerLink]="['/reservation']">Reserver maintenant </button>
         </div>
 
     </section>
@@ -109,7 +109,7 @@
 <br>
 
 
-             <button class="btnPrincipal">Découvrir nos chats disponibles</button>   
+             <button class="btnPrincipal" [routerLink]="['/adoption']">Découvrir nos chats disponibles</button>   
 
 
 
@@ -141,7 +141,7 @@
 
             <div class="d-flex flex-column align-items-center pb-5 ">
 
-                <button class="btnPrincipal">Faites garder votre chat</button> 
+                <button class="btnPrincipal" [routerLink]="['/garde']">Faites garder votre chat</button> 
             </div>
         </div>
 

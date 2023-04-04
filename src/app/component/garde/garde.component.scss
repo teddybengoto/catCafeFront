@@ -6,19 +6,14 @@ body
   background: linear-gradient(0deg, #ECE0C9, #ECE0C9), #000000;
 }
 
-header
-{
-  height:80px;
-  background-color : black;
-  color : white;
-  font-family: "Amatic";
-}
+
 main
 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgba(236, 224, 201, 1);
 }
 
 .TitleHeader
@@ -152,7 +147,7 @@ font-family: "Abel"
   text-align: center;
   font-family:"Abel"  ;
   color: black;
-  cursor: text;
+  cursor: pointer;
   margin: 15px;
   border-width: 4px;
   border-color: black;
