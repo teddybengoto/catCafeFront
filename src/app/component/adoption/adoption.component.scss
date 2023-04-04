@@ -67,6 +67,20 @@
     border-right-style: solid;
     border-radius: 20px;
   }
+
+  .customdeck{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .customcard{
+    width: 21%;
+  }
+
+  .liste{
+    list-style: none;
+  }
   
   .nomChat{
     background-color: #D3AC71;
@@ -82,8 +96,8 @@
   }
   
   .imgChat{
-    height: 199px;
-    width: 280px;
+    height: 250px;
+    width: 100%;
     border-bottom-style: solid;
     border-top-style: solid;
     border-left-style: solid;
