@@ -30,6 +30,53 @@ nav {
     width: 90%;
 }
 
+.btnPrincipal{
+
+    width: 400px;
+    height: 75px;
+    font-size: 30px;
+    text-align: center;
+    font-family: "AmaticBold";
+    margin: 10px;
+    color:black!important;
+    background: rgba(133, 126, 115, 1);
+    border-radius: 15px;
+    border-width: 2px;
+    border-color: black!important;
+    transition: all 0.2s linear 0s;
+    cursor: pointer;
+  
+  
+  }
+  
+  .btnPrincipal:hover {
+    width: 400px;
+    height: 75px;
+   
+    border-width: 4px;
+    color: white;
+    border-color: black;
+    font-size: 32px;
+  
+  }
+
+  #Reservation{
+    font-family: 'Abel';
+    color:rgb(255, 255, 255)!important;
+    background: transparent;
+    border-color: white!important;
+    border-width: 2px;
+  }
+
+  #Reservation:hover {
+
+   
+    border-width: 4px;
+  
+  
+  }
+
+
 #array1 {
     background-image: url("../../../assets/img/imgCat5.png");
     background-repeat: no-repeat;
@@ -47,36 +94,6 @@ nav {
 
 }
 
-.btnNavBar, .btnNavBarConnected {
-
-    display: block;
-    min-width: 250px;
-    width: 250px;
-    height: 60px;
-    font-size: 25px;
-    text-align: center;
-    font-family: "Abel";
-    color: rgb(192, 192, 192);
-    margin: 10px;
-    background: black;
-    border-radius: 15px;
-    border-width: 2px;
-    border-color: rgb(192, 192, 192);
-    transition: all 0.2s linear 0s;
-    cursor: pointer;
-
-
-}
-
-.btnNavBar:hover, .btnNavBarConnected:hover  {
-    width: 256px;
-    height: 66px;
-    border-width: 7px;
-    color: white;
-    border-color: white;
-    font-size: 28px;
-
-}
 
 #titleArray p {
     font-size: 36px;
@@ -181,7 +198,7 @@ button {
 
 #ourArrayCat {
     background: linear-gradient(180deg, #ECE0C9 0%, #EFD4A0 100%);
-    height: 1015px;
+    height: 800px;
 
 }
 
@@ -210,7 +227,10 @@ button {
 #ourArrayCatRight {
     width: 48%;
     position: relative;
-    top:-150px;
+    top:-75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #discoverMoreBt {
@@ -410,17 +430,19 @@ button {
 #gauche {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: justify;
-    width: 50%;
+    justify-content: start;
+    align-items: center;
+    width: 65%;
+    padding: 50px;
 }
 
 #droite {
     display: flex;
-    flex-direction: row;
-    width: 50%;
-    margin-top: 10%;
-    margin-left: 10%;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
+    width: 35%;
+
 }
 
 .texte {
@@ -479,6 +501,8 @@ img {
 #vacances {
 
     background-color: rgba(239, 212, 160, 1);
+    display: flex;
+    height: 600px;
 
 }
 
