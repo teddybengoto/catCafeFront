@@ -1,15 +1,14 @@
 <app-healder></app-healder>
 <main>
-    <div class="TitleHeader">
-      <div class="Title">
-            <h1>Faire garder son chat</h1>
-      </div>
-      <div class="TitleIllust"><img src="assiste/img/chat_rebord_1.png"></div>
+  <div class="TitleHeader">
+    <div class="Title">
+          <h1>Faire garder son chat</h1>
     </div>
+  </div>
 
     <div id="content">
       <div id="ColumnLeft">
-        <img src="assiste/img/chat_chill.jpg" alt="test">
+        <img src="assets/img/chat_chill.jpg" alt="test">
         <br>
         <p>Nous nous chargeons de votre matou pendant votre abscence, croquettes et carresses comprises. Remplissez le formulaire et nous vous proposerons un tarrif adapté à votre besoin</p>
         <p>Prix par jour : 10,00€</p>
@@ -27,9 +26,11 @@
               <input type="text" class="InputPerso" formControlName="dateDebut" [(ngModel)]="garde.dateDebut"  id="dateDebut" name="dateDebut" placeholder="Début de la garde" onfocus="(this.type='date')" onblur="(this.type='text')">
               <p>Date de fin :</p>
               <input type="text" class="InputPerso" formControlName="dateFin"  [(ngModel)]="garde.dateFin"id="dateFin" name="dateDebut" placeholder="Fin de la garde" onfocus="(this.type='date')" onblur="(this.type='text')">
+              <p style="color:red" *ngIf="!validation">dates non conformes</p>
               <br>
-              <p>Prix pour cette garde : </p><p>{{garde.prix}},00€</p>
-              <input type="submit" class="bouton" name="valider" value="C'est parti"  >
+              <p input *ngIf="validation">Prix pour cette garde : </p><p input *ngIf="validation">{{garde.prix}},00€</p>
+              <input *ngIf="validation" type="submit" class="bouton" name="valider" value="C'est parti"  >
+              <input *ngIf="!validation" type="submit" class="bouton" name="valider" value="C'est parti" disabled >
         </form>
       </div>
     </div>

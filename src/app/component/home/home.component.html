@@ -19,7 +19,7 @@
             </div>
         </div>
         <div id="btArray" class="d-flex flex-column  flex-direction-center align-items-center ">
-            <button class="btnNavBar">Reserver maintenant </button>
+            <button class="btnPrincipal" id="Reservation" [routerLink]="['/reservation']">Reserver maintenant </button>
         </div>
 
     </section>
@@ -67,7 +67,7 @@
         <div class="d-flex flex-column justify-content-center align-items-center w-50 h-100 "
             id="ourResidentArrayImage">
             <img class="mx-5" src="../../../assets/img/Vector.png" alt="">
-            <p class="mx-5">Ceux qui n’aiment pas les chats se réincaneront en souris</p>
+            <p class="mx-5">Vous êtes félin pour l'autre...</p>
             <img src="../../../assets/img/Vector2.png" alt="">
 
         </div>
@@ -94,33 +94,34 @@
             <p>
                 Vous avez toujours révé d’avoir un chat aimant à vos coté et de ne plus jamais regarder Netflix seul sur
                 votre canapé ?
+                <br>
 
-            </p>
-            <p>
+                <br>
+            
                 Des dizaines de petits félins malheureux n’attendent que vous !!!
             </p>
             <p>
                 Consulter directement sur notre site tous les chats que nous avons recueillis, et pouvant être adoptés
                 dès aujourd’hui :
             </p>
-            <!--
+<br>
+<br>
+<br>
 
-            -->
-            <div class="d-flex flex-column align-items-center ">
-                <img id="discoverMoreImg" class="" src="../../../assets/img/chat_rebord_11.png" alt="" srcset="">
-                <button id="discoverMoreBt" class="custumBtn">Découvrir tous les chats disponibles</button>
-            </div>
+
+             <button class="btnPrincipal" [routerLink]="['/adoption']">Découvrir nos chats disponibles</button>   
+
+
 
 
 
         </div>
 
     </section>
-    <section class=" d-flex flex-row align-items-center justify-content-around border-top border-secondary"
-        id="vacances">
+    <section id="vacances">
 
         <div id="gauche">
-            <div class="texte">
+            
                 <div class="TitleHeader" id="TitleHeader1">
                     <div class="Title">
                           <h1>Vous partez en vacances ?</h1>
@@ -129,14 +130,18 @@
                   </div>
                   <br><br>
 
-                <p>Un week end en amoureux à Rome et Félix se retrouve tout seul à la maison ?</p>
-                <p>Pas de soucis, JavaCatCafe s’occuppe de tout !!! Déposez votre chat chez nous pendant vos vacances et
+                <p>Un week end en amoureux à Rome et Félix se retrouve tout seul à la maison ?
+                <br>
+                
+                Pas de soucis, JavaCatCafe s’occuppe de tout !!! Déposez votre chat chez nous pendant vos vacances et
                     nous nous chargerons de lui faire vivre un séjour aussi inoubliable que le votre !</p>
-            </div>
+
+                    <br>
+            
 
             <div class="d-flex flex-column align-items-center pb-5 ">
-                <img id="chatNoir" src="../../../assets/img/image 27.png" alt="petit chat noir">
-                <button class=" custumBtn">Faites garder votre chat</button>
+
+                <button class="btnPrincipal" [routerLink]="['/garde']">Faites garder votre chat</button> 
             </div>
         </div>
 
@@ -146,6 +151,9 @@
             </div>
         </div>
     </section>
+
+
+
 
     <section id="tout">
 
@@ -160,7 +168,7 @@
             </div>
 
             <div id="barreNosEspacesDroite">
-                <input id="barreNosEspacesBtn" type="button" name="" value="Reservez maintenant">
+                <input id="barreNosEspacesBtn" type="button" [routerLink]="['/reservation']"  name="" value="Reservez maintenant">
             </div>
         </div>
 
@@ -172,9 +180,8 @@
                     </div>
                 </div>
                 <img src="../../../assets/img/4 1.png" id="img1">
-
-
             </div>
+
             <div id="divImg2">
                 <div class="divNomEspaceFlex">
                     <div class="divNomEspaceRelative">
@@ -182,6 +189,22 @@
                     </div>
                 </div>
                 <img src="../../../assets/img/image 15.png" id="img2">
+            </div>
+            <div id="divImg3">
+                <div class="divNomEspaceFlex">
+                    <div class="divNomEspaceRelative">
+                        <p class="nomEspace">Salle de jeux de société</p>
+                    </div>
+                </div>
+                <img src="../../../assets/img/salle_de_jeu.jpeg" id="img3">
+            </div>
+            <div id="divImg4">
+                <div class="divNomEspaceFlex">
+                    <div class="divNomEspaceRelative">
+                        <p class="nomEspace">Salon chill</p>
+                    </div>
+                </div>
+                <img src="../../../assets/img/salle_chill.jpg" id="img4">
             </div>
         </div>
 
@@ -194,28 +217,27 @@
                     <div class="salle">
                         <div class="texteSalle">
                             <p>Salon de thé</p>
-                            <p>Prendre un thé avec un super gateau fait maison entouré de chats trop mignon</p>
+                            <h6>Prendre un thé avec un super gateau fait maison entouré de chats trop mignon</h6>
                         </div>
                         <div class="prixSalle">
-                            <p>15 €</p>
+                            <p>5 €</p>
                         </div>
                     </div>
 
                     <div class="salle">
                         <div class="texteSalle">
                             <p>Salle de coworking</p>
-                            <p>Pour travailler efficacement au milieu des chats
-                                (10 personnes max)</p>
-                        </div>
+                            <h6>Pour travailler efficacement au milieu des chats (10 personnes max)</h6>
+                        </div> 
                         <div class="prixSalle">
-                            <p>15 €</p>
+                            <p>10 €</p>
                         </div>
                     </div>
 
                     <div class="salle">
                         <div class="texteSalle">
-                            <p>Salon de jeux de société</p>
-                            <p>Venez vous amusez au milieu des chats</p>
+                            <p>Salle de jeux de société</p>
+                            <h6>Venez vous amusez au milieu des chats</h6>
                         </div>
                         <div class="prixSalle">
                             <p>15 €</p>
@@ -225,24 +247,17 @@
                     <div class="salle">
                         <div class="texteSalle">
                             <p>Salon chill</p>
+                            <h6>Un endroit très reposant entouré de ronronnements félins</h6>
                         </div>
                         <div class="prixSalle">
-                            <p>15 €</p>
+                            <p>6 €</p>
                         </div>
                     </div>
-
-
-
-
-
 
                 </div>
             </div>
 
-
         </div>
-
-
     </section>
 
 
@@ -252,22 +267,20 @@
 
             <img class="w-25" src="../../../assets/img/image_18.png" alt="" srcset="">
             <div class="w-25">
-                <div class="d-flex align-items-center ">
-                    <img src="../../../assets/img/image_20.png" alt="" srcset="">
-                    <p>12 Rue du Petit Minou, 75000 PARIS</p>
+                <div class="d-flex align-items-center">
+                    <img id="logoInfo" src="../../../assets/img/image_20.png" alt="" srcset="">
+                    <p>12 Rue du chat qui pèche, 75000 PARIS</p>
+                </div>
+                <div class="d-flex flex-row align-items-center ">
+                    <img id="logoInfo" src="../../../assets/img/image_21.png" alt="" srcset="">
+                    <div class="d-flex flex-column"><p>Du Lundi au Samedi</p><p>11:00 à 20:00</p></div>
                 </div>
                 <div class="d-flex align-items-center ">
-                    <img src="../../../assets/img/image_21.png" alt="" srcset="">
-                    <p>Du Lundi au Samedi, De 11:00 à 20:00</p>
-                </div>
-                <div class="d-flex align-items-center ">
-                    <img src="../../../assets/img/image_22.png" alt="" srcset="">
+                    <img id="logoInfo" src="../../../assets/img/image_22.png" alt="" srcset="">
                     <p>Miaou miaou miaou</p>
                 </div>
             </div>
-            <img class="w-25" src="../../../assets/img/image19chatadoption.png" alt="" srcset="">
-
-
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.2694268124837!2d2.343922514854038!3d48.85307250903647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671e0ee60dc6f%3A0x68b031732a144b25!2sRue%20du%20Chat%20Qui%20P%C3%AAche%2C%2075005%20Paris!5e0!3m2!1sfr!2sfr!4v1680619709925!5m2!1sfr!2sfr" width="600" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        
         </div>
 
 

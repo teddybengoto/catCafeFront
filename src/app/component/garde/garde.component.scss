@@ -6,52 +6,16 @@ body
   background: linear-gradient(0deg, #ECE0C9, #ECE0C9), #000000;
 }
 
-header
-{
-  height:80px;
-  background-color : black;
-  color : white;
-  font-family: "Amatic";
-}
+
 main
 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgba(236, 224, 201, 1);
 }
 
-.TitleHeader
-{
-  margin-top: 100px;
-  margin-bottom: 15px;
-  width: 600px;
-  height: 80px;
-
-  background: #D3AC71;
-  border: 3px solid #000000;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-}
-.Title
-{
-
-  display: flex;
-  align-items : center;
-  justify-content: center;
-  width: 600px;
-  height: 80px;
-}
-.TitleIllust
-{
-  width: 344px;
-  height: 144px;
-  position: relative;
-  top : -199px;
-  Left : 300px;
-  background-size: 100% 100%;
-  //background-image: url("assiste/img/chat_rebord_1.png");
-}
 #content
 {
     width : 100%;
@@ -152,7 +116,7 @@ font-family: "Abel"
   text-align: center;
   font-family:"Abel"  ;
   color: black;
-  cursor: text;
+  cursor: pointer;
   margin: 15px;
   border-width: 4px;
   border-color: black;
