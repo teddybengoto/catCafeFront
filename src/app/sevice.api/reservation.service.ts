@@ -37,6 +37,7 @@ export class ReservationService {
   create(reservation : Reservation):void{
     this.http.post<Reservation>(this.reservationApiPath, reservation).subscribe(resp => {
       console.log(resp);})
+      console.log("chemin" + this.reservationApiPath);
   }
 
   update(reservation : Reservation):void{

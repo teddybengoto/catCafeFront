@@ -15,13 +15,8 @@ export class GardeService {
   private gardes: Array<Garde>;
 
   constructor(private router: Router, private http: HttpClient, private clientService: CompteService) {
-    if (!clientService.auth?.id) {
-      alert("veuillez vous connecter pour utiliser les services");
-      this.router.navigate(['/connexion']);
-      
+    this.gardeApiPath = ("http://localhost:8080/api" + "/garde"); 
     }
-    this.gardeApiPath = ("http://localhost:8080/api" + "/garde"); { }
-  }
 
 
   findAllByClient(): Array<Garde> {

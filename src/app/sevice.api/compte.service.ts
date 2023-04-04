@@ -14,8 +14,8 @@ export class CompteService {
   private clientApiPath: string;
   private adminApiPath: string;
 
-  auth: Auth;
-  compte: Compte;
+  auth: Auth = new Auth();
+  compte: Compte = new Compte();
 
   constructor(private http: HttpClient,private router:Router) {
     this.clientApiPath = "http://localhost:8080/api" + "/compte";
@@ -27,7 +27,10 @@ export class CompteService {
 
       if (resp?.success) {
         this.router.navigate(['/']);
-        return this.auth = resp;
+        this.auth = resp;
+        this.loadCurrentCompte();
+        console.log("connecté : " + this.compte.nom)
+        return this.auth;
       }
       else {
         return this.auth = null;
@@ -46,10 +49,16 @@ export class CompteService {
 
   findClientById(id: number): void {
      this.http.get<Compte>(this.clientApiPath + "/client/" + id).subscribe(resp => {
-      //console.log("Compte: ",resp);
        this.compte = resp;
     })
 
+  }
+
+  private loadCurrentCompte() : void{
+    this.http.get<Compte>(this.clientApiPath + "/client/" + this.auth.id).subscribe(resp => {
+      this.compte = resp;
+            console.log("connecté : " + this.compte.nom)
+   })
   }
 
 

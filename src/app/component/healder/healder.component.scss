@@ -1,19 +1,78 @@
-
-nav{
-    width: 90%;
-}
-
-header{
-    background-color: black;
-    color: white!important;
+nav {
     
+    background-color: rgb(0, 0, 0);
+    height: 100px;
+    width: 1600px;
+    max-width: 100%;
+    min-width: 1200px;
+    display: flex;
+    align-items: center;
+    border:solid;
+    border-width: 0px;
+    border-bottom-width: 2px;
+    border-color: rgb(255, 255, 255);
+
+
 }
 
-.btn{
+
+
+
+
+.btnNavBar, .btnNavBarConnected {
+
+    display: block;
+    min-width: 200px;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    font-family: "Abel";
+    color: rgb(192, 192, 192);
+    margin: 10px;
+    background: black;
+    border-radius: 15px;
+    border-width: 2px;
+    border-color: rgb(192, 192, 192);
+    transition: all 0.2s linear 0s;
+    cursor: pointer;
+
+}
+
+.btnNavBar:hover, .btnNavBarConnected:hover  {
+    width: 206px;
+    height: 56px;
+    margin: 7px;
+    border-width: 4px;
+    color: white;
+    border-color: white;
+    font-size: 21px;
+}
 
     border: 1px white!important;
     color: white;
     font-size: larger;
     font-weight: bold;
 
+.NavImg {
+    border:none;
+    border-width: 0;
+
+}
+
+#connexion{
+    display: flex;
+    justify-content: center;
+    width : 100%;
+
+    border:solid;
+    border-width: 0px;
+    border-left-width: 2px;
+    border-color: rgb(255, 255, 255);
+
+}
+
+.navLine{
+    margin-left: 50px;
+    margin-right: 50px;
 }

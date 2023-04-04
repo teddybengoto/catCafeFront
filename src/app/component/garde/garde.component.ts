@@ -22,7 +22,12 @@ export class GardeComponent {
   chats: Array<Chat>;
   
   constructor(private router: Router, private formBuilder: FormBuilder, private gardeService: GardeService, private clientService: CompteService, private chatService: ChatService){
-    
+    if (!clientService.auth?.id) {
+      alert("veuillez vous connecter pour utiliser les services");
+      this.router.navigate(['/connexion']);
+      
+    }
+
 
     this.garde.prix = 0;
     this.gardeForm = this.formBuilder.group({
