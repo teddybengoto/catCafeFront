@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Compte } from 'src/app/model/compte';
 import { CompteService } from 'src/app/sevice.api/compte.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { CompteService } from 'src/app/sevice.api/compte.service';
 })
 export class CompteComponent {
 
+  myCompte:Compte;
+
 
   constructor(private compteService: CompteService, private router:Router ){
 
@@ -16,16 +19,25 @@ export class CompteComponent {
     if (!compteService.auth?.id) {
       this.router.navigate(['/connexion']);
     }
-    this.getClient()  
+    //this.getClient()  ;
+    this.findClientDetail();
 
   }
 
   
 
   getClient(){
-    console.log("Profil this.getAut",this.compteService.auth.id);
     this.compteService.findClientById(this.compteService.auth.id);
-   
+  }
+
+  findClientDetail():void{
+ 
+    this.compteService.findClientDetail(this.compteService.auth.id).subscribe(resp=>{
+      if (!resp?.id) {
+        console.log("No Client");
+      }
+      this.myCompte=resp;
+    })
   }
 
 }

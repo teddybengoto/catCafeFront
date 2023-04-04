@@ -7,18 +7,22 @@
 body {
     margin: 0 !important;
     padding: 0 !important;
-    font-family: "Abel";
     background-color: black;
 
 }
 
-h2 {
-    font-family: 'Amatica SC';
-    font-size: 74px;
+/*h2 {
+
     font-weight: 700;
     line-height: 108px;
     letter-spacing: 0em;
     text-align: left;
+
+}*/
+
+#logo{
+    font-family: Abel;
+    font-size: 6em!important;
 
 }
 
@@ -27,7 +31,7 @@ nav {
 }
 
 #array1 {
-    background-image: url("../../../assets/img/imgCat1.png");
+    background-image: url("../../../assets/img/imgCat5.png");
     background-repeat: no-repeat;
     background-size: cover;
     height: 801px;
@@ -36,15 +40,20 @@ nav {
 
 #titleArray {
     margin-top: 20%;
+    position: relative;
+    left: -100px;
+    top : -150px;
+ 
+
 }
+
+
 
 #titleArray p {
     font-size: 36px;
 }
 
-h1 {
-    font-size: 96px;
-}
+
 
 #btArray {
     margin-left: 40%;
@@ -61,11 +70,7 @@ button {
 }
 
 #aboutUsArrayTop p {
-    font-size: 32px;
-    font-family: 'Abel';
-    font-weight: 400;
-    line-height: 41px;
-    letter-spacing: 0em;
+
     margin: 50px;
 
 
@@ -111,20 +116,13 @@ button {
     height: 346px;
     width: 467px;
     border-radius: 20px;
+    margin-right:150px;
 
 
 }
 
 #DontWaitText {
-
-    font-family: "Amatica SC";
-    font-style: Bold;
-    font-size: 70px;
-    line-height: 102px;
-    line-height: 100%;
-    width: 80%;
-    background-color: #857E73;
-
+    //width: 80%;
 }
 
 #aboutUsCat_ {
@@ -179,7 +177,7 @@ button {
 }
 
 #ourArrayCatLeft {
-    width: 49%;
+    width: 50%;
 
 }
 
@@ -188,6 +186,7 @@ button {
     height: 694.17px;
     border-radius: 40px;
     background: linear-gradient(0deg, #D3AC71, #D3AC71);
+    margin: 50px;
 
 }
 
@@ -201,6 +200,8 @@ button {
 
 #ourArrayCatRight {
     width: 48%;
+    position: relative;
+    top:-150px;
 }
 
 #discoverMoreBt {
@@ -469,5 +470,9 @@ img {
 #vacances {
 
     background-color: rgba(239, 212, 160, 1);
+
+}
+
+#TitleHeader1{
 
 }
