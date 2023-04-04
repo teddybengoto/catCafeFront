@@ -53,6 +53,9 @@ export class CompteService {
     })
 
   }
+   findClientDetail(id: number):  Observable<Compte> {
+    return this.http.get<Compte>(this.clientApiPath + "/client/" + id);
+ }
 
   private loadCurrentCompte() : void{
     this.http.get<Compte>(this.clientApiPath + "/client/" + this.auth.id).subscribe(resp => {
