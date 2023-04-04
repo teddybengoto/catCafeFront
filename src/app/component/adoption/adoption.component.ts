@@ -16,7 +16,8 @@ export class AdoptionComponent {
 
   chats : Array<Chat> = new Array<Chat>;
   adoption : Adoption = new Adoption();
-
+  //bol : Array<boolean> = new Array<boolean>;
+  //w : string = "10%";
   
   
 
@@ -30,11 +31,17 @@ export class AdoptionComponent {
     }
   }
 
+  initBol():void{
+    
+  }
+
 
   findAllAdoptable(): Array<Chat>{
-    console.log(this.chats.length)
+    //console.log(this.chats.length)
     this.chats=this.chatService.findAllAdoptable();
-    
+    //for (let i:number=0;i<this.chatService.findAllAdoptable().length;i++){
+    //  this.bol.push(false)
+   //}
     return this.chats
   }
 
@@ -42,12 +49,20 @@ export class AdoptionComponent {
     //chat.nom = chat.nom+" hello";
     chat.adoptable=false;
     chat.permanent=false;
+    chat.clientId=this.compteService.auth?.id;
     this.chatService.update(chat);
     this.adoption.idChat=chat.id;
     this.adoption.idClient=this.compteService.auth?.id;
     this.adoption.prix=10;
     this.adoptionService.create(this.adoption);
     alert("Vous avez adopter "+chat.nom);
+  }
+
+  show(id : number):void{
+    //for (let i:number=0;i<this.chats.length;i++){
+    //  this.bol[i]=false;
+    //}
+    //this.bol[id] = true;
   }
 
   allAdoption(): Array<Adoption>{
