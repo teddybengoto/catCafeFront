@@ -26,19 +26,17 @@ export class CompteComponent {
 
     this.updateCompte = this.formBuilder.group({
       nom: this.formBuilder.control('', Validators.required),
-      prenom: this.formBuilder.control('', [Validators.required, Validators.minLength(8)]),
-      email: this.formBuilder.control('', [Validators.required, Validators.email]),
-      telephone: this.formBuilder.control('', Validators.required)
+      prenom: this.formBuilder.control('', [Validators.required]),
+      login: this.formBuilder.control('', [Validators.required, Validators.email]),
+      telephone: this.formBuilder.control('', [Validators.required, Validators.minLength(8)])
 
     });
 
-
-
-    //this.getClient()  ;
     this.findClientDetail();
 
-
   }
+
+
 
   
 
@@ -48,7 +46,26 @@ export class CompteComponent {
 
   update(){
 
-    console.log("update");
+    this.compteService.update(this.updateCompte.value).subscribe(resp => {
+      console.log("Resp: ",resp);
+
+      if (resp?.id) {
+        console.log("Good: ",resp);
+        
+        this.myCompte=resp;
+        alert("Modification enregistrés")  ;     
+        
+      }
+      else{
+        console.log("Bad: ",resp);
+
+        alert("Modification non enregistrés")  ;     
+
+      }
+    
+    });
+
+
     
 
   }

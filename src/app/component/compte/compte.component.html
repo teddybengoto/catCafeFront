@@ -12,7 +12,7 @@
         <table class="table table-hover">
             <thead>
 
-              </thead>
+            </thead>
             <tbody>
                 <tr>
                     <td>Nom</td>
@@ -30,12 +30,12 @@
                     <td>Login</td>
                     <td>{{myCompte?.login}}</td>
                 </tr>
-  
-                
-            </tbody>
-            <span class="badge badge-secondary" >Modifier mes informations</span>
 
-               
+
+            </tbody>
+            <span class="badge badge-secondary">Modifier mes informations</span>
+
+
         </table>
 
 
@@ -44,32 +44,37 @@
     <form (ngSubmit)="update()" [formGroup]="updateCompte">
         <div class="form-group">
             <label>Nom </label>
-            <input  class="form-control" formControlName="nom" />
-            <div class="text-danger" *ngIf="updateCompte.get('nom')?.hasError('required')&&updateCompte.get('nom')?.dirty">
+            <input class="form-control" formControlName="nom" />
+            <div class="text-danger"
+                *ngIf="updateCompte.get('nom')?.hasError('required')&&updateCompte.get('nom')?.dirty">
                 Le nom est obligatoire
             </div>
         </div>
         <div class="form-group">
             <label>Prénom </label>
-            <input  class="form-control" formControlName="prenom" />
-            <div class="text-danger" *ngIf="updateCompte.get('prenom')?.hasError('required')&&updateCompte.get('prenom')?.dirty">
+            <input class="form-control" formControlName="prenom" />
+            <div class="text-danger"
+                *ngIf="updateCompte.get('prenom')?.hasError('required')&&updateCompte.get('prenom')?.dirty">
                 Le prénom est obligatoire
             </div>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" formControlName="email" placeholder="Enter email">
-            <div  class="text-danger" *ngIf="updateCompte.get('email')?.hasError('email')">
+            <input type="email" class="form-control" formControlName="login" placeholder="Enter email">
+            <div class="text-danger" *ngIf="updateCompte.get('login')?.hasError('login')">
                 Email Incorrecte
             </div>
-          </div>
+        </div>
+
         <div class="form-group">
             <label>Télephone</label>
-            <input  class="form-control"  type="tel" formControlName="telephone" />
-            <div  class="text-danger" *ngIf="updateCompte.get('telephone')?.hasError('telephone')&&updateCompte.get('telephone')?.dirty">
+            <input class="form-control" type="tel" formControlName="telephone" />
+            <div class="text-danger"
+                *ngIf="updateCompte.get('telephone')?.hasError('telephone')&&updateCompte.get('telephone')?.dirty">
                 Le numero de télephone est obligatoire
             </div>
         </div>
+
         <input type="submit" class="btn btn-primary mt-3" [disabled]="updateCompte.invalid" value="Modifier !" />
     </form>
 
