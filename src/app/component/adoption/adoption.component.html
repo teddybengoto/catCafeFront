@@ -1,84 +1,45 @@
 <app-healder></app-healder>
-<main>
-    <body id="tout">
 
-        <div id="titre">
-            <img id="titreChat" src="../../../assets/img/image 24.png">
-            <h1 id="titreText"> NOS CHATS A L'ADOPTION</h1>
-            <br><br>
-        </div>
+<body id="tout">
 
-        <div id=lignesAdoption>
+    <div class="titre">
+        <img id="titreChat" src="../../../assets/img/image 24.png">
+        <h1 id="titreText"> NOS CHATS A L'ADOPTION</h1>
+        <br><br>
+    </div>
 
-            <br>
-            <h2 class="separationhaut"></h2>
-            <br>
+    <div id=lignesAdoption>
 
-            <h1 *ngIf = "findAllAdoptable().length == 0" >RUPTURE DE STOCK</h1>
+        <br>
+        <h2 class="separationhaut"></h2>
+        <br>
 
-            <div class="card-deck customdeck">
-                <div class="card customcard border-dark bg-light mb-3" *ngFor="let element of findAllAdoptable(); let i = index">
-                    <img class="card-img-top imgChat" [src]="element.image" alt="Card image cap">
-                    <div class="card-header  text-center upercase">{{element.nom}}</div>
-                    <div class="card-body">
-                        <ul class="liste">
-                            <li>Race : {{element.race}}</li>
-                            <li class="upercase">{{element.sexe}}</li>
-                            <li>Née le : {{element.naissance}}</li>
-                            <li>Stérile : {{element.sterile}}</li>
-                            <li>Problème de santé : {{element.pbSante}}</li>
-                            <li>{{element.commentaire}}</li>
-                        </ul>
-    
-                    </div>
-                    <div class="card-footer bg-transparent border-transparent text-center"><a class="btn btn-secondary" (click)="test(element)">ADOPTER MOA</a></div>
-                     
-                </div> 
-            </div>
+        <h1 class="titre" *ngIf="findAllAdoptable().length == 0">RUPTURE DE STOCK</h1>
 
-            <!--<div class="ligneadoption">
-
-                <h2 class="separationhaut"></h2>
-
-                <h1 *ngIf = "findAllAdoptable().length == 0" >RUPTURE DE STOCK</h1>
-
-
-               <div class="casesAdoption" *ngFor="let element of findAllAdoptable()">
-                    <div class="caseChat">
-                        <h3 class="nomChat">{{ element.nom }}</h3>
-                        <img class="imgChat" src="../../../assets/img/image25.png">
-                        <br>
-                        <input class="boutonVoirPlus" value="ADOPTION" type="button">
-                        <br>
-                    </div>
+        <div class="card-deck customdeck">
+            <div class="card customcard border-dark bg-light mb-3"
+                *ngFor="let element of findAllAdoptable(); let i = index">
+                <img class="card-img-top imgChat" [src]="element.image" alt="Card image cap">
+                <div class="card-header  text-center upercase">{{element.nom}}</div>
+                <div class="card-body">
+                    <ul class="liste">
+                        <li>Race : {{element.race}}</li>
+                        <li class="upercase">{{element.sexe}}</li>
+                        <li>Née le : {{element.naissance}}</li>
+                        <li *ngIf="element.sterile">Stérilisé : Oui</li>
+                        <li *ngIf="element.sterile==false">Stérilisé : Non</li>
+                        <li *ngIf="element.pbSante===''">Problème de santé : {{element.pbSante}}</li>
+                        <li>" {{element.commentaire}} "</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-transparent border-transparent text-center">
+                    <a class="btn btn-secondary btnNavBar" (click)="adopter(element)">ADOPTER MOA !</a>
                 </div>
 
-            </div>--> 
-
-            <br>
-            <br>
-            <br>
-            <div class="caseChatDetail">
-                <div class="caseChatInfo">
-                    <div class="caseChatDetailGauche">
-                        <h3 class="nomChat"></h3>
-                        <img class="imgChatDetail" src="../../../assets/img/image25.png">
-                        <br>
-                        <input class="boutonAdoption" value="ADOPTER MOI" type="button">
-                        <br>
-                    </div>
-                    <p class="caseChatDetailDroite">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum.</p>
-                </div>
-                <input type="button" id="btnFerme" value="X" class="X">
             </div>
-
-            <h2 id="separationbas"></h2>
         </div>
-
-    </body>
-</main>
+        <br>
+        <h2 id="separationbas"></h2>
+        <br>
+    </div>
+</body>
