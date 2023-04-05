@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule }from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,8 @@ import { AdoptionService } from './sevice.api/adoption.service';
 import { TestComponent } from './component/test/test.component';
 import { GardeService } from './sevice.api/garde.service';
 import { ChatService } from './sevice.api/chat.service';
+import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,13 @@ import { ChatService } from './sevice.api/chat.service';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule,
+
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+
+    
     
   ],
   // why do I need to put module in providers ?

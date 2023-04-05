@@ -33,7 +33,7 @@
 
 
             </tbody>
-            <span class="badge badge-secondary">Modifier mes informations</span>
+            <span (click)="showUpdateForm=true" class="badge badge-secondary">Modifier mes informations</span>
 
 
         </table>
@@ -41,7 +41,7 @@
 
     </div>
 
-    <form (ngSubmit)="update()" [formGroup]="updateCompte">
+    <form *ngIf="showUpdateForm" (ngSubmit)="update()" [formGroup]="updateCompte">
         <div class="form-group">
             <label>Nom </label>
             <input class="form-control" formControlName="nom" />
@@ -78,9 +78,20 @@
         <input type="submit" class="btn btn-primary mt-3" [disabled]="updateCompte.invalid" value="Modifier !" />
     </form>
 
+    <div>
+        <h2 class="my-5 ">Vos Chats </h2>
+
+    </div>
+
+    <div>
+        <h2 class="my-5 ">Vos gardes </h2>
+
+    </div>
 
 
+    <div>
+        <h2 class="my-5 ">Vos adoptions </h2>
 
-
+    </div>
 
 </main>
