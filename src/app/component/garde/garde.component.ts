@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Chat } from 'src/app/model/chat';
 import { Garde } from 'src/app/model/garde';
@@ -29,28 +29,27 @@ export class GardeComponent {
         positionClass: 'toast-bottom-full-width',
       });
       this.router.navigate(['/connexion']);
+
     }
 
 
     this.garde.prix = 0;
     this.gardeForm = this.formBuilder.group({
-      dateDebut: this.formBuilder.control(Date.now(), [
-        Validators.required
-    ]),
-      dateFin: this.formBuilder.control(''),
-      chatId: this.formBuilder.control(''),
-    });
-
- 
-  }
-
-  ngOnInit(): void{
-
+      dateDebut: this.formBuilder.control('', [Validators.required]),
+      dateFin: this.formBuilder.control('', [Validators.required]),
+      chatId: this.formBuilder.control('', [Validators.required]),
+    }), { validator: this.confirmDateValidator() };
 
 
   }
 
-  createGarde(){
+  ngOnInit(): void {
+
+
+
+  }
+
+  createGarde() {
 
 
     this.garde.chatId = this.gardeForm.value.chatId;
@@ -70,22 +69,36 @@ export class GardeComponent {
 
   @HostListener('change', ['$event.target'])
   modifPrix(): void {
-    if (this.gardeForm.value.dateDebut ==""|| this.gardeForm.value.dateDebut =="" ) { this.garde.prix = 0; console.log("vrai ou pas : ", this.gardeForm.value.dateDebut )}
+    if (this.gardeForm.value.dateDebut == "" || this.gardeForm.value.dateDebut == "") { this.garde.prix = 0; console.log("vrai ou pas : ", this.gardeForm.value.dateDebut) }
     else {
       let dDebut = new Date(this.gardeForm.value.dateDebut);
       let dFin = new Date(this.gardeForm.value.dateFin);
-      
+
       this.garde.prix = (dFin.getTime() - dDebut.getTime()) / (1000 * 3600 * 24) * 10;
       let compare = dDebut.getTime() - dFin.getTime();
       console.log(compare)
-      if(compare>0)
-      {this.validation = false}
-      else
-      {this.validation = true}
+      if (compare > 0) { this.validation = false }
+      else { this.validation = true }
     }
 
   }
 
+
+  confirmDateValidator(): ValidatorFn {
+
+    let dDebut = new Date(this.gardeForm.value.dateDebut);
+    let dFin = new Date(this.gardeForm.value.dateFin);
+    
+    return (ctrl: AbstractControl): null | ValidationErrors => {
+        if (dFin.getTime() > dDebut.getTime()) {
+            return null;
+        } else {
+            return {
+                validValidator: ctrl.value
+            };
+        }
+    };
+}
 
 
 }
