@@ -12,12 +12,18 @@ export class GardeService {
 
   private gardeApiPath: string;
   private garde: Garde;
-  gardes: Array<Garde>;
+  gardes: Array<Garde> = new Array<Garde>;
 
   constructor(private router: Router, private http: HttpClient, private clientService: CompteService) {
     this.gardeApiPath = ("http://localhost:8080/api" + "/garde"); 
+    this.load();
     }
 
+  load(){
+    this.http.get<Array<Garde>>((this.gardeApiPath+"/client:"+this.clientService.auth.id)).subscribe(resp => {
+      this.gardes = resp;
+    })
+  }
 
   findAllByClient(): Array<Garde> {
     let clientId: number = this.clientService.compte.id;
