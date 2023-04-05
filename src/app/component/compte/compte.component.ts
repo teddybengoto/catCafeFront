@@ -5,9 +5,11 @@ import { ToastrService } from 'ngx-toastr';
 import { Chat } from 'src/app/model/chat';
 import { Compte } from 'src/app/model/compte';
 import { Garde } from 'src/app/model/garde';
+import { Reservation } from 'src/app/model/reservation';
 import { ChatService } from 'src/app/sevice.api/chat.service';
 import { CompteService } from 'src/app/sevice.api/compte.service';
 import { GardeService } from 'src/app/sevice.api/garde.service';
+import { ReservationService } from 'src/app/sevice.api/reservation.service';
 
 @Component({
   selector: 'app-compte',
@@ -25,8 +27,14 @@ export class CompteComponent {
   toto:string="100%";
   col:string='red';
 
+  gardes : Array<Garde> = new Array<Garde>;
+  chats : Array<Chat>=new Array<Chat>;
+  reservations : Array<Reservation> = new Array<Reservation>;
 
-  constructor(private gardeService: GardeService , private chatService: ChatService, private toastr: ToastrService, private formBuilder: FormBuilder, private compteService: CompteService, private router: Router) {
+  constructor(private gardeService: GardeService , private chatService: ChatService, private toastr: ToastrService, private formBuilder: FormBuilder, private compteService: CompteService, private router: Router, private reservationService : ReservationService) {
+
+
+
     if (!compteService.auth?.id) {
       this.router.navigate(['/connexion']);
     }
@@ -51,13 +59,22 @@ export class CompteComponent {
   }
 
   getMyCat() {
-    this.chats=this.chatService.findAllByClientId();
+    //console.log("this.chatService.findAllByClientId(): ",this.chatService.findAllByClientId());
+    console.log("problème chat");
+    this.chats = this.chatService.findAllByClientId();
     return this.chats;
   }
 
-  getMyCatGard():Array<Garde> {
-    this.gardes=this.gardeService.findAllByClient();
+  getMyCatGard() {
+    console.log("problème garde");
+    this.gardes = this.gardeService.findAllByClient();
     return this.gardes;
+  }
+
+  getMyReservation(){
+    console.log("problème reservation");
+    this.reservations = this.reservationService.findAllByClientId(this.compteService.auth.id);
+    return this.reservations;
   }
 
 
