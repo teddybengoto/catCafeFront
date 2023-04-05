@@ -8,6 +8,8 @@ import { AdoptionComponent } from './component/adoption/adoption.component';
 import { TestComponent } from './component/test/test.component';
 import { GardeComponent } from './component/garde/garde.component';
 import { ReservationComponent } from './component/reservation/reservation.component';
+import { AdminComponent } from './component/admin/admin.component';
+import { AdminChatComponent } from './component/admin-chat/admin-chat.component';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full'},
@@ -17,7 +19,8 @@ const routes: Routes = [
   {path : "adoption", component: AdoptionComponent},
   {path : "garde", component: GardeComponent},
   {path : "reservation", component: ReservationComponent},
-
+  {path : "admin", component: AdminComponent},
+  {path: "allChat", component:AdminChatComponent}
 
 ];
 
