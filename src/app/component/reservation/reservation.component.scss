@@ -23,14 +23,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 700px;
+  width: 600px;
   height: 70px;
   left: 455px;
   background-color: #D3AC71;
-  border-bottom-style: solid;
-  border-top-style: solid;
-  border-left-style: solid;
-  border-right-style: solid;
+  border: 3px solid #000000;
   border-radius: 20px;
   font-size: 40px;
 }
@@ -63,6 +60,7 @@ body {
   border: 3px solid #000000;
   border-radius: 20px;
   background: #D3AC71;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #chat {
