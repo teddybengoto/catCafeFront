@@ -36,11 +36,11 @@ export class ReservationComponent {
     console.log("test2", this.reservationForm.espace.toString());
     switch (this.reservationForm.espace.toString())
     {
-      case null:{this.plan = "../../../assets/img/Plan_Standard.jpg";  console.log("general"); break;}
-      case "Chill":{this.plan = "../../../assets/img/Plan_Chill.jpg"; console.log("general"); break;}
-      case "Coworking":{this.plan = "../../../assets/img/Plan_Cowork.jpg"; console.log("general"); break;}
-      case "Jeu":{this.plan = "../../../assets/img/Plan_Jeu.jpg"; console.log("general"); break;}
-      case "SalonDeThe":{this.plan = "../../../assets/img/Plan_SalonThe.jpg"; console.log("general"); break;}
+      case null:{this.plan = "../../../assets/img/Plan_Standard.jpg";   break;}
+      case "Chill":{this.plan = "../../../assets/img/Plan_Chill.jpg";  break;}
+      case "Coworking":{this.plan = "../../../assets/img/Plan_Cowork.jpg";  break;}
+      case "Jeu":{this.plan = "../../../assets/img/Plan_Jeu.jpg"; break;}
+      case "SalonDeThé":{this.plan = "../../../assets/img/Plan_SalonThe.jpg"; break;}
     }
 
    
