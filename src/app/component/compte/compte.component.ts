@@ -2,7 +2,9 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Chat } from 'src/app/model/chat';
 import { Compte } from 'src/app/model/compte';
+import { Garde } from 'src/app/model/garde';
 import { ChatService } from 'src/app/sevice.api/chat.service';
 import { CompteService } from 'src/app/sevice.api/compte.service';
 import { GardeService } from 'src/app/sevice.api/garde.service';
@@ -14,6 +16,8 @@ import { GardeService } from 'src/app/sevice.api/garde.service';
 })
 export class CompteComponent {
 
+  gardes : Array<Garde> = new Array<Garde>;
+  chats : Array<Chat> = new Array<Chat>;
   myCompte: Compte;
   updateCompte!: FormGroup;
   showUpdateForm = false;
@@ -23,9 +27,6 @@ export class CompteComponent {
 
 
   constructor(private gardeService: GardeService , private chatService: ChatService, private toastr: ToastrService, private formBuilder: FormBuilder, private compteService: CompteService, private router: Router) {
-
-
-
     if (!compteService.auth?.id) {
       this.router.navigate(['/connexion']);
     }
@@ -35,12 +36,10 @@ export class CompteComponent {
       prenom: this.formBuilder.control('', [Validators.required]),
       login: this.formBuilder.control('', [Validators.required, Validators.email]),
       telephone: this.formBuilder.control('', [Validators.required, Validators.minLength(8)])
-
     });
 
     this.findClientDetail();
     this.chatService.loadById();
-
   }
 
   showToaster() {
@@ -52,14 +51,13 @@ export class CompteComponent {
   }
 
   getMyCat() {
-    console.log("this.chatService.findAllByClientId(): ",this.chatService.findAllByClientId());
-    
-    return this.chatService.findAllByClientId();
+    this.chats=this.chatService.findAllByClientId();
+    return this.chats;
   }
 
-  getMyCatGard() {
-   
-    return this.gardeService.findAllByClient();
+  getMyCatGard():Array<Garde> {
+    this.gardes=this.gardeService.findAllByClient();
+    return this.gardes;
   }
 
 
