@@ -17,9 +17,10 @@ export class HomeComponent {
   constructor(private chatService : ChatService){
   }
 
-  getChatsPermanents(){
+  getChatsPermanents() : Array<Chat>{
     //console.log(this.chatService.findAllPermanent());
     return this.chatService.findAllPermanent();
+
   }
 
 

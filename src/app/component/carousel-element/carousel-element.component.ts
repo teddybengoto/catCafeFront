@@ -15,7 +15,6 @@ export class CarouselElementComponent {
 
   constructor(private chatService : ChatService){
     
-    console.log(this.chat);
   }
 
 
