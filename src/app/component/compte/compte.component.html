@@ -75,98 +75,101 @@
 
 
 
-        <h2 class="my-5 ">Vos Chats </h2>
+    <h2 class="my-5 ">Vos Chats </h2>
 
-        <div class="contain">
-            <div class="card-deck customdeck">
-                <div class="card" *ngIf="getMyCat().length == 0">Vous n'avez pas de chat</div>
-                <div class="card customcard border-dark gris mb-3"
-                    *ngFor="let element of getMyCat(); let i = index">
-                    <img class="card-img-top imgChat raccourcis " [src]="element.image" alt="Card image cap">
-                    <div class="card-header text-center upercase marron fontAmatic">{{element.nom}}</div>
-                    <div class="card-body gris">
-                        <ul class="liste fontAbel">
-                            <li>Race : {{element.race}}</li>
-                            <li class="capitalize">{{element.sexe}}</li>
-                            <li>Née le : {{element.naissance}}</li>
-                            <li *ngIf="element.sterile; else sterile2">Stérilisé : Oui</li>
-                            <ng-template #sterile2><li *ngIf="element.sterile==false">Stérilisé : Non</li></ng-template>
-                            <li *ngIf="element.pbSante!==null">Problème de santé : {{element.pbSante}} </li>
-                            <li *ngIf="(element.commentaire!==null)"><i>« {{element.commentaire}} »</i></li>
-                        </ul>
-                    </div>    
-                </div>
-            </div>
-        </div>
-
-        
-    
-    <div>
-        <h2 class="my-5 ">Vos gardes </h2>
-
-        <div class="contain" >
-            <div class="card-deck customdeck">
-                <div class="card" *ngIf="getMyCatGard().length == 0"><p>Vous n'avez pas de chat mis à la garderie</p></div>
-                <div class="card customcard border-dark gris mb-3"
-                    *ngFor="let element of getMyCatGard()">
-                    <div class="card-header text-center upercase marron fontAmatic">{{element.chatId}}</div>
-                    <div class="card-body gris">
-                        <ul class="liste fontAbel">
-                            <li>Debut : {{element.dateDebut}}</li>
-                            <li>Fin : {{element.dateFin}}</li>
-                            <li>Prix : {{element.prix}}</li>
-                        </ul>
-                    </div>
+    <div class="contain">
+        <div class="card-deck customdeck">
+            <div class="card" *ngIf="getMyCat().length == 0">Vous n'avez pas de chat</div>
+            <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyCat(); let i = index">
+                <img class="card-img-top imgChat raccourcis " [src]="element.image" alt="Card image cap">
+                <div class="card-header text-center upercase marron fontAmatic">{{element.nom}}</div>
+                <div class="card-body gris">
+                    <ul class="liste fontAbel">
+                        <li>Race : {{element.race}}</li>
+                        <li class="capitalize">{{element.sexe}}</li>
+                        <li>Née le : {{element.naissance}}</li>
+                        <li *ngIf="element.sterile; else sterile2">Stérilisé : Oui</li>
+                        <ng-template #sterile2>
+                            <li *ngIf="element.sterile==false">Stérilisé : Non</li>
+                        </ng-template>
+                        <li *ngIf="element.pbSante!==null">Problème de santé : {{element.pbSante}} </li>
+                        <li *ngIf="(element.commentaire!==null)"><i>« {{element.commentaire}} »</i></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <div>
-        <h2 class="my-5 ">Vos réservations</h2>
 
-        <div class="contain" >
-            <div class="card-deck customdeck">
-                <div class="card" *ngIf="getMyReservation().length == 0"><p>Vous n'avez pas de chat mis à la garderie</p></div>
-                <div class="card customcard border-dark gris mb-3"
-                    *ngFor="let element of getMyReservation()">
-                    <div class="card-header text-center upercase marron fontAmatic"> {{element.id}}</div>
-                    <div class="card-body gris">
-                        <ul class="liste fontAbel">
-                            <li>Reservation de : {{element.espace}}</li>
-                            <li>Pour le: {{element.jour}}</li>
-                            <li>A : {{element.heure}}</li>
-                            <li>Pour : {{element.effectif}} personnes</li>
-                        </ul>
-                    </div>
+
+
+
+    <h2 class="my-5 ">Vos gardes </h2>
+
+    <div class="contain">
+        <div class="card-deck customdeck">
+            <div class="card" *ngIf="getMyCatGard().length == 0">
+                <p>Vous n'avez pas de chat mis à la garderie</p>
+            </div>
+            <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyCatGard()">
+                <div class="card-header text-center upercase marron fontAmatic">{{element.chatId}}</div>
+                <div class="card-body gris">
+                    <ul class="liste fontAbel">
+                        <li>Debut : {{element.dateDebut}}</li>
+                        <li>Fin : {{element.dateFin}}</li>
+                        <li>Prix : {{element.prix}}</li>
+                    </ul>
                 </div>
             </div>
-
         </div>
-        
+    </div>
+
+
+
+    <h2 class="my-5 ">Vos réservations</h2>
+
+    <div class="contain">
+        <div class="card-deck customdeck">
+            <div class="card" *ngIf="getMyReservation().length == 0">
+                <p>Vous n'avez pas de chat mis à la garderie</p>
+            </div>
+            <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyReservation()">
+                <div class="card-header text-center upercase marron fontAmatic"> {{element.id}}</div>
+                <div class="card-body gris">
+                    <ul class="liste fontAbel">
+                        <li>Reservation de : {{element.espace}}</li>
+                        <li>Pour le: {{element.jour}}</li>
+                        <li>A : {{element.heure}}</li>
+                        <li>Pour : {{element.effectif}} personnes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 
 
-    <div>
-        <h2 class="my-5 ">Vos adoptions </h2>
-        <div class="contain" >
-            <div class="card-deck customdeck">
-                <div class="card" *ngIf="getMyAdoption().length == 0"><p>Vous n'avez pas de chat mis à la garderie</p></div>
-                <div class="card customcard border-dark gris mb-3"
-                    *ngFor="let element of getMyAdoption()">
-                    <div class="card-header text-center upercase marron fontAmatic"> {{element.id}}</div>
-                    <div class="card-body gris">
-                        <ul class="liste fontAbel">
-                            <li>Adoption de  {{element.idChat}}</li>
-                            <li>Le : {{element.date}}</li>
-                            <li>Pour : {{element.prix}} €</li>
-                        </ul>
-                    </div>
+
+    <h2 class="my-5 ">Vos adoptions </h2>
+    <div class="contain">
+        <div class="card-deck customdeck">
+            <div class="card" *ngIf="getMyAdoption().length == 0">
+                <p>Vous n'avez pas de chat mis à la garderie</p>
+            </div>
+            <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyAdoption()">
+                <div class="card-header text-center upercase marron fontAmatic"> {{element.id}}</div>
+                <div class="card-body gris">
+                    <ul class="liste fontAbel">
+                        <li>Adoption de {{element.idChat}}</li>
+                        <li>Le : {{element.date}}</li>
+                        <li>Pour : {{element.prix}} €</li>
+                    </ul>
                 </div>
             </div>
-
         </div>
+
     </div>
+
 
 </main>
