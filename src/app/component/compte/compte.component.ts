@@ -18,8 +18,6 @@ import { ReservationService } from 'src/app/sevice.api/reservation.service';
 })
 export class CompteComponent {
 
-  gardes : Array<Garde> = new Array<Garde>;
-  chats : Array<Chat> = new Array<Chat>;
   myCompte: Compte;
   updateCompte!: FormGroup;
   showUpdateForm = false;
