@@ -64,8 +64,9 @@ export class CompteService {
    })
   }
 
-  update(fournisseur: Compte): Observable<Compte> {
-   return this.http.put<Compte>(this.clientApiPath+"/client/"+ this.auth.id, fournisseur);
+  update(compte: Compte): Observable<Compte> {
+
+   return this.http.put<Compte>(this.clientApiPath+"/client/"+ this.auth.id, compte);
   }
 
 
