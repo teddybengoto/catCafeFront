@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CompteService } from 'src/app/sevice.api/compte.service';
-import { InscriptionComponent } from '../inscription/inscription.component';
 import { Auth } from 'src/app/model/auth';
 import { Compte } from 'src/app/model/compte';
 
