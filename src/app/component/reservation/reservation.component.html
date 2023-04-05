@@ -26,7 +26,7 @@
                         <option *ngFor="let espace of keys(espaces)" [value]="espace" >{{espace}}</option>
                     </select>
                     <div class="text-danger"
-                        *ngIf="createResa.get('espace')?.hasError('required')&& createResa.get('espace')?.dirty">
+                        *ngIf="createResa.get('espace')?.hasError('required')&& createResa.get('espace')?.touched">
                         Le choix de l'espace est obligatoire
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                     <h6>Jour</h6>
                     <input class="bouton" type="date" name="jour" formControlName="jour">
                     <div class="text-danger"
-                    *ngIf="createResa.get('jour')?.hasError('required')&& createResa.get('jour')?.dirty">
+                    *ngIf="createResa.get('jour')?.hasError('required')&& createResa.get('jour')?.touched">
                     Le choix du jour est obligatoire
                 </div>
                 </div>
@@ -44,7 +44,7 @@
                     <h6>Heure</h6>
                     <input class="bouton" type="time" name="heure" formControlName="heure">
                     <div class="text-danger"
-                    *ngIf="createResa.get('heure')?.hasError('required')&& createResa.get('heure')?.dirty">
+                    *ngIf="createResa.get('heure')?.hasError('required')&& createResa.get('heure')?.touched">
                     Le choix de l'heure est obligatoire
                 </div>
                 </div>
@@ -53,7 +53,7 @@
                     <h6>Nombre de personne</h6>
                     <input class="bouton" type="number" name="effectif" formControlName="effectif">
                     <div class="text-danger"
-                    *ngIf="createResa.get('effectif')?.hasError('required')&& createResa.get('effectif')?.dirty">
+                    *ngIf="createResa.get('effectif')?.hasError('required') && createResa.get('effectif')?.dirty && createResa.get('effectif')?.touched">
                     Le choix du nombre de personne est obligatoire
                 </div>
                 </div>
