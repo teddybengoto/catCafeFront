@@ -11,12 +11,26 @@
 
         <div class="d-flex flex-column align-items-end flex-direction-end">
             <div id="titleArray">
-                <div id="" class="d-flex flex-row flex-direction-center align-items-center ">
-                    <h1 id="logo">JavaCatCafe</h1>
-                    <img src="assets/img/patoune withe.png" style="transform: rotate(40deg); margin:10px;"
-                        alt="Logo du site">
+                <div class="cat">
+                    <div class="ear ear--left"></div>
+                    <div class="ear ear--right"></div>
+                    <div class="face">
+                        <div class="eye eye--left">
+                            <div class="eye-pupil"></div>
+                        </div>
+                        <div class="eye eye--right">
+                            <div class="eye-pupil"></div>
+                        </div>
+                        <div class="muzzle"></div>
+                    </div>
                 </div>
-                <p>Offrez vous un moment de détante félin</p>
+                <div id="LogoJavaCat" class="d-flex flex-row flex-direction-center align-items-center ">
+                    <h1 id="logo">JavaCatCafe</h1>
+                    <img src="assets/img/patoune withe.png" style="transform: rotate(40deg); margin:10px;"alt="Logo du site">
+
+                </div>
+                <p id="sous-titre">Offrez vous un moment de détante félin</p>
+
             </div>
         </div>
         <div id="btArray" class="d-flex flex-column  flex-direction-center align-items-center ">
@@ -59,8 +73,8 @@
                     <h2>N’attendez pas, rendez nous visite !!!</h2>
                 </div>
                 <div class="d-flex flex-row flex-direction-center ">
-                    <img src="../../../assets/img/patoune 4.png" alt="" srcset="">
-
+                    <img src="../../../assets/img/patouneDroiteNoire.png" alt="" srcset="" style="transform: scale(0.6); position: relative; top : -50px;">
+                    <img src="../../../assets/img/patouneDroiteNoire.png" alt="" srcset="" style="transform: scale(0.7) rotate(50deg); position: relative; top : 50px; ">
                 </div>
             </div>
 
@@ -90,7 +104,7 @@
                     <div class="carousel-item active">
                         <carousel-element [chat]="getChatsPermanents()[0]"/>
                     </div>
-                    <div class="carousel-item" *ngFor="let c of getChatsPermanents()">
+                    <div class="carousel-item" *ngFor="let c of  getChatsPermanents()">
                         <carousel-element [chat]=c/>
                     </div>
                 </div>
@@ -107,7 +121,10 @@
             </div>
 
         </div>
+
     </section>
+
+
 
     <section id="ourArrayCat" class="d-flex flex-colum justify-content-between align-items-center px-5 ">
         <div id="ourArrayCatLeft">
@@ -205,7 +222,7 @@
             </div>
 
             <div id="barreNosEspacesDroite">
-                <input id="barreNosEspacesBtn" type="button" [routerLink]="['/reservation']" name=""
+                <input class="btnPrincipal" id="Reservation" type="button" [routerLink]="['/reservation']" name=""
                     value="Reservez maintenant">
             </div>
         </div>
