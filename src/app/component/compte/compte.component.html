@@ -106,7 +106,7 @@
 
         <div class="contain" >
             <div class="card-deck customdeck">
-                <div class="card" *ngIf="getMyCatGard().length == 0">Vous n'avez pas de chat mis à la garderie</div>
+                <div class="card" *ngIf="getMyCatGard().length == 0"><p>Vous n'avez pas de chat mis à la garderie</p></div>
                 <div class="card customcard border-dark gris mb-3"
                     *ngFor="let element of getMyCatGard()">
                     <div class="card-header text-center upercase marron fontAmatic">{{element.chatId}}</div>
@@ -127,15 +127,16 @@
 
         <div class="contain" >
             <div class="card-deck customdeck">
+                <div class="card" *ngIf="getMyReservation().length == 0"><p>Vous n'avez pas de chat mis à la garderie</p></div>
                 <div class="card customcard border-dark gris mb-3"
-                    *ngFor="let element of getMyReservation(); let i = index">
+                    *ngFor="let element of getMyReservation()">
                     <div class="card-header text-center upercase marron fontAmatic"> {{element.id}}</div>
                     <div class="card-body gris">
                         <ul class="liste fontAbel">
-                            <li>Debut : {{element.jour}}</li>
-                            <li>Debut : {{element.heure}}</li>
-                            <li>Debut : {{element.espace}}</li>
-                            <li>Debut : {{element.effectif}}</li>
+                            <li>Reservation de : {{element.espace}}</li>
+                            <li>Pour le: {{element.jour}}</li>
+                            <li>A : {{element.heure}}</li>
+                            <li>Pour : {{element.effectif}} personnes</li>
                         </ul>
                     </div>
                 </div>
@@ -149,7 +150,23 @@
 
     <div>
         <h2 class="my-5 ">Vos adoptions </h2>
+        <div class="contain" >
+            <div class="card-deck customdeck">
+                <div class="card" *ngIf="getMyAdoption().length == 0"><p>Vous n'avez pas de chat mis à la garderie</p></div>
+                <div class="card customcard border-dark gris mb-3"
+                    *ngFor="let element of getMyAdoption()">
+                    <div class="card-header text-center upercase marron fontAmatic"> {{element.id}}</div>
+                    <div class="card-body gris">
+                        <ul class="liste fontAbel">
+                            <li>Adoption de  {{element.idChat}}</li>
+                            <li>Le : {{element.date}}</li>
+                            <li>Pour : {{element.prix}} €</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
+        </div>
     </div>
 
 </main>

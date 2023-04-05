@@ -79,6 +79,7 @@ export class ChatService {
   }
 
   loadById():void{
+    let clientId: number = this.clientService.compte.id;
     this.http.get<Array<Chat>>(this.chatApiPath+"/by-client-id/" + this.clientService.auth.id).subscribe(resp =>{
       this.chatsById = resp;
     });

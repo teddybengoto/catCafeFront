@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Reservation } from '../model/reservation';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CompteService } from './compte.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,24 @@ export class ReservationService {
   
   private reservationApiPath : string;
   private reservations : Array<Reservation>;
+  private reservationsById : Array<Reservation>;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private clientService: CompteService) { 
     this.reservationApiPath = "http://localhost:8080/api" +"/reservation";
     this.load();
+    this.loadById();
   }
 
   load(){
     this.http.get<Array<Reservation>>(this.reservationApiPath).subscribe(resp =>{
       this.reservations = resp;
+    })
+  }
+  loadById(){
+    let clientId: number = this.clientService.compte.id;
+    this.http.get<Array<Reservation>>((this.reservationApiPath+"/by-client-id/"+clientId)).subscribe(resp => {
+      this.reservationsById = resp;
+      console.log("heho")
     })
   }
 
@@ -27,11 +37,8 @@ export class ReservationService {
   }
 
 
-  findAllByClientId(id : number): Array<Reservation>{
-    this.http.get<Array<Reservation>>(this.reservationApiPath+"/by-client-id/"+id).subscribe(resp =>{
-      this.reservations= resp;
-    });
-    return this.reservations;
+  findAllByClientId() {
+    return this.reservationsById;
   }
 
   findById(id : number):Observable<Reservation>{
