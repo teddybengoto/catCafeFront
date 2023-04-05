@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CarouselElementComponent } from '../carousel-element/carousel-element.component';
+import { ChatService } from 'src/app/sevice.api/chat.service';
+import { Chat } from 'src/app/model/chat';
+
 
 @Component({
   selector: 'app-home',
@@ -8,7 +12,15 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeComponent {
 
-  constructor(){}
+  chatsPermanents : Array<Chat>;
+
+  constructor(private chatService : ChatService){
+  }
+
+  getChatsPermanents(){
+    //console.log(this.chatService.findAllPermanent());
+    return this.chatService.findAllPermanent();
+  }
 
 
 

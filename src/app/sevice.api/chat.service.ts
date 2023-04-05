@@ -15,7 +15,7 @@ export class ChatService {
   private chats: Array<Chat> = new Array<Chat>;
   private chatsAll: Array<Chat> = new Array<Chat>;
   private chatsAdoptable: Array<Chat> = new Array<Chat>;
-  private chatsPermanent: Array<Chat> = new Array<Chat>;
+  chatsPermanent: Array<Chat> = new Array<Chat>;
 
   constructor(private http: HttpClient, private clientService : CompteService) {
     this.chatApiPath = "http://localhost:8080/api" + "/chat";
@@ -35,6 +35,7 @@ export class ChatService {
   }
 
   findAllPermanent(): any {
+ 
     return this.chatsPermanent;
   }
   
@@ -89,10 +90,11 @@ export class ChatService {
       this.chatsAdoptable = resp;
     })
   }
-  private loadPermanent(): void {
+  loadPermanent(): void {
     this.http.get<Array<Chat>>(this.chatApiPath + "/permanent").subscribe(resp => {
-      this.chatsPermanent = resp;
+      this.chatsPermanent = resp;;
     })
+
   }
   getChats() : Array<Chat>
   {

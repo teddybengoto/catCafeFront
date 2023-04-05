@@ -1,5 +1,5 @@
 <body class="containerd">
-    
+
     <app-healder></app-healder>
     <div class="container">
         <router-outlet></router-outlet>
@@ -13,7 +13,8 @@
             <div id="titleArray">
                 <div id="" class="d-flex flex-row flex-direction-center align-items-center ">
                     <h1 id="logo">JavaCatCafe</h1>
-                    <img src="assets/img/patoune withe.png" style="transform: rotate(40deg); margin:10px;"alt="Logo du site">
+                    <img src="assets/img/patoune withe.png" style="transform: rotate(40deg); margin:10px;"
+                        alt="Logo du site">
                 </div>
                 <p>Offrez vous un moment de détante félin</p>
             </div>
@@ -30,13 +31,15 @@
             <div id="aboutUsArrayTop">
                 <div class="TitleHeader" id="TitleHeader1">
                     <div class="Title">
-                          <h1>A propos de nous</h1>
+                        <h1>A propos de nous</h1>
                     </div>
                     <div class="TitleIllust" id="ChatIllust1"><img src="chat rebord 1.png"></div>
-                  </div>
+                </div>
 
                 <p>
-                    Situé en plein coeur de Paris, le JavaCatCafe est rempli d’une equipe de chats certifiés developpeur Java Spring/Angular hautement qualifiés. Ils sauront vous relaxer après une nuit de de codage acharnée, et sauront mettre la main à la patte pour vous aider à fixer les quelques bugs restants...
+                    Situé en plein coeur de Paris, le JavaCatCafe est rempli d’une equipe de chats certifiés developpeur
+                    Java Spring/Angular hautement qualifiés. Ils sauront vous relaxer après une nuit de de codage
+                    acharnée, et sauront mettre la main à la patte pour vous aider à fixer les quelques bugs restants...
                 </p>
 
             </div>
@@ -63,12 +66,46 @@
 
         </div>
     </section>
+
     <section id="ourResidentArray" class="mx-5m">
         <div class="d-flex flex-column justify-content-center align-items-center w-50 h-100 "
             id="ourResidentArrayImage">
             <img class="mx-5" src="../../../assets/img/Vector.png" alt="">
             <p class="mx-5">Vous êtes félin pour l'autre...</p>
             <img src="../../../assets/img/Vector2.png" alt="">
+
+        </div>
+    </section>
+
+    <section id="ourCats" >
+        <h1>Nos chats résidents</h1>
+        <p>Explorez nos matous permanents, toujours prêts à ronronner leur amour !!!</p>
+        <br>
+        <div id="carousel">
+            
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <carousel-element [chat]="getChatsPermanents()[0]"/>
+                    </div>
+                    <div class="carousel-item" *ngFor="c of getChatsPermanents()">
+                        
+                    </div>
+                    <div class="carousel-item">
+                        <carousel-element />
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
 
         </div>
     </section>
@@ -85,31 +122,31 @@
         <div id="ourArrayCatRight">
             <div class="TitleHeader" id="TitleHeader1">
                 <div class="Title">
-                      <h1>Nos chats à l'adoption</h1>
+                    <h1>Nos chats à l'adoption</h1>
                 </div>
                 <div class="TitleIllust"><img src="assets/img/chat rebord 2.png"></div>
-              </div>
-              <br>
-              <br>
+            </div>
+            <br>
+            <br>
             <p>
                 Vous avez toujours révé d’avoir un chat aimant à vos coté et de ne plus jamais regarder Netflix seul sur
                 votre canapé ?
                 <br>
 
                 <br>
-            
+
                 Des dizaines de petits félins malheureux n’attendent que vous !!!
             </p>
             <p>
                 Consulter directement sur notre site tous les chats que nous avons recueillis, et pouvant être adoptés
                 dès aujourd’hui :
             </p>
-<br>
-<br>
-<br>
+            <br>
+            <br>
+            <br>
 
 
-             <button class="btnPrincipal" [routerLink]="['/adoption']">Découvrir nos chats disponibles</button>   
+            <button class="btnPrincipal" [routerLink]="['/adoption']">Découvrir nos chats disponibles</button>
 
 
 
@@ -121,27 +158,28 @@
     <section id="vacances">
 
         <div id="gauche">
-            
-                <div class="TitleHeader" id="TitleHeader1">
-                    <div class="Title">
-                          <h1>Vous partez en vacances ?</h1>
-                    </div>
-                    <div class="TitleIllust"><img src="assets/img/chat rebord 3.png"></div>
-                  </div>
-                  <br><br>
 
-                <p>Un week end en amoureux à Rome et Félix se retrouve tout seul à la maison ?
+            <div class="TitleHeader" id="TitleHeader1">
+                <div class="Title">
+                    <h1>Vous partez en vacances ?</h1>
+                </div>
+                <div class="TitleIllust"><img src="assets/img/chat rebord 3.png"></div>
+            </div>
+            <br><br>
+
+            <p>Un week end en amoureux à Rome et Félix se retrouve tout seul à la maison ?
                 <br>
-                
-                Pas de soucis, JavaCatCafe s’occuppe de tout !!! Déposez votre chat chez nous pendant vos vacances et
-                    nous nous chargerons de lui faire vivre un séjour aussi inoubliable que le votre !</p>
 
-                    <br>
-            
+                Pas de soucis, JavaCatCafe s’occuppe de tout !!! Déposez votre chat chez nous pendant vos vacances et
+                nous nous chargerons de lui faire vivre un séjour aussi inoubliable que le votre !
+            </p>
+
+            <br>
+
 
             <div class="d-flex flex-column align-items-center pb-5 ">
 
-                <button class="btnPrincipal" [routerLink]="['/garde']">Faites garder votre chat</button> 
+                <button class="btnPrincipal" [routerLink]="['/garde']">Faites garder votre chat</button>
             </div>
         </div>
 
@@ -168,7 +206,8 @@
             </div>
 
             <div id="barreNosEspacesDroite">
-                <input id="barreNosEspacesBtn" type="button" [routerLink]="['/reservation']"  name="" value="Reservez maintenant">
+                <input id="barreNosEspacesBtn" type="button" [routerLink]="['/reservation']" name=""
+                    value="Reservez maintenant">
             </div>
         </div>
 
@@ -228,7 +267,7 @@
                         <div class="texteSalle">
                             <p>Salle de coworking</p>
                             <h6>Pour travailler efficacement au milieu des chats (10 personnes max)</h6>
-                        </div> 
+                        </div>
                         <div class="prixSalle">
                             <p>10 €</p>
                         </div>
@@ -273,14 +312,19 @@
                 </div>
                 <div class="d-flex flex-row align-items-center ">
                     <img id="logoInfo" src="../../../assets/img/image_21.png" alt="" srcset="">
-                    <div class="d-flex flex-column"><p>Du Lundi au Samedi</p><p>11:00 à 20:00</p></div>
+                    <div class="d-flex flex-column">
+                        <p>Du Lundi au Samedi</p>
+                        <p>11:00 à 20:00</p>
+                    </div>
                 </div>
                 <div class="d-flex align-items-center ">
                     <img id="logoInfo" src="../../../assets/img/image_22.png" alt="" srcset="">
                     <p>Miaou miaou miaou</p>
                 </div>
             </div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.2694268124837!2d2.343922514854038!3d48.85307250903647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671e0ee60dc6f%3A0x68b031732a144b25!2sRue%20du%20Chat%20Qui%20P%C3%AAche%2C%2075005%20Paris!5e0!3m2!1sfr!2sfr!4v1680619709925!5m2!1sfr!2sfr" width="600" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.2694268124837!2d2.343922514854038!3d48.85307250903647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671e0ee60dc6f%3A0x68b031732a144b25!2sRue%20du%20Chat%20Qui%20P%C3%AAche%2C%2075005%20Paris!5e0!3m2!1sfr!2sfr!4v1680619709925!5m2!1sfr!2sfr"
+                width="600" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
 
