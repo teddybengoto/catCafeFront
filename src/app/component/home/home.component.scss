@@ -23,8 +23,45 @@ body {
 #logo{
     font-family: Abel;
     font-size: 6em!important;
+    animation-duration: 3s;
+    animation-name: arriveeLogo;
 
 }
+
+#sous-titre{
+    animation-duration: 6s;
+    animation-name: arriveeSousLogo;
+}
+
+@keyframes arriveeLogo {
+    from {
+        opacity: 50%;
+      margin-left: 100%;
+      width: 300%;
+    }
+  
+    to {
+        opacity: 100%;
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+
+  @keyframes arriveeSousLogo {
+    0% {
+        opacity: 0%;
+
+    }
+  
+    40% {
+        opacity: 0%;
+
+    }
+    100% {
+        opacity: 100%;
+
+    }
+  }
 
 nav {
     width: 90%;
@@ -83,6 +120,7 @@ nav {
     background-size: cover;
     height: 801px;
     color: white;
+
 }
 
 #titleArray {
@@ -209,7 +247,7 @@ button {
 
 #ourArrayCatLeftImg {
 
-    height: 694.17px;
+    height: 600px;
     border-radius: 40px;
     background: linear-gradient(0deg, #D3AC71, #D3AC71);
     margin: 50px;
@@ -548,8 +586,9 @@ iframe {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 800px;
+    height: 600px;
     background: linear-gradient(180deg, #D3CDC1 0%, #ECE0C9 100%);
+    padding-top: 180px;;
 
 }
 
