@@ -4,6 +4,8 @@ import { Espace } from 'src/app/model/espace';
 import { Reservation } from 'src/app/model/reservation';
 import { CompteService } from 'src/app/sevice.api/compte.service';
 import { ReservationService } from 'src/app/sevice.api/reservation.service';
+import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reservation',
@@ -11,48 +13,63 @@ import { ReservationService } from 'src/app/sevice.api/reservation.service';
   styleUrls: ['./reservation.component.scss']
 })
 export class ReservationComponent {
-  reservationForm: Reservation = new Reservation();
-  plan: string ="../../../assets/img/Plan_Standard.jpg";
+  reservation: Reservation = new Reservation;
+  createResa: FormGroup;
+  plan: string = "../../../assets/img/Plan_Standard.jpg";
 
-  keys= Object.keys;
+  keys = Object.keys;
   espaces = Espace;
 
-  constructor (private reservationService: ReservationService, private compteService: CompteService, private router:Router){
+  constructor(private reservationService: ReservationService, private compteService: CompteService, private router: Router, private toastr: ToastrService, private formBuilder: FormBuilder) {
     if (!compteService.auth?.id) {
       this.router.navigate(['/connexion']);
+
     }
+
+    this.createResa = this.formBuilder.group({
+      espace: this.formBuilder.control('', Validators.required),
+      jour: this.formBuilder.control('', [Validators.required]),
+      heure: this.formBuilder.control('', Validators.required),
+      effectif: this.formBuilder.control('', Validators.required)
+    });
+
   }
 
-  create(){
-    this.reservationForm.client_id = this.compteService.auth.id;
-    this.reservationService.create(this.reservationForm);
-    alert("Votre réservation a bien été pris en compte. Merci !");
-    this.router.navigate(['/']);
+
+
+  create() {
+
+    this.reservation = {...this.createResa.value};
+    this.reservation.client_id = this.compteService.auth.id;
+    this.reservationService.create(this.reservation).subscribe(resp => {
+      console.log("Resp: ", resp);
+      if (this.reservation.id !==null) {
+        this.toastr.success('Réservation enregistrée. Merci !', 'succes', {
+          positionClass: 'toast-bottom-full-width',
+        });
+        this.router.navigate(['/']);
+      }
+      else
+      {
+        this.toastr.error('Réservation non enregistrée, Veuillez recommencer !', 'error', {
+          positionClass: 'toast-bottom-full-width',
+        });
+      }
+    })
   }
 
   @HostListener('change', ['$event.target'])
   modifPlan() {
-    console.log("test : ", this.reservationForm.espace);
-    console.log("test2", this.reservationForm.espace.toString());
-    switch (this.reservationForm.espace.toString())
+    console.log("test : ", this.reservation.espace);
+    console.log("test2", this.reservation.espace.toString());
+    switch (this.reservation.espace.toString())
     {
       case null:{this.plan = "../../../assets/img/Plan_Standard.jpg";   break;}
       case "Chill":{this.plan = "../../../assets/img/Plan_Chill.jpg";  break;}
       case "Coworking":{this.plan = "../../../assets/img/Plan_Cowork.jpg";  break;}
       case "Jeu":{this.plan = "../../../assets/img/Plan_Jeu.jpg"; break;}
-      case "SalonDeThé":{this.plan = "../../../assets/img/Plan_SalonThe.jpg"; break;}
+      case "SalonDeThe":{this.plan = "../../../assets/img/Plan_SalonThe.jpg"; break;}
     }
-
-   
-    
-  }
-
-
-
-
-
-
-
-
+}
 
 }

@@ -11,43 +11,57 @@
         <div id="main">
             <div id="images">
                 <img [src]="plan" alt="Plan du cafe" width="450px">
-                <p *ngIf="!reservationForm.espace">Choisissez un espace</p>
-                <p>{{reservationForm.espace}}</p>
+                <p *ngIf="!reservation.espace">Choisissez un espace</p>
+                <p>{{reservation.espace}}</p>
             </div>
             <br>
 
-
-            <div id="reservation">
+            <form id="reservation" class="formulaireResa" [formGroup]="createResa">
                 <img id="chat" src="../../../assets/img/image 16.png">
                 <h2><u>Réservation :</u></h2>
 
                 <div id="espace">
                     <h6>Espace</h6>
-                    <select class="bouton" id="espace" name="espace" [(ngModel)]="reservationForm.espace">
-                        <option *ngFor="let espace of keys(espaces)" [ngValue]="espace">{{espace}}</option>
+                    <select class="bouton" id="espace" name="espace" [(ngModel)]="reservation.espace" formControlName="espace">
+                        <option *ngFor="let espace of keys(espaces)" [value]="espace" >{{espace}}</option>
                     </select>
+                    <div class="text-danger"
+                        *ngIf="createResa.get('espace')?.hasError('required')&& createResa.get('espace')?.dirty">
+                        Le choix de l'espace est obligatoire
+                    </div>
                 </div>
 
-                <div id="date" name="date">
-                    <h6>Date</h6>
-                    <input class="bouton" type="date" name="date" [(ngModel)]="reservationForm.jour">
+                <div id="jour" name="jour">
+                    <h6>Jour</h6>
+                    <input class="bouton" type="date" name="jour" formControlName="jour">
+                    <div class="text-danger"
+                    *ngIf="createResa.get('jour')?.hasError('required')&& createResa.get('jour')?.dirty">
+                    Le choix du jour est obligatoire
+                </div>
                 </div>
 
                 <div id="heure" name="heure">
                     <h6>Heure</h6>
-                    <input class="bouton" type="time" name="heure" [(ngModel)]="reservationForm.heure">
+                    <input class="bouton" type="time" name="heure" formControlName="heure">
+                    <div class="text-danger"
+                    *ngIf="createResa.get('heure')?.hasError('required')&& createResa.get('heure')?.dirty">
+                    Le choix de l'heure est obligatoire
+                </div>
                 </div>
 
                 <div id="effectif" name="effectif">
                     <h6>Nombre de personne</h6>
-                    <input class="bouton" type="number" name="effectif" [(ngModel)]="reservationForm.effectif">
+                    <input class="bouton" type="number" name="effectif" formControlName="effectif">
+                    <div class="text-danger"
+                    *ngIf="createResa.get('effectif')?.hasError('required')&& createResa.get('effectif')?.dirty">
+                    Le choix du nombre de personne est obligatoire
+                </div>
                 </div>
 
                 <div id="reserver">
-                    <button type="button" class="btn btn-dark" type="submit" (click)="create()">Réservez maintenant !</button>
-                    <!-- <input class="boutonNoir" type="submit" value="Réservez maintenant" (click)="create()"> -->
+                    <button type="button" class="btn btn-dark" type="submit" (click)="create()" [disabled]="createResa.invalid">Réservez maintenant !</button>
                 </div>
-            </div>
+           </form> 
         </div>
     </body>
 </main>
