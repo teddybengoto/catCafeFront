@@ -50,7 +50,7 @@ export class ChatService {
 
   create(chat: Chat): void {
     this.http.post<Chat>(this.chatApiPath, chat).subscribe(resp => {
-      this.loadAdoptable();
+    this.loadAdoptable();
     this.loadAll();
     this.loadPermanent();
     });
@@ -78,7 +78,7 @@ export class ChatService {
     })
   }
 
-  private loadById():void{
+  loadById():void{
     this.http.get<Array<Chat>>(this.chatApiPath+"/by-client-id/" + this.clientService.auth.id).subscribe(resp =>{
       this.chatsById = resp;
     });

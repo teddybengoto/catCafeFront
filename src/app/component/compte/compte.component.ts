@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Compte } from 'src/app/model/compte';
+import { ChatService } from 'src/app/sevice.api/chat.service';
 import { CompteService } from 'src/app/sevice.api/compte.service';
 
 @Component({
@@ -17,7 +18,10 @@ export class CompteComponent {
   showUpdateForm = false;
 
 
-  constructor(private toastr: ToastrService, private formBuilder: FormBuilder, private compteService: CompteService, private router: Router) {
+  constructor(private chatService: ChatService, private toastr: ToastrService, private formBuilder: FormBuilder, private compteService: CompteService, private router: Router) {
+
+
+
     if (!compteService.auth?.id) {
       this.router.navigate(['/connexion']);
     }
@@ -31,31 +35,29 @@ export class CompteComponent {
     });
 
     this.findClientDetail();
+    this.chatService.loadById();
 
   }
 
   showToaster() {
-    //this.notifier.notify('success', 'You are awesome! I mean it!');
-    console.log("ffffffffffffffffffff");
-    // this.toastr.success('Hello world!', 'Toastr fun!');
     this.toastr.error('everything is broken', 'Major Error', {
       timeOut: 3000,
       positionClass: 'toast-top-left',
-
     });
 
   }
 
+  getMyCat() {
+    console.log("this.chatService.findAllByClientId(): ",this.chatService.findAllByClientId());
+    
+    return this.chatService.findAllByClientId();
+  }
 
 
   getClient() {
     this.compteService.findClientById(this.compteService.auth.id);
   }
 
-
-
-  update() {
-    console.log("value: ",this.updateCompte.value);
 
     this.compteService.update(this.updateCompte.value).subscribe(resp => {
       console.log("Resp: ", resp);
@@ -66,7 +68,7 @@ export class CompteComponent {
           timeOut: 3000,
           positionClass: 'toast-top-full-width',
         });
-        this.showUpdateForm=false;
+        this.showUpdateForm = false;
 
       }
       else {
