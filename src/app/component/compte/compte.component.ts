@@ -30,12 +30,12 @@ export class CompteComponent {
     if (!compteService.auth?.id) {
       this.router.navigate(['/connexion']);
     }
-
+    this.findClientDetail();
     this.updateCompte = this.formBuilder.group({
-      nom: this.formBuilder.control('', Validators.required),
-      prenom: this.formBuilder.control('', [Validators.required]),
-      login: this.formBuilder.control('', [Validators.required, Validators.email]),
-      telephone: this.formBuilder.control('', [Validators.required, Validators.minLength(8)])
+      nom: this.formBuilder.control(this.getDataClient().nom , [Validators.required]),
+      prenom: this.formBuilder.control(this.getDataClient().prenom, [Validators.required]),
+      login: this.formBuilder.control(this.getDataClient().login, [Validators.required, Validators.email]),
+      telephone: this.formBuilder.control(this.getDataClient().telephone, [Validators.required, Validators.minLength(8)])
     });
 
     this.findClientDetail();
@@ -60,6 +60,10 @@ export class CompteComponent {
     return this.gardes;
   }
 
+  getDataClient() : Compte{
+    return this.compteService.compte;
+  }
+
 
 
   getClient() {
@@ -67,6 +71,8 @@ export class CompteComponent {
   }
 
 update(){
+
+
     this.compteService.update(this.updateCompte.value).subscribe(resp => {
       console.log("Resp: ", resp);
 

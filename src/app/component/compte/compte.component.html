@@ -1,110 +1,108 @@
 <app-healder></app-healder>
 
 <main class="d-flex flex-column  flex-direction-center align-items-center w-75">
+    <br>
+    <h1>Bienvenue: {{myCompte?.prenom}} {{myCompte?.nom}} </h1>
 
-    <h1>Bienvenue: {{myCompte?.nom}} </h1>
 
 
-
-    <div>
+    <div id="infoPerso">
         <h2 class="my-5 ">Information personnelles </h2>
+        <form (ngSubmit)="update()" [formGroup]="updateCompte">
+            <table class="table table-hover">
+                <thead>
 
-        <table class="table table-hover">
-            <thead>
+                </thead>
+                <tbody>
 
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Nom</td>
-                    <td> {{myCompte?.nom}}</td>
-                </tr>
-                <tr>
-                    <td>Prenom</td>
-                    <td>{{myCompte?.prenom}}</td>
-                </tr>
-                <tr>
-                    <td>Télephone</td>
-                    <td>{{myCompte?.telephone}}</td>
-                </tr>
-                <tr>
-                    <td>Login</td>
-                    <td>{{myCompte?.login}}</td>
-                </tr>
-            </tbody>
-            <span (click)="showUpdateForm=true" class="badge badge-secondary">Modifier mes informations</span>
-        </table>
+                    <tr>
+                        <td>Nom</td>
+                        <td *ngIf="!showUpdateForm"> {{myCompte?.nom}}</td>
+                        <td *ngIf="showUpdateForm">
+                            <input class="form-control" formControlName="nom" value="test" />
+                            <div class="text-danger"
+                                *ngIf="updateCompte.get('nom')?.hasError('required')&&updateCompte.get('nom')?.dirty">
+                                Le nom est obligatoire
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Prenom</td>
+                        <td *ngIf="!showUpdateForm">{{myCompte?.prenom}}</td>
+                        <td *ngIf="showUpdateForm">
+                            <input class="form-control" formControlName="prenom" />
+                            <div class="text-danger"
+                                *ngIf="updateCompte.get('prenom')?.hasError('required')&&updateCompte.get('prenom')?.dirty">
+                                Le prénom est obligatoire
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Télephone</td>
+                        <td *ngIf="!showUpdateForm">{{myCompte?.telephone}}</td>
+                        <td *ngIf="showUpdateForm">
+                            <input class="form-control" type="tel" formControlName="telephone" />
+                            <div class="text-danger"
+                                *ngIf="updateCompte.get('telephone')?.hasError('telephone')&&updateCompte.get('telephone')?.dirty">
+                                Le numero de télephone est obligatoire
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>Login</td>
+                        <td *ngIf="!showUpdateForm">{{myCompte?.login}}</td>
+                        <td *ngIf="showUpdateForm">
+                            <input type="email" class="form-control" formControlName="login" placeholder="Enter email">
+                            <div class="text-danger" *ngIf="updateCompte.get('login')?.hasError('login')">
+                                Email Incorrecte
+                            </div>
+                    </tr>
+                </tbody>
+                
+            </table>
+            <span *ngIf="!showUpdateForm" (click)="showUpdateForm=true" style="cursor:pointer; font-family: 'Abel'; font-size: 20px;" class="btnPrincipal">Modifier mes informations</span>
+            <input *ngIf="showUpdateForm" type="submit" class="btn btn-primary mt-3" [disabled]="updateCompte.invalid" value="Modifier !" />
+        </form>
+
     </div>
 
 
-    <form *ngIf="showUpdateForm" (ngSubmit)="update()" [formGroup]="updateCompte">
-        <div class="form-group">
-            <label>Nom </label>
-            <input class="form-control" formControlName="nom" />
-            <div class="text-danger"
-                *ngIf="updateCompte.get('nom')?.hasError('required')&&updateCompte.get('nom')?.dirty">
-                Le nom est obligatoire
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Prénom </label>
-            <input class="form-control" formControlName="prenom" />
-            <div class="text-danger"
-                *ngIf="updateCompte.get('prenom')?.hasError('required')&&updateCompte.get('prenom')?.dirty">
-                Le prénom est obligatoire
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" formControlName="login" placeholder="Enter email">
-            <div class="text-danger" *ngIf="updateCompte.get('login')?.hasError('login')">
-                Email Incorrecte
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>Télephone</label>
-            <input class="form-control" type="tel" formControlName="telephone" />
-            <div class="text-danger"
-                *ngIf="updateCompte.get('telephone')?.hasError('telephone')&&updateCompte.get('telephone')?.dirty">
-                Le numero de télephone est obligatoire
-            </div>
-        </div>
-
-        <input type="submit" class="btn btn-primary mt-3" [disabled]="updateCompte.invalid" value="Modifier !" />
-    </form>
+    
 
 
 
-        <h2 class="my-5 ">Vos Chats </h2>
+    <h2 class="my-5 ">Vos Chats </h2>
 
-        <div class="contain">
-            <div class="card-deck customdeck">
-                <div class="card" *ngIf="getMyCat().length == 0">Vous n'avez pas de chat</div>
-                <div class="card customcard border-dark gris mb-3"
-                    *ngFor="let element of getMyCat(); let i = index">
-                    <img class="card-img-top imgChat raccourcis " [src]="element.image" alt="Card image cap">
-                    <div class="card-header text-center upercase marron fontAmatic">{{element.nom}}</div>
-                    <div class="card-body gris">
-                        <ul class="liste fontAbel">
-                            <li>Race : {{element.race}}</li>
-                            <li class="capitalize">{{element.sexe}}</li>
-                            <li>Née le : {{element.naissance}}</li>
-                            <li *ngIf="element.sterile; else sterile2">Stérilisé : Oui</li>
-                            <ng-template #sterile2><li *ngIf="element.sterile==false">Stérilisé : Non</li></ng-template>
-                            <li *ngIf="element.pbSante!==null">Problème de santé : {{element.pbSante}} </li>
-                            <li *ngIf="(element.commentaire!==null)"><i>« {{element.commentaire}} »</i></li>
-                        </ul>
-                    </div>    
+    <div class="contain">
+        <div class="card-deck customdeck">
+            <div class="card" *ngIf="getMyCat().length == 0">Vous n'avez pas de chat</div>
+            <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyCat(); let i = index">
+                <img class="card-img-top imgChat raccourcis " [src]="element.image" alt="Card image cap">
+                <div class="card-header text-center upercase marron fontAmatic">{{element.nom}}</div>
+                <div class="card-body gris">
+                    <ul class="liste fontAbel">
+                        <li>Race : {{element.race}}</li>
+                        <li class="capitalize">{{element.sexe}}</li>
+                        <li>Née le : {{element.naissance}}</li>
+                        <li *ngIf="element.sterile; else sterile2">Stérilisé : Oui</li>
+                        <ng-template #sterile2>
+                            <li *ngIf="element.sterile==false">Stérilisé : Non</li>
+                        </ng-template>
+                        <li *ngIf="element.pbSante!==null">Problème de santé : {{element.pbSante}} </li>
+                        <li *ngIf="(element.commentaire!==null)"><i>« {{element.commentaire}} »</i></li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
 
-        
-    
+
+
     <div>
         <h2 class="my-5 ">Vos gardes </h2>
 
-        <div class="contain" >
+        <div class="contain">
             <div class="card-deck customdeck">
                 <div class="card" *ngIf="getMyCatGard().length == 0">Vous n'avez pas de chat mis à la garderie</div>
                 <div class="card customcard border-dark gris mb-3"
