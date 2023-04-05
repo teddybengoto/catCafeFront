@@ -26,7 +26,7 @@
               <input type="text" class="InputPerso" formControlName="dateDebut" [(ngModel)]="garde.dateDebut"  id="dateDebut" name="dateDebut" placeholder="Début de la garde" onfocus="(this.type='date')" onblur="(this.type='text')">
               <p>Date de fin :</p>
               <input type="text" class="InputPerso" formControlName="dateFin"  [(ngModel)]="garde.dateFin"id="dateFin" name="dateDebut" placeholder="Fin de la garde" onfocus="(this.type='date')" onblur="(this.type='text')">
-              <p style="color:red" *ngIf="!validation">dates non conformes</p>
+              <p *ngIf="!validation" style="color:red" >dates non conformes</p>
               <br>
               <p input *ngIf="validation">Prix pour cette garde : </p><p input *ngIf="validation">{{garde.prix}},00€</p>
               <input *ngIf="validation" type="submit" class="bouton" name="valider" value="C'est parti"  >

@@ -7,6 +7,7 @@ import { ChatService } from 'src/app/sevice.api/chat.service';
 import { CompteService } from 'src/app/sevice.api/compte.service';
 import { GardeService } from 'src/app/sevice.api/garde.service';
 import { ValidatorFn } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -22,11 +23,12 @@ export class GardeComponent {
   chats: Array<Chat>;
   validation: boolean = false;
   
-  constructor(private router: Router, private formBuilder: FormBuilder, private gardeService: GardeService, private clientService: CompteService, private chatService: ChatService){
+  constructor(private router: Router, private formBuilder: FormBuilder, private gardeService: GardeService, private clientService: CompteService, private chatService: ChatService, private toastr: ToastrService){
     if (!clientService.auth?.id) {
-      alert("veuillez vous connecter pour utiliser les services");
+      this.toastr.info('Veuillez vous connecter pour aller sur la page des gardes !', 'Information', {
+        positionClass: 'toast-bottom-full-width',
+      });
       this.router.navigate(['/connexion']);
-      
     }
 
 
