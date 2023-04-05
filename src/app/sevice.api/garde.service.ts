@@ -11,20 +11,25 @@ import { Router } from '@angular/router';
 export class GardeService {
 
   private gardeApiPath: string;
+  private gardesById : Array<Garde> = new Array<Garde>;
   private garde: Garde;
   gardes: Array<Garde>;
 
   constructor(private router: Router, private http: HttpClient, private clientService: CompteService) {
     this.gardeApiPath = ("http://localhost:8080/api" + "/garde"); 
+    this.loadById();
     }
 
 
   findAllByClient(): Array<Garde> {
+    return this.gardesById;
+  }
+
+  loadById():void{
     let clientId: number = this.clientService.compte.id;
     this.http.get<Array<Garde>>((this.gardeApiPath+"/client:"+clientId)).subscribe(resp => {
-      this.gardes = resp;
+      this.gardesById = resp;
     })
-    return this.gardes;
   }
 
   create(g: Garde)
