@@ -109,6 +109,7 @@ input[type=email],input[type=password]
   box-sizing: border-box;
   background-color: white  ;
   font-family: 'Abel';
+
 }
 
 button[type=submit]
@@ -118,7 +119,7 @@ button[type=submit]
   background: #857E73;
   border: 2px solid #FAFAFA;
   border-radius: 10px;
-  transition: all 0.3s;
+  transition: linear 0.0s;
 
 }
 

@@ -40,7 +40,6 @@ export class ChatService {
   }
   
   findAllByClientId(): Array<Chat>{
-
     return this.chatsById;
   
   }

@@ -12,9 +12,11 @@ export class CarouselElementComponent {
   
   @Input()
   chat: Chat;
+  potitChat : string;
 
   constructor(private chatService : ChatService){
-    
+    //let temp:number = this.chat.id % 3;
+    this.potitChat = ("../../../assets/img/chat rebord 4.png");
   }
 
 
