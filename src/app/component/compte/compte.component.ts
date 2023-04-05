@@ -2,7 +2,10 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Chat } from 'src/app/model/chat';
 import { Compte } from 'src/app/model/compte';
+import { Garde } from 'src/app/model/garde';
+import { Reservation } from 'src/app/model/reservation';
 import { ChatService } from 'src/app/sevice.api/chat.service';
 import { CompteService } from 'src/app/sevice.api/compte.service';
 import { GardeService } from 'src/app/sevice.api/garde.service';
@@ -21,6 +24,9 @@ export class CompteComponent {
   toto:string="100%";
   col:string='red';
 
+  gardes : Array<Garde> = new Array<Garde>;
+  chats : Array<Chat>=new Array<Chat>;
+  reservations : Array<Reservation> = new Array<Reservation>;
 
   constructor(private gardeService: GardeService , private chatService: ChatService, private toastr: ToastrService, private formBuilder: FormBuilder, private compteService: CompteService, private router: Router) {
 
@@ -52,14 +58,19 @@ export class CompteComponent {
   }
 
   getMyCat() {
-    console.log("this.chatService.findAllByClientId(): ",this.chatService.findAllByClientId());
-    
-    return this.chatService.findAllByClientId();
+    //console.log("this.chatService.findAllByClientId(): ",this.chatService.findAllByClientId());
+    this.chats = this.chatService.findAllByClientId();
+    return this.chats;
   }
 
   getMyCatGard() {
-   
-    return this.gardeService.findAllByClient();
+    this.gardes = this.gardeService.findAllByClient();
+    return this.gardes;
+  }
+
+  getMyReservation(){
+    this.gardes = this.gardeService.findAllByClient();
+    return this.gardes;
   }
 
 

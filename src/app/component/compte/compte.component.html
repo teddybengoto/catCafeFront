@@ -122,13 +122,35 @@
 
                         </ul>
                     </div>
-                   
-    
                 </div>
             </div>
 
         </div>
 
+
+    </div>
+
+    <div>
+        <h2 class="my-5 ">Vos réservations</h2>
+
+        <div class="contain" >
+            <div class="card-deck customdeck">
+                <div class="card customcard border-dark gris mb-3"
+                    *ngFor="let element of getMyReservation(); let i = index">
+                    <div class="card-header text-center upercase marron fontAmatic">{{element.chatId}}</div>
+                    <div class="card-body gris">
+                        <ul class="liste fontAbel">
+                            <li>Debut : {{element.dateDebut}}</li>
+                            <li>Fin : {{element.dateFin}}</li>
+                            <li>Prix : {{element.prix}}</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
 
     </div>
 

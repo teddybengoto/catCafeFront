@@ -13,12 +13,16 @@ export class ReservationService {
 
   constructor(private http: HttpClient) { 
     this.reservationApiPath = "http://localhost:8080/api" +"/reservation";
+    this.load();
   }
 
-  findAll(): Array<Reservation>{
+  load(){
     this.http.get<Array<Reservation>>(this.reservationApiPath).subscribe(resp =>{
       this.reservations = resp;
     })
+  }
+
+  findAll(): Array<Reservation>{
     return this.reservations;
   }
 
