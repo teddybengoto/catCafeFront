@@ -1,0 +1,13 @@
+<div id="carouselElement">
+    <div id="carouselPrincipal">
+        <div id="description">
+            <h1>{{chat.nom}}</h1>
+            <br>
+            <p>Race : {{chat.race}}</p>
+            <p>Naissance : {{chat.naissance}}</p>
+            <p>A savoir sur moi : {{chat.commentaire}}</p>
+        </div>
+    </div>
+    <div [ngStyle]="{'background-image': 'url(' + chat.image + ')'}" id="carouselImage"></div>
+    <div id="potichat"></div>
+</div>

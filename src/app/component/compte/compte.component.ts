@@ -58,8 +58,7 @@ export class CompteComponent {
     this.compteService.findClientById(this.compteService.auth.id);
   }
 
-  update() {
-
+update(){
     this.compteService.update(this.updateCompte.value).subscribe(resp => {
       console.log("Resp: ", resp);
 
@@ -68,31 +67,22 @@ export class CompteComponent {
         this.toastr.success('Modification enregistrés', 'succes', {
           timeOut: 3000,
           positionClass: 'toast-top-full-width',
-
         });
         this.showUpdateForm = false;
-
 
       }
       else {
         this.toastr.error('Modification non enregistrés', 'error', {
           timeOut: 3000,
           positionClass: 'toast-top-full-width',
-
         });
-
       }
 
     });
-
-
-
-
-
   }
 
-  findClientDetail(): void {
 
+  findClientDetail(): void {
     this.compteService.findClientDetail(this.compteService.auth.id).subscribe(resp => {
       if (!resp?.id) {
         console.log("No Client");
