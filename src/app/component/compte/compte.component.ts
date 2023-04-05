@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Compte } from 'src/app/model/compte';
 import { ChatService } from 'src/app/sevice.api/chat.service';
 import { CompteService } from 'src/app/sevice.api/compte.service';
+import { GardeService } from 'src/app/sevice.api/garde.service';
 
 @Component({
   selector: 'app-compte',
@@ -17,8 +18,11 @@ export class CompteComponent {
   updateCompte!: FormGroup;
   showUpdateForm = false;
 
+  toto:string="100%";
+  col:string='red';
 
-  constructor(private chatService: ChatService, private toastr: ToastrService, private formBuilder: FormBuilder, private compteService: CompteService, private router: Router) {
+
+  constructor(private gardeService: GardeService , private chatService: ChatService, private toastr: ToastrService, private formBuilder: FormBuilder, private compteService: CompteService, private router: Router) {
 
 
 
@@ -52,6 +56,12 @@ export class CompteComponent {
     
     return this.chatService.findAllByClientId();
   }
+
+  getMyCatGard() {
+   
+    return this.gardeService.findAllByClient();
+  }
+
 
 
   getClient() {
