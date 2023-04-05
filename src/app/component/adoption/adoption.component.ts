@@ -32,6 +32,8 @@ export class AdoptionComponent {
   }
 
   adopter(chat : Chat): void{
+    let date : Date = new Date();
+    console.log(date.toLocaleDateString());
     chat.adoptable=false;
     chat.permanent=false;
     chat.clientId=this.compteService.auth?.id;
@@ -39,6 +41,7 @@ export class AdoptionComponent {
     this.adoption.idChat=chat.id;
     this.adoption.idClient=this.compteService.auth?.id;
     this.adoption.prix=10;
+    this.adoption.date=date.toLocaleDateString();
     this.adoptionService.create(this.adoption);
     alert("Votre demande d'adoption pour "+chat.nom+" à bien été pris en compte.");
   }
