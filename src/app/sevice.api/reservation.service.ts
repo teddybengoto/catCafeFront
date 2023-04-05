@@ -34,10 +34,8 @@ export class ReservationService {
     return this.http.get<Reservation>(this.reservationApiPath+"/"+id);
   }
 
-  create(reservation : Reservation):void{
-    this.http.post<Reservation>(this.reservationApiPath, reservation).subscribe(resp => {
-      console.log(resp);})
-      console.log("chemin" + this.reservationApiPath);
+  create(reservation : Reservation): Observable<Reservation>{
+    return this.http.post<Reservation>(this.reservationApiPath, reservation)
   }
 
   update(reservation : Reservation):void{
