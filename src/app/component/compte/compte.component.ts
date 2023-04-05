@@ -2,10 +2,12 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Adoption } from 'src/app/model/adoption';
 import { Chat } from 'src/app/model/chat';
 import { Compte } from 'src/app/model/compte';
 import { Garde } from 'src/app/model/garde';
 import { Reservation } from 'src/app/model/reservation';
+import { AdoptionService } from 'src/app/sevice.api/adoption.service';
 import { ChatService } from 'src/app/sevice.api/chat.service';
 import { CompteService } from 'src/app/sevice.api/compte.service';
 import { GardeService } from 'src/app/sevice.api/garde.service';
@@ -28,8 +30,9 @@ export class CompteComponent {
   gardes : Array<Garde> = new Array<Garde>;
   chats : Array<Chat>=new Array<Chat>;
   reservations : Array<Reservation> = new Array<Reservation>;
+  adoptions : Array<Adoption> = new Array<Adoption>;
 
-  constructor(private gardeService: GardeService , private chatService: ChatService, private toastr: ToastrService, private formBuilder: FormBuilder, private compteService: CompteService, private router: Router, private reservationService : ReservationService) {
+  constructor(private gardeService: GardeService , private chatService: ChatService, private toastr: ToastrService, private formBuilder: FormBuilder, private compteService: CompteService, private router: Router, private reservationService : ReservationService, private adoptionService : AdoptionService) {
 
 
 
@@ -69,9 +72,14 @@ export class CompteComponent {
     return this.gardes;
   }
 
+  getMyAdoption(){
+    this.adoptions = this.adoptionService.findAllByClient();
+    return this.adoptions;
+  }
+
   getMyReservation(){
     console.log("problème reservation");
-    this.reservations = this.reservationService.findAllByClientId(this.compteService.auth.id);
+    this.reservations = this.reservationService.findAllByClientId();
     return this.reservations;
   }
 

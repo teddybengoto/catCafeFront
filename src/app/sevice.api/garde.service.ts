@@ -20,11 +20,6 @@ export class GardeService {
     this.loadById();
     }
 
-  load(){
-    this.http.get<Array<Garde>>((this.gardeApiPath+"/client:"+this.clientService.auth.id)).subscribe(resp => {
-      this.gardes = resp;
-    })
-  }
 
   findAllByClient(): Array<Garde> {
     return this.gardesById;
