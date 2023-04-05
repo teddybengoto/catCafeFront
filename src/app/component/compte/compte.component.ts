@@ -58,7 +58,7 @@ export class CompteComponent {
     this.compteService.findClientById(this.compteService.auth.id);
   }
 
-
+update(){
     this.compteService.update(this.updateCompte.value).subscribe(resp => {
       console.log("Resp: ", resp);
 
