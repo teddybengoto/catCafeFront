@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { ClientRequest } from 'src/app/model/clientRequest';
 import { CompteService } from 'src/app/sevice.api/compte.service';
 
@@ -9,7 +9,7 @@ import { CompteService } from 'src/app/sevice.api/compte.service';
   templateUrl: './inscription.component.html',
   styleUrls: ['./inscription.component.scss']
 })
-export class InscriptionComponent implements OnInit{
+export class InscriptionComponent implements OnInit {
 
   inscriptionForm: FormGroup;
   connexionForm: FormGroup;
@@ -24,14 +24,14 @@ export class InscriptionComponent implements OnInit{
     });
   }
 
-ngOnInit(): void {
+  ngOnInit(): void {
     this.inscriptionForm = this.formBuilder.group({
-      login : this.formBuilder.control('', [Validators.required, Validators.email]),
-      prenom : this.formBuilder.control('', Validators.required),
-      nom : this.formBuilder.control('', Validators.required),
-      password : this.formBuilder.control('', [Validators.required, Validators.minLength(6)]),
-      confirmMdp : this.formBuilder.control('', [Validators.required]),
-    } , {validator : this.confirmValidator("password","confirmMdp")});
+      login: this.formBuilder.control('', [Validators.required, Validators.email]),
+      prenom: this.formBuilder.control('', Validators.required),
+      nom: this.formBuilder.control('', Validators.required),
+      password: this.formBuilder.control('', [Validators.required, Validators.minLength(6)]),
+      confirmMdp: this.formBuilder.control('', [Validators.required]),
+    }, { validator: this.confirmValidator("password", "confirmMdp") });
   }
 
 
@@ -53,16 +53,18 @@ ngOnInit(): void {
     });
   }
 
-confirmValidator(controlName: string, matchingControlName: string) {
-  return (formGroup: FormGroup) => {
-    let control = formGroup.controls[controlName];
-    let matchingControl = formGroup.controls[matchingControlName];  
-  
-  if (control.value !== matchingControl.value) {
-    matchingControl.setErrors({ confirmedValidator: true });
-  } else {
-    matchingControl.setErrors(null);
+  confirmValidator(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      let control = formGroup.controls[controlName];
+      let matchingControl = formGroup.controls[matchingControlName];
+
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ confirmedValidator: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    }
   }
-}
-}
+
+
 }

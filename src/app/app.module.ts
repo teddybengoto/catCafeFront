@@ -23,6 +23,7 @@ import { GardeService } from './sevice.api/garde.service';
 import { ChatService } from './sevice.api/chat.service';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
+import { CarouselElementComponent } from './component/carousel-element/carousel-element.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ToastrModule } from 'ngx-toastr';
     TestComponent,
     GardeComponent,
     ReservationComponent,
+    CarouselElementComponent,
     
   ],
   imports: [

@@ -2,36 +2,54 @@
 <main>
   <div class="TitleHeader">
     <div class="Title">
-          <h1>Faire garder son chat</h1>
+      <h1>Faire garder son chat</h1>
     </div>
   </div>
 
-    <div id="content">
-      <div id="ColumnLeft">
-        <img src="assets/img/chat_chill.jpg" alt="test">
-        <br>
-        <p>Nous nous chargeons de votre matou pendant votre abscence, croquettes et carresses comprises. Remplissez le formulaire et nous vous proposerons un tarrif adapté à votre besoin</p>
-        <p>Prix par jour : 10,00€</p>
-      </div>
+  <div id="content">
+    <div id="ColumnLeft">
+      <img src="assets/img/chat_chill.jpg" alt="test">
+      <br>
+      <p>Nous nous chargeons de votre matou pendant votre abscence, croquettes et carresses comprises. Remplissez le
+        formulaire et nous vous proposerons un tarrif adapté à votre besoin</p>
+      <p>Prix par jour : 10,00€</p>
+    </div>
 
-      <div id="ColumnRight">
-        <form class="formulaireGarde" [formGroup]="gardeForm" (ngSubmit)="createGarde()">
+    <div id="ColumnRight">
+      <form class="formulaireGarde" [formGroup]="gardeForm" (ngSubmit)="createGarde()">
         <h2>Formulaire de garde</h2><br>
 
-              <p>Selectionnez le chat : </p>
-              <select class="InputPerso" id="SelectChat" name="Chat" placeholder="Choix du chat" formControlName="chatId">
-                <option *ngFor="let c of listChats()" value="{{c.id}}">{{c.nom}}</option>
-              </select>
-              <p>Date de début :</p>
-              <input type="text" class="InputPerso" formControlName="dateDebut" [(ngModel)]="garde.dateDebut"  id="dateDebut" name="dateDebut" placeholder="Début de la garde" onfocus="(this.type='date')" onblur="(this.type='text')">
-              <p>Date de fin :</p>
-              <input type="text" class="InputPerso" formControlName="dateFin"  [(ngModel)]="garde.dateFin"id="dateFin" name="dateDebut" placeholder="Fin de la garde" onfocus="(this.type='date')" onblur="(this.type='text')">
-              <p style="color:red" *ngIf="!validation">dates non conformes</p>
-              <br>
-              <p input *ngIf="validation">Prix pour cette garde : </p><p input *ngIf="validation">{{garde.prix}},00€</p>
-              <input *ngIf="validation" type="submit" class="bouton" name="valider" value="C'est parti"  >
-              <input *ngIf="!validation" type="submit" class="bouton" name="valider" value="C'est parti" disabled >
-        </form>
-      </div>
+        <p>Selectionnez le chat : </p>
+        <select class="InputPerso" id="SelectChat" name="Chat" placeholder="Choix du chat" formControlName="chatId">
+          <option *ngFor="let c of listChats()" value="{{c.id}}">{{c.nom}}</option>
+        </select>
+        <span *ngIf="gardeForm.get('chatId')?.hasError('required') && gardeForm.get('chatId')?.touched" class="text-danger">
+          Vous devez choisir un chat
+        </span>
+        <p>Date de début :</p>
+        <input type="text" class="InputPerso" formControlName="dateDebut" [(ngModel)]="garde.dateDebut" id="dateDebut"
+          name="dateDebut" placeholder="Début de la garde" onfocus="(this.type='date')" onblur="(this.type='text')">
+          <span *ngIf="gardeForm.get('dateDebut')?.hasError('required') && gardeForm.get('dateDebut')?.touched" class="text-danger">
+            Vous devez renseigner des dates
+          </span>
+          <span *ngIf="gardeForm.hasError('confirmDateValidator')" class="text-danger">
+            Vous devez renseigner des dates conformes
+          </span>
+        <p>Date de fin :</p>
+        <input type="text" class="InputPerso" formControlName="dateFin" [(ngModel)]="garde.dateFin" id="dateFin"
+          name="dateDebut" placeholder="Fin de la garde" onfocus="(this.type='date')" onblur="(this.type='text')">
+          <span *ngIf="gardeForm.get('dateFin')?.hasError('required') && gardeForm.get('dateFin')?.touched"  class="text-danger">
+            Vous devez renseigner des dates
+          </span>
+          <span *ngIf="gardeForm.hasError('confirmDateValidator')" class="text-danger">
+            Vous devez renseigner des dates conformes
+          </span>
+        <br>
+        <p input *ngIf="!(gardeForm.get('dateFin')?.hasError('required') || gardeForm.get('dateDebut')?.hasError('required'))">Prix pour cette garde : </p>
+        <p input *ngIf="!(gardeForm.get('dateFin')?.hasError('required') || gardeForm.get('dateDebut')?.hasError('required'))">{{garde.prix}},00€</p>
+        <input *ngIf="validation" type="submit" class="bouton" name="valider" value="C'est parti">
+        <input *ngIf="!validation" type="submit" class="bouton" name="valider" value="C'est parti" disabled>
+      </form>
     </div>
-  </main>
+  </div>
+</main>

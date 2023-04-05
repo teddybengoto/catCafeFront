@@ -23,14 +23,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 700px;
+  width: 600px;
   height: 70px;
   left: 455px;
   background-color: #D3AC71;
-  border-bottom-style: solid;
-  border-top-style: solid;
-  border-left-style: solid;
-  border-right-style: solid;
+  border: 3px solid #000000;
   border-radius: 20px;
   font-size: 40px;
 }
@@ -59,14 +56,15 @@ body {
   justify-content: top;
   flex-direction: column;
   width : 50%;
-  height: 470px;
+  height: 490px;
   border: 3px solid #000000;
   border-radius: 20px;
   background: #D3AC71;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #chat {
-  width: 315px;
+  width: 250px;
   height: 145px;
   left: 1011px;
   margin-top: -107px;
@@ -97,7 +95,7 @@ h6{
 }
 .bouton:hover{background-color : rgba(220, 215, 215, 0.87);}
 
-#date{
+#jour{
   text-decoration: underline;
   margin-top:15px;
 }
