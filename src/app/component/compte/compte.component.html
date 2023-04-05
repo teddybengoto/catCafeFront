@@ -30,16 +30,11 @@
                     <td>Login</td>
                     <td>{{myCompte?.login}}</td>
                 </tr>
-
-
             </tbody>
             <span (click)="showUpdateForm=true" class="badge badge-secondary">Modifier mes informations</span>
-
-
         </table>
-
-
     </div>
+
 
     <form *ngIf="showUpdateForm" (ngSubmit)="update()" [formGroup]="updateCompte">
         <div class="form-group">
@@ -78,10 +73,13 @@
         <input type="submit" class="btn btn-primary mt-3" [disabled]="updateCompte.invalid" value="Modifier !" />
     </form>
 
+
+
         <h2 class="my-5 ">Vos Chats </h2>
 
         <div class="contain">
             <div class="card-deck customdeck">
+                <div class="card" *ngIf="getMyCat().length == 0">Vous n'avez pas de chat</div>
                 <div class="card customcard border-dark gris mb-3"
                     *ngFor="let element of getMyCat(); let i = index">
                     <img class="card-img-top imgChat raccourcis " [src]="element.image" alt="Card image cap">
@@ -96,21 +94,19 @@
                             <li *ngIf="element.pbSante!==null">Problème de santé : {{element.pbSante}} </li>
                             <li *ngIf="(element.commentaire!==null)"><i>« {{element.commentaire}} »</i></li>
                         </ul>
-                    </div>
-                   
-    
+                    </div>    
                 </div>
             </div>
-
         </div>
 
         
     
-    <div>
+    <!-- <div>
         <h2 class="my-5 ">Vos gardes </h2>
 
         <div class="contain" >
             <div class="card-deck customdeck">
+                <div class="card" *ngIf="getMyCatGard().length == 0">Vous n'avez pas de chat mis à la garderie</div>
                 <div class="card customcard border-dark gris mb-3"
                     *ngFor="let element of getMyCatGard(); let i = index">
                     <div class="card-header text-center upercase marron fontAmatic">{{element.chatId}}</div>
@@ -119,18 +115,12 @@
                             <li>Debut : {{element.dateDebut}}</li>
                             <li>Fin : {{element.dateFin}}</li>
                             <li>Prix : {{element.prix}}</li>
-
                         </ul>
                     </div>
-                   
-    
                 </div>
             </div>
-
         </div>
-
-
-    </div>
+    </div> -->
 
 
     <div>
