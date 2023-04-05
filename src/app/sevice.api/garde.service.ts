@@ -12,7 +12,7 @@ export class GardeService {
 
   private gardeApiPath: string;
   private garde: Garde;
-  private gardes: Array<Garde>;
+  gardes: Array<Garde>;
 
   constructor(private router: Router, private http: HttpClient, private clientService: CompteService) {
     this.gardeApiPath = ("http://localhost:8080/api" + "/garde"); 

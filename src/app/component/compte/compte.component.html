@@ -1,6 +1,6 @@
 <app-healder></app-healder>
 
-<main class="d-flex flex-column  flex-direction-center align-items-center">
+<main class="d-flex flex-column  flex-direction-center align-items-center w-75">
 
     <h1>Bienvenue: {{myCompte?.nom}} </h1>
 
@@ -78,11 +78,11 @@
         <input type="submit" class="btn btn-primary mt-3" [disabled]="updateCompte.invalid" value="Modifier !" />
     </form>
 
-    <div>
         <h2 class="my-5 ">Vos Chats </h2>
-        <div class="gg">
-            <div class="card-deck customdeck d-flex flex-nowrap justify-content-between gg ">
-                <div class="card customcard border-dark gris mb-3 w-75"
+
+        <div class="contain">
+            <div class="card-deck customdeck">
+                <div class="card customcard border-dark gris mb-3"
                     *ngFor="let element of getMyCat(); let i = index">
                     <img class="card-img-top imgChat raccourcis " [src]="element.image" alt="Card image cap">
                     <div class="card-header text-center upercase marron fontAmatic">{{element.nom}}</div>
@@ -97,17 +97,38 @@
                             <li *ngIf="(element.commentaire!==null)"><i>« {{element.commentaire}} »</i></li>
                         </ul>
                     </div>
-                    
+                   
+    
                 </div>
             </div>
-            
+
         </div>
+
         
-
-    </div>
-
+    
     <div>
         <h2 class="my-5 ">Vos gardes </h2>
+
+        <div class="contain" >
+            <div class="card-deck customdeck">
+                <div class="card customcard border-dark gris mb-3"
+                    *ngFor="let element of getMyCatGard(); let i = index">
+                    <div class="card-header text-center upercase marron fontAmatic">{{element.chatId}}</div>
+                    <div class="card-body gris">
+                        <ul class="liste fontAbel">
+                            <li>Debut : {{element.dateDebut}}</li>
+                            <li>Fin : {{element.dateFin}}</li>
+                            <li>Prix : {{element.prix}}</li>
+
+                        </ul>
+                    </div>
+                   
+    
+                </div>
+            </div>
+
+        </div>
+
 
     </div>
 
