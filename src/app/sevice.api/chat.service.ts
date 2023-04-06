@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Chat } from '../model/chat';
 import { Observable } from 'rxjs';
@@ -64,6 +64,39 @@ export class ChatService {
     this.loadPermanent();
     });
   }
+
+ /* updateImage(id:number,image:FormData): void {
+
+
+    //headers: { 'Content-Type': 'multipart/form-data' }, ?????
+    //let headers = new Headers();
+    //headers.append('Content-Type', 'application/json');
+
+
+    console.log("Body: ",image);
+
+
+    this.http.put<any>(this.chatApiPath + "/image/" +id,image).subscribe(resp => {
+      
+      console.log("resp: ",resp);
+      //return null;
+      
+    });
+  }*/
+
+   // Returns an observable
+   upload(id:number,file: File):Observable<any> {
+   
+    // Create form data
+    const formData = new FormData(); 
+      
+    // Store form name as "file" with file data
+    formData.append("file", file, file.name);
+      
+    // Make http post request over api
+    // with formData as req
+    return this.http.put(this.chatApiPath + "/image/" +id,formData)
+}
 
   remove(id: number): void {
     this.http.delete<boolean>(this.chatApiPath + "/" + id).subscribe(resp => {
