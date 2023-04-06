@@ -41,21 +41,21 @@ export class TestComponent {
 
     this.file = event.target.files[0];
     //}
-  }
-  /*updateImage() {
+  }/*
+  updateImage() {
     //this.file = this.updateimage.value;
     //this.file.
 
     // Instantiate a FormData to store form fields and encode the file
-    let data = new FormData();
+    const data = new FormData();
     // Add file content to prepare the request
     console.log("file ", this.file);
 
 
 
-    data.append("image", this.file);
+    data.append("image", this.file, this.file.name);
 
-    console.log("this.file.name; ", this.file.name);
+    //console.log("this.file.name; ", this.file.name);
 
     // Launch post request
     console.log("bodydd: ", data);
@@ -71,8 +71,8 @@ export class TestComponent {
 
 
 
-  }*/
-
+  }
+*/
   /************New**********/
   loading: boolean = false; // Flag variable
 // Variable to store shortLink from api response
