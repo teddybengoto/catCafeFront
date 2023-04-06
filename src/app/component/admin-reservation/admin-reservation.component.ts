@@ -31,9 +31,14 @@ export class AdminReservationComponent {
     return this.reservations
   }
 
+  toNumber(a:string): number{
+    return Number(a);
+  }
+
   edit(id: number): void{
     this.reservationService.findById(id).subscribe(resp =>{
       this.reservationForm = resp;
+      this.reservationForm.client_id=this.reservationForm.client.id;
       //console.log(this.chatForm);
     });
     //console.log(this.chatForm);
@@ -49,12 +54,19 @@ export class AdminReservationComponent {
 
   save():void{
     if(this.reservationForm.id){
+      this.reservationForm.client.id=this.reservationForm.client_id;
       this.reservationService.update(this.reservationForm);
     }
     else{
+      this.reservationForm.client.id=this.reservationForm.client_id;
       this.reservationService.create(this.reservationForm);
     }
     this.cancel();
+  }
+
+  findAllClient(): Array<Compte> {
+    this.clients = this.compteService.findAll();
+    return this.clients;
   }
 
   cancel(){

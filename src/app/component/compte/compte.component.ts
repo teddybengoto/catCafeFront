@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Adoption } from 'src/app/model/adoption';
-import { Chat } from 'src/app/model/chat';
+import { Chat, ChatSend } from 'src/app/model/chat';
 import { Compte } from 'src/app/model/compte';
 import { Garde } from 'src/app/model/garde';
 import { Reservation } from 'src/app/model/reservation';
@@ -26,6 +26,11 @@ export class CompteComponent {
 
   toto:string="100%";
   col:string='red';
+
+  chatForm: ChatSend = null;
+  race: Array<string> = ["Europeen", "Ragdoll", "MainCoon", "Persan",
+    "Sphynx", "SacreDeBirmanie", "BritishShorthair",
+    "Norvegien", "Chartreux", "Siamois", "Abyssin", "Bengal", "Autre"];
 
   gardes : Array<Garde> = new Array<Garde>;
   chats : Array<Chat>=new Array<Chat>;
@@ -64,6 +69,10 @@ export class CompteComponent {
     console.log("problème chat");
     this.chats = this.chatService.findAllByClientId();
     return this.chats;
+  }
+
+  getCatById(id:number){
+    return this.chatService.findById(id);
   }
 
   getMyCatGard() {
@@ -123,6 +132,20 @@ update(){
       }
       this.myCompte = resp;
     })
+  }
+
+  add(): void {
+    this.chatForm = new ChatSend();
+  }
+
+  save(): void {
+    this.chatForm.clientId = this.compteService.auth?.id;
+    this.chatService.create(this.chatForm);
+    this.cancel();
+  }
+
+  cancel() {
+    this.chatForm = null;
   }
 
 }

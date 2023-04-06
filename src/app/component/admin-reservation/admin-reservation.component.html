@@ -18,7 +18,7 @@
             <tbody>
                 <tr *ngFor="let reserv of findAllReservation()">
                     <td>{{reserv.id}}</td>
-                    <td>{{reserv.client_id}}</td>
+                    <td>{{(reserv.client.id)}}</td>
                     <td>{{reserv.jour}}</td>
                     <td>{{reserv.heure}}</td>
                     <td>{{reserv.espace}}</td>
@@ -46,7 +46,10 @@
                 <label for="id">Identifiant :</label> <input type="number" class="form-control" id="id" name="id" readonly [(ngModel)]="reservationForm.id"/>
             </div>
             <div class="form-group">
-                <label for="id">Client :</label> <input type="number" class="form-control" id="id" name="id"  [(ngModel)]="reservationForm.client_id"/>
+                <label for="id">Client :</label> 
+                <select class="form-control" id="client" name="client" [(ngModel)]="reservationForm.client_id">
+                    <option [value]="fournisseur.id" *ngFor="let fournisseur of findAllClient()">{{fournisseur.id}} - {{fournisseur.nom}}</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="id">Jour :</label> <input type="date" class="form-control" id="id" name="id"  [(ngModel)]="reservationForm.jour"/>
