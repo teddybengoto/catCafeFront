@@ -29,7 +29,6 @@ export class ReservationService {
     let clientId: number = this.clientService.compte.id;
     this.http.get<Array<Reservation>>((this.reservationApiPath+"/by-client-id/"+clientId)).subscribe(resp => {
       this.reservationsById = resp;
-      console.log("heho")
     })
   }
 
@@ -47,15 +46,23 @@ export class ReservationService {
   }
 
   create(reservation : Reservation): Observable<Reservation>{
-    return this.http.post<Reservation>(this.reservationApiPath, reservation)
+    return this.http.post<Reservation>(this.reservationApiPath, reservation);
   }
 
   update(reservation : Reservation):void{
-    this.http.put<Reservation>(this.reservationApiPath+"/"+reservation.id,reservation);
+    this.http.put<Reservation>(this.reservationApiPath+"/"+reservation.id,reservation).subscribe(resp=>{
+      console.log("je vais ici");
+      this.load();
+      this.loadById();
+    });
   }
 
   remove(id :number):void{
-this.http.delete<boolean>(this.reservationApiPath+"/"+id);
+    console.log("2");
+    this.http.delete<boolean>(this.reservationApiPath+"/"+id).subscribe(resp=>{
+      this.load();
+      this.loadById();
+    });
   }
 
 }
