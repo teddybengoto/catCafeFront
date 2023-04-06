@@ -37,7 +37,7 @@
                     <div class="text-danger"
                     *ngIf="createResa.get('jour')?.hasError('required')&& createResa.get('jour')?.touched">
                     Le choix du jour est obligatoire
-                </div>
+                    </div>
                 </div>
 
                 <div id="heure" name="heure">
@@ -46,7 +46,7 @@
                     <div class="text-danger"
                     *ngIf="createResa.get('heure')?.hasError('required')&& createResa.get('heure')?.touched">
                     Le choix de l'heure est obligatoire
-                </div>
+                    </div>
                 </div>
 
                 <div id="effectif" name="effectif">
@@ -55,7 +55,11 @@
                     <div class="text-danger"
                     *ngIf="createResa.get('effectif')?.hasError('required') && createResa.get('effectif')?.dirty && createResa.get('effectif')?.touched">
                     Le choix du nombre de personne est obligatoire
-                </div>
+                    </div>
+                    <div class="text-danger"
+                    *ngIf="createResa.get('effectif')?.hasError('max')">
+                    Le nombre de personne est de 10 maximum par salle
+                    </div>
                 </div>
 
                 <div id="reserver">
