@@ -51,7 +51,7 @@
 
                 <div id="effectif" name="effectif">
                     <h6>Nombre de personne</h6>
-                    <input class="bouton" type="number" name="effectif" formControlName="effectif">
+                    <input class="bouton" type="number" max="10" name="effectif" formControlName="effectif">
                     <div class="text-danger"
                     *ngIf="createResa.get('effectif')?.hasError('required') && createResa.get('effectif')?.dirty && createResa.get('effectif')?.touched">
                     Le choix du nombre de personne est obligatoire

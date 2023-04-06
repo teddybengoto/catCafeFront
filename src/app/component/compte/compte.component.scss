@@ -91,6 +91,8 @@ h2{
   }
   
   .gris {
+    border-radius: 20px;
+    border: 4px hidden ;
     background-color: #857E73;
   }
   
@@ -141,7 +143,7 @@ h2{
   .customcard {
     border-radius: 20px;
     border: 4px solid;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(148, 141, 141, 0.25);
     width: 30%;
   }
   
@@ -160,6 +162,8 @@ h2{
   }
   
   .upercase{
+    border-radius: 20px;
+    border: 4px hidden ;
     text-transform: uppercase;
   }
   
