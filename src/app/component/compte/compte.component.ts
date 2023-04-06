@@ -76,7 +76,6 @@ export class CompteComponent {
   }
 
   getMyCatGard() {
-    console.log("problème garde");
     this.gardes = this.gardeService.findAllByClient();
     return this.gardes;
   }
@@ -136,6 +135,7 @@ update(){
 
   add(): void {
     this.chatForm = new ChatSend();
+    this.chatService.loadById();
   }
 
   save(): void {
