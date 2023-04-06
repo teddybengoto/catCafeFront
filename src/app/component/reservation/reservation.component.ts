@@ -5,7 +5,7 @@ import { Reservation } from 'src/app/model/reservation';
 import { CompteService } from 'src/app/sevice.api/compte.service';
 import { ReservationService } from 'src/app/sevice.api/reservation.service';
 import { ToastrService } from 'ngx-toastr';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reservation',
@@ -30,7 +30,7 @@ export class ReservationComponent {
       espace: this.formBuilder.control('', Validators.required),
       jour: this.formBuilder.control('', [Validators.required]),
       heure: this.formBuilder.control('', Validators.required),
-      effectif: this.formBuilder.control('', Validators.required)
+      effectif: this.formBuilder.control('', [Validators.required, Validators.max(10)])
     });
 
   }
@@ -74,5 +74,11 @@ export class ReservationComponent {
       case "SalonDeThe":{this.plan = "../../../assets/img/Plan_SalonThe.jpg"; break;}
     }
 }
+
+
+
+
+
+
 
 }
