@@ -24,7 +24,7 @@ export class HomeComponent {
   }
   getChatsPermanentsCourt() : Array<Chat>{
     //console.log(this.chatService.findAllPermanent());
-    return this.chatService.findAllPermanent().spice(1,3);
+    return this.chatService.findAllPermanent().splice(1,3);
 
   }
 

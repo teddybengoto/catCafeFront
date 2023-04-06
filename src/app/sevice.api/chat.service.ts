@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Chat } from '../model/chat';
+import { Chat, ChatSend } from '../model/chat';
 import { Observable } from 'rxjs';
 import { CompteService } from './compte.service';
 import { ClientRequest } from '../model/clientRequest';
@@ -25,7 +25,7 @@ export class ChatService {
     this.loadById();
   }
 
-  findAll(): any {
+  findAll(): Array<Chat> {
     return this.chatsAll
     
   }
@@ -34,7 +34,7 @@ export class ChatService {
     return this.chatsAdoptable;
   }
 
-  findAllPermanent(): any {
+  findAllPermanent(): Array<Chat> {
  
     return this.chatsPermanent;
   }
@@ -48,7 +48,8 @@ export class ChatService {
     return this.http.get<Chat>(this.chatApiPath + "/" + id);
   }
 
-  create(chat: Chat): void {
+  create(chat: ChatSend): void {
+    //console.log(chat);
     this.http.post<Chat>(this.chatApiPath, chat).subscribe(resp => {
     this.loadAdoptable();
     this.loadAll();
@@ -56,7 +57,8 @@ export class ChatService {
     });
   }
 
-  update(chat: Chat): void {
+  update(chat: ChatSend): void {
+    console.log(chat);
     this.http.put<Chat>(this.chatApiPath + "/" + chat.id, chat).subscribe(resp => {
       this.loadAdoptable();
     this.loadAll();
