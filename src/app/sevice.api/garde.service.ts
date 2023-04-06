@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { CompteService } from './compte.service';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -32,12 +33,9 @@ export class GardeService {
     })
   }
 
-  create(g: Garde)
+  create(g: Garde) : Observable<Garde>
   {
-    let ok: boolean;
-    this.http.post<Garde>(this.gardeApiPath, g).subscribe(resp => {
 
-      alert("Garde programmée du :" + resp.dateDebut + " au " + resp.dateFin);
-    });
+    return this.http.post<Garde>(this.gardeApiPath, g);
   }
 }

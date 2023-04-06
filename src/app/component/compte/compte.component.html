@@ -7,7 +7,7 @@
 
 
     <div id="infoPerso">
-        <h2 class="my-5 ">Information personnelles </h2>
+        <h2>Information personnelles </h2>
         <form (ngSubmit)="update()" [formGroup]="updateCompte">
             <table class="table table-hover">
                 <thead>
@@ -61,8 +61,8 @@
                 </tbody>
                 
             </table>
-            <span *ngIf="!showUpdateForm" (click)="showUpdateForm=true" style="cursor:pointer; font-family: 'Abel'; font-size: 20px;" class="btnPrincipal">Modifier mes informations</span>
-            <input *ngIf="showUpdateForm" type="submit" class="btn btn-primary mt-3" [disabled]="updateCompte.invalid" value="Modifier !" />
+            <span *ngIf="!showUpdateForm" (click)="showUpdateForm=true" class="btnPrincipal">Modifier mes informations</span>
+            <input *ngIf="showUpdateForm" type="submit" class="btnPrincipal" [disabled]="updateCompte.invalid" value="Modifier !" />
         </form>
 
     </div>
