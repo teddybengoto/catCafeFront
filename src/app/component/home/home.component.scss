@@ -103,6 +103,11 @@ nav {
     background: transparent;
     border-color: white!important;
     border-width: 2px;
+    position: relative;
+    top : -120px;
+    left: -20px;
+    animation: arriveeSousLogo;
+    animation-duration: 8s;
   }
 
   #Reservation:hover {
@@ -640,7 +645,7 @@ $size: 170px; // (Fully responsive)
     left: 160px;
 	height: $size;
 	width: $size * 1.13;
-    animation-duration: 4s;
+    animation-duration: 5s;
     animation-name: appear;
 }
 @keyframes appear {

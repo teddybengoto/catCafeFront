@@ -43,9 +43,12 @@ export class ReservationComponent {
     this.reservation.client_id = this.compteService.auth.id;
     this.reservationService.create(this.reservation).subscribe(resp => {
       console.log("Resp: ", resp);
+      let message = "vous avez reservé le " + this.reservation.jour + " à " + this.reservation.heure + " pour " + this.reservation.effectif + " personnes"
       if (this.reservation.id !==null) {
-        this.toastr.success('Réservation enregistrée. Merci !', 'succes', {
-          positionClass: 'toast-bottom-full-width',
+        this.toastr.success(message, 'Réservation enregistrée !', {
+          positionClass: 'toast-center-center',
+            closeButton : true,
+            disableTimeOut : true,
         });
         this.router.navigate(['/']);
       }
