@@ -14,11 +14,23 @@ export class CompteService {
   private clientApiPath: string;
   private adminApiPath: string;
 
+  clients:Array<Compte> = new Array<Compte>; 
   auth: Auth = new Auth();
   compte: Compte = new Compte();
 
   constructor(private http: HttpClient,private router:Router) {
     this.clientApiPath = "http://localhost:8080/api" + "/compte";
+    this.load();
+  }
+
+  load(){
+    this.http.get<Array<Compte>>(this.clientApiPath + "/client").subscribe(resp =>{
+      this.clients = resp;
+    })
+  }
+
+  findAll(){
+    return this.clients;
   }
 
   login(cr: ClientRequest) {
@@ -64,8 +76,9 @@ export class CompteService {
    })
   }
 
-  update(fournisseur: Compte): Observable<Compte> {
-   return this.http.put<Compte>(this.clientApiPath+"/client/"+ this.auth.id, fournisseur);
+  update(compte: Compte): Observable<Compte> {
+
+   return this.http.put<Compte>(this.clientApiPath+"/client/"+ this.auth.id, compte);
   }
 
 

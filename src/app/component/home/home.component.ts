@@ -22,7 +22,11 @@ export class HomeComponent {
     return this.chatService.findAllPermanent();
 
   }
+  getChatsPermanentsCourt() : Array<Chat>{
+    //console.log(this.chatService.findAllPermanent());
+    return this.chatService.findAllPermanent().splice(1,3);
 
+  }
 
 
 }

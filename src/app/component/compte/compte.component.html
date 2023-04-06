@@ -1,141 +1,243 @@
 <app-healder></app-healder>
 
 <main class="d-flex flex-column  flex-direction-center align-items-center w-75">
-
-    <h1>Bienvenue: {{myCompte?.nom}} </h1>
-
-
-
-    <div>
-        <h2 class="my-5 ">Information personnelles </h2>
-
-        <table class="table table-hover">
-            <thead>
-
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Nom</td>
-                    <td> {{myCompte?.nom}}</td>
-                </tr>
-                <tr>
-                    <td>Prenom</td>
-                    <td>{{myCompte?.prenom}}</td>
-                </tr>
-                <tr>
-                    <td>Télephone</td>
-                    <td>{{myCompte?.telephone}}</td>
-                </tr>
-                <tr>
-                    <td>Login</td>
-                    <td>{{myCompte?.login}}</td>
-                </tr>
-
-
-            </tbody>
-            <span (click)="showUpdateForm=true" class="badge badge-secondary">Modifier mes informations</span>
-
-
-        </table>
-
-
-    </div>
-
-    <form *ngIf="showUpdateForm" (ngSubmit)="update()" [formGroup]="updateCompte">
-        <div class="form-group">
-            <label>Nom </label>
-            <input class="form-control" formControlName="nom" />
-            <div class="text-danger"
-                *ngIf="updateCompte.get('nom')?.hasError('required')&&updateCompte.get('nom')?.dirty">
-                Le nom est obligatoire
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Prénom </label>
-            <input class="form-control" formControlName="prenom" />
-            <div class="text-danger"
-                *ngIf="updateCompte.get('prenom')?.hasError('required')&&updateCompte.get('prenom')?.dirty">
-                Le prénom est obligatoire
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" formControlName="login" placeholder="Enter email">
-            <div class="text-danger" *ngIf="updateCompte.get('login')?.hasError('login')">
-                Email Incorrecte
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>Télephone</label>
-            <input class="form-control" type="tel" formControlName="telephone" />
-            <div class="text-danger"
-                *ngIf="updateCompte.get('telephone')?.hasError('telephone')&&updateCompte.get('telephone')?.dirty">
-                Le numero de télephone est obligatoire
-            </div>
-        </div>
-
-        <input type="submit" class="btn btn-primary mt-3" [disabled]="updateCompte.invalid" value="Modifier !" />
-    </form>
-
-        <h2 class="my-5 ">Vos Chats </h2>
-
-        <div class="contain">
-            <div class="card-deck customdeck">
-                <div class="card customcard border-dark gris mb-3"
-                    *ngFor="let element of getMyCat(); let i = index">
-                    <img class="card-img-top imgChat raccourcis " [src]="element.image" alt="Card image cap">
-                    <div class="card-header text-center upercase marron fontAmatic">{{element.nom}}</div>
-                    <div class="card-body gris">
-                        <ul class="liste fontAbel">
-                            <li>Race : {{element.race}}</li>
-                            <li class="capitalize">{{element.sexe}}</li>
-                            <li>Née le : {{element.naissance}}</li>
-                            <li *ngIf="element.sterile; else sterile2">Stérilisé : Oui</li>
-                            <ng-template #sterile2><li *ngIf="element.sterile==false">Stérilisé : Non</li></ng-template>
-                            <li *ngIf="element.pbSante!==null">Problème de santé : {{element.pbSante}} </li>
-                            <li *ngIf="(element.commentaire!==null)"><i>« {{element.commentaire}} »</i></li>
-                        </ul>
-                    </div>
-                   
-    
-                </div>
+    <br>
+    <div id="accueil">
+        <div id="accueilLeft">
+            <h1 style="text-align: center;">Bienvenue: {{myCompte?.prenom}} {{myCompte?.nom}} </h1>
+            <br>
+            <div style="display: flex; justify-content: flex-start; align-items: center; height: 80px; margin-bottom: 60px;">
+                <h3>Pour modifier mes données, c'est ici </h3><img src="../../../assets/img/arrow.png" alt="Flèche"
+                    style="transform : scale(0.6);
+                    width : 20%; margin-left: 40px;">
             </div>
 
-        </div>
 
-        
-    
-    <div>
-        <h2 class="my-5 ">Vos gardes </h2>
-
-        <div class="contain" >
-            <div class="card-deck customdeck">
-                <div class="card customcard border-dark gris mb-3"
-                    *ngFor="let element of getMyCatGard(); let i = index">
-                    <div class="card-header text-center upercase marron fontAmatic">{{element.chatId}}</div>
-                    <div class="card-body gris">
-                        <ul class="liste fontAbel">
-                            <li>Debut : {{element.dateDebut}}</li>
-                            <li>Fin : {{element.dateFin}}</li>
-                            <li>Prix : {{element.prix}}</li>
-
-                        </ul>
-                    </div>
-                   
-    
+            <div style="display: flex; justify-content: space-around; flex-direction: row; width : 100%;">
+                <div id="chatBricoleur"></div>
+                <div style="display: flex; justify-content: start; align-items: center; flex-direction: column; width : 300px; ">
+                    <h3 style="text-align: center;">Pour voir vos chats et réservations en cours c'est par la !</h3><img
+                        src="../../../assets/img/arrow.png" alt="Flèche"
+                        style="transform : scale(0.2) rotate(0.25turn); height: 200px;">
                 </div>
             </div>
 
         </div>
 
 
+        <div id="infoPerso">
+            <h1>Mes infos perso </h1>
+            <form (ngSubmit)="update()" [formGroup]="updateCompte" class="formInfoPerso">
+                <table class="table table-hover" style="min-width: 300px; color: white;">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>Nom</td>
+                            <td *ngIf="!showUpdateForm"> {{myCompte?.nom}}</td>
+                            <td *ngIf="showUpdateForm">
+                                <input class="form-control" formControlName="nom" value="test" />
+                                <div class="text-danger"
+                                    *ngIf="updateCompte.get('nom')?.hasError('required')&&updateCompte.get('nom')?.dirty">
+                                    Le nom est obligatoire
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Prenom</td>
+                            <td *ngIf="!showUpdateForm">{{myCompte?.prenom}}</td>
+                            <td *ngIf="showUpdateForm">
+                                <input class="form-control" formControlName="prenom" />
+                                <div class="text-danger"
+                                    *ngIf="updateCompte.get('prenom')?.hasError('required')&&updateCompte.get('prenom')?.dirty">
+                                    Le prénom est obligatoire
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Télephone</td>
+                            <td *ngIf="!showUpdateForm">{{myCompte?.telephone}}</td>
+                            <td *ngIf="showUpdateForm">
+                                <input class="form-control" type="tel" formControlName="telephone" />
+                                <div class="text-danger"
+                                    *ngIf="updateCompte.get('telephone')?.hasError('telephone')&&updateCompte.get('telephone')?.dirty">
+                                    Le numero de télephone est obligatoire
+                                </div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Login</td>
+                            <td *ngIf="!showUpdateForm">{{myCompte?.login}}</td>
+                            <td *ngIf="showUpdateForm">
+                                <input type="email" class="form-control" formControlName="login"
+                                    placeholder="Enter email">
+                                <div class="text-danger" *ngIf="updateCompte.get('login')?.hasError('login')">
+                                    Email Incorrecte
+                                </div>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <span *ngIf="!showUpdateForm" (click)="showUpdateForm=true" class="btnPrincipal">Modifier mes
+                    informations</span>
+                <input *ngIf="showUpdateForm" type="submit" class="btnPrincipal" [disabled]="updateCompte.invalid"
+                    value="Modifier !" />
+            </form>
+
+        </div>
     </div>
 
 
-    <div>
-        <h2 class="my-5 ">Vos adoptions </h2>
+
+
+
+
+    <h2 class="my-5 ">Vos Chats </h2>
+
+    <div class="contain">
+        <div class="card-deck customdeck">
+            <div class="card" *ngIf="getMyCat().length == 0">Vous n'avez pas de chat</div>
+            <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyCat(); let i = index">
+                <img class="card-img-top imgChat raccourcis " [src]="element.image" alt="Card image cap">
+                <div class="card-header text-center upercase marron fontAmatic">{{element.nom}}</div>
+                <div class="card-body gris">
+                    <ul class="liste fontAbel">
+                        <li>Race : {{element.race}}</li>
+                        <li class="capitalize">{{element.sexe}}</li>
+                        <li>Née le : {{element.naissance}}</li>
+                        <li *ngIf="element.sterile; else sterile2">Stérilisé : Oui</li>
+                        <ng-template #sterile2>
+                            <li *ngIf="element.sterile==false">Stérilisé : Non</li>
+                        </ng-template>
+                        <li *ngIf="element.pbSante!==null">Problème de santé : {{element.pbSante}} </li>
+                        <li *ngIf="(element.commentaire!==null)"><i>« {{element.commentaire}} »</i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <a class="btn btn-success btn-lg" (click)="add()">ADD</a>
+    </div>
+    <div class="card mt-3" *ngIf="chatForm">
+        <div class="card-header bg-primary text-white display-6">Crée un chat</div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="nom">Nom :</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="chatForm.nom"/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Sexe :</label> 
+                <select class="form-group" id="sexe" name="sexe" [(ngModel)]="chatForm.sexe">
+                    <option selected value="male">Male</option>
+                    <option  value="femelle">Femelle</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nom">Race :</label>
+                <select class="form-group" id="race" name="race" [(ngModel)]="chatForm.race">
+                    <option *ngFor="let r of race" [ngValue]="r">{{r}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nom">Naissance :</label> <input class="form-control" type="date" name="date" [(ngModel)]="chatForm.naissance">
+            </div>
+            <div class="form-group">
+                <label for="nom">Sterile :</label> <input type="checkbox" id="sterile" name="sterile" [(ngModel)]="chatForm.sterile"/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Puce :</label> <input type="text" class="form-control" id="idPuce" name="idPuce" [(ngModel)]="chatForm.idPuce"/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Tatouage :</label> <input type="text" class="form-control" id="idTatouage" name="idTatouage" [(ngModel)]="chatForm.idTatouage"/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Probleme de santé:</label> <input type="text" class="form-control" id="pbSante" name="pbSante" [(ngModel)]="chatForm.pbSante"/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Image :</label> <input type="text" class="form-control" id="image" name="image" [(ngModel)]="chatForm.image"/>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="btn-group btn-group-lg float-right">
+                <a class="btn btn-success" (click)="save()">SAVE</a>
+                <a class="btn btn-warning" (click)="cancel()">CANCEL</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <h2 class="my-5 ">Vos gardes </h2>
+
+    <div class="contain">
+        <div class="card-deck customdeck">
+            <div class="card" *ngIf="getMyCatGard().length == 0">
+                <p>Vous n'avez pas de chat mis à la garderie</p>
+            </div>
+            <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyCatGard()">
+                <div class="card-header text-center upercase marron fontAmatic">{{element.chatId}}</div>
+                <div class="card-body gris">
+                    <ul class="liste fontAbel">
+                        <li>Debut : {{element.dateDebut}}</li>
+                        <li>Fin : {{element.dateFin}}</li>
+                        <li>Prix : {{element.prix}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <h2 class="my-5 ">Vos réservations</h2>
+
+    <div class="contain">
+        <div class="card-deck customdeck">
+            <div class="card" *ngIf="getMyReservation().length == 0">
+                <p>Vous n'avez pas de chat mis à la garderie</p>
+            </div>
+            <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyReservation()">
+                <div class="card-body gris">
+                    <ul class="liste fontAbel">
+                        <li>Reservation de la salle : {{element.espace}}</li>
+                        <li>Pour le: {{element.jour}}</li>
+                        <li>A : {{element.heure}}</li>
+                        <li>Pour : {{element.effectif}} personnes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
 
     </div>
+
+
+
+    <h2 class="my-5 ">Vos adoptions </h2>
+    <div class="contain">
+        <div class="card-deck customdeck">
+            <div class="card" *ngIf="getMyAdoption().length == 0">
+                <p>Vous n'avez pas de chat mis à la garderie</p>
+            </div>
+            <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyAdoption()">
+                <div class="card-header text-center upercase marron fontAmatic"> {{element.id}}</div>
+                <div class="card-body gris">
+                    <ul class="liste fontAbel">
+                        <li>Adoption de {{element.idChat}}</li>
+                        <li>Le : {{element.date}}</li>
+                        <li>Pour : {{element.prix}} €</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 
 </main>

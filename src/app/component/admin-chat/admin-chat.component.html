@@ -1,0 +1,121 @@
+<div class="card mt-3">
+    <div class="card-header bg-primary text-white display-6">Liste des Chats</div>
+    <app-admin></app-admin>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Nom</th>
+                    <th>Sexe</th>
+                    <th>Race</th>
+                    <th>Naissance</th>
+                    <th>Adoptable</th>
+                    <th>Permanent</th>
+                    <th>Stérile</th>
+                    <th>Identifiant client</th>
+                    <th>Identifiant Puce</th>
+                    <th>Identifiant Tatouage</th>
+                    <th>Problème de santé</th>
+                    <th>Commenatire</th>
+                    <th>Image</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let chat of findAllChat()">
+                    <td>{{chat.id}}</td>
+                    <td>{{chat.nom}}</td>
+                    <td>{{chat.sexe}}</td>
+                    <td>{{chat.race}}</td>
+                    <td>{{chat.naissance}}</td>
+                    <td>{{chat.adoptable}}</td>
+                    <td>{{chat.permanent}}</td>
+                    <td>{{chat.sterile}}</td>
+                    <td>{{chat?.client?.id}}</td>
+                    <td>{{chat.idPuce}}</td>
+                    <td>{{chat.idTatouage}}</td>
+                    <td>{{chat.pbSante}}</td>
+                    <td>{{chat.commentaire}}</td>
+                    <td>{{chat.image}}</td>
+
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <a class="btn btn-primary" (click)="edit(chat.id)">EDIT</a>
+                            <a class="btn btn-danger" (click)="remove(chat.id)">delete</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-success btn-lg" (click)="add()">ADD</a>
+    </div>
+    <div class="card mt-3" *ngIf="chatForm">
+        <div class="card-header bg-primary text-white display-6">Edition d'un chat</div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="id">Identifiant :</label> <input readOnly type="number" class="form-control" id="id" name="id" readonly [(ngModel)]="chatForm.id"/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Nom :</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="chatForm.nom"/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Sexe :</label> 
+                <select class="form-group" id="sexe" name="sexe" [(ngModel)]="chatForm.sexe">
+                    <option selected value="male">Male</option>
+                    <option  value="femelle">Femelle</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nom">Race :</label>
+                <select class="form-group" id="race" name="race" [(ngModel)]="chatForm.race">
+                    <option *ngFor="let r of race" [ngValue]="r">{{r}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nom">Naissance :</label> <input class="form-control" type="date" name="date" [(ngModel)]="chatForm.naissance">
+            </div>
+            <div class="form-group">
+                <label for="nom">Adoptable :</label> <input type="checkbox" id="adoptable" name="adoptable" [(ngModel)]="chatForm.adoptable"/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Permanent :</label> <input type="checkbox" id="permanent" name="permanent" [(ngModel)]="chatForm.permanent"/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Sterile :</label> <input type="checkbox" id="sterile" name="sterile" [(ngModel)]="chatForm.sterile"/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Client :</label> 
+                <select class="form-control" id="client" name="client" [(ngModel)]="chatForm.clientId">
+                    <option [value]="null">Aucun</option>
+                    <option [value]="fournisseur.id" *ngFor="let fournisseur of findAllClient()">{{fournisseur.id}} - {{fournisseur.nom}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nom">Puce :</label> <input type="text" class="form-control" id="idPuce" name="idPuce" [(ngModel)]="chatForm.idPuce"/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Tatouage :</label> <input type="text" class="form-control" id="idTatouage" name="idTatouage" [(ngModel)]="chatForm.idTatouage"/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Probleme de santé:</label> <input type="text" class="form-control" id="pbSante" name="pbSante" [(ngModel)]="chatForm.pbSante"/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Commenatire :</label> <input type="text" class="form-control" id="commentaire" name="commentaire" [(ngModel)]="chatForm.commentaire"/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Image :</label> <input type="text" class="form-control" id="image" name="image" [(ngModel)]="chatForm.image"/>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="btn-group btn-group-lg float-right">
+                <a class="btn btn-success" (click)="save()">SAVE</a>
+                <a class="btn btn-warning" (click)="cancel()">CANCEL</a>
+            </div>
+        </div>
+    </div>
+    
+</div>
