@@ -32,7 +32,7 @@
                     <td>{{chat.adoptable}}</td>
                     <td>{{chat.permanent}}</td>
                     <td>{{chat.sterile}}</td>
-                    <td>{{chat.clientId}}</td>
+                    <td>{{chat?.client?.id}}</td>
                     <td>{{chat.idPuce}}</td>
                     <td>{{chat.idTatouage}}</td>
                     <td>{{chat.pbSante}}</td>
@@ -88,7 +88,7 @@
                 <label for="nom">Sterile :</label> <input type="checkbox" id="sterile" name="sterile" [(ngModel)]="chatForm.sterile"/>
             </div>
             <div class="form-group">
-                <label for="nom">Client :</label> <input type="number" class="form-control" id="clientId" name="clientId" [(ngModel)]="chatForm.clientId"/>
+                <label for="nom">Client :</label> <input type="number" class="form-control" id="clientId" name="clientId" [(ngModel)]="chatForm.client.id"/>
             </div>
             <div class="form-group">
                 <label for="nom">Puce :</label> <input type="text" class="form-control" id="idPuce" name="idPuce" [(ngModel)]="chatForm.idPuce"/>
