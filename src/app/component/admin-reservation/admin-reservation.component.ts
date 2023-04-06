@@ -38,13 +38,14 @@ export class AdminReservationComponent {
   edit(id: number): void{
     this.reservationService.findById(id).subscribe(resp =>{
       this.reservationForm = resp;
-      this.reservationForm.client_id=this.reservationForm.client.id;
+      //this.reservationForm.client_id=this.reservationForm.client.id;
       //console.log(this.chatForm);
     });
     //console.log(this.chatForm);
   }
 
   remove(id: number):void{
+    console.log("1");
     this.reservationService.remove(id);
   }
   
@@ -54,11 +55,14 @@ export class AdminReservationComponent {
 
   save():void{
     if(this.reservationForm.id){
-      this.reservationForm.client.id=this.reservationForm.client_id;
+      console.log(this.reservationForm);
+      this.reservationForm.client.id=Number(this.reservationForm.client_id);
+      console.log(this.reservationForm);
+      this.reservationForm.client_id = Number(this.reservationForm.client_id);
       this.reservationService.update(this.reservationForm);
     }
     else{
-      this.reservationForm.client.id=this.reservationForm.client_id;
+      //this.reservationForm.client=Number(this.reservationForm.client_id);
       this.reservationService.create(this.reservationForm);
     }
     this.cancel();
