@@ -233,12 +233,12 @@
                 <p>Vous n'avez pas de chat mis à la garderie</p>
             </div>
             <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyCatGard()">
-                <div class="card-header text-center upercase marron fontAmatic">{{element.chatId}}</div>
+                <div class="card-header text-center upercase marron fontAmatic">Garde pour votre chat</div>
                 <div class="card-body gris">
                     <ul class="liste fontAbel">
                         <li>Debut : {{element.dateDebut}}</li>
                         <li>Fin : {{element.dateFin}}</li>
-                        <li>Prix : {{element.prix}}</li>
+                        <li>Prix : {{element.prix}}.00€</li>
                     </ul>
                 </div>
             </div>

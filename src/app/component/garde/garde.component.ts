@@ -78,6 +78,7 @@ export class GardeComponent {
         });
       }
     });
+    this.gardeService.loadById();
     this.router.navigate(["/"]);
 
   }
