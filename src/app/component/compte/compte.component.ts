@@ -24,20 +24,28 @@ export class CompteComponent {
   updateCompte!: FormGroup;
   showUpdateForm = false;
 
-  toto:string="100%";
-  col:string='red';
+  toto: string = "100%";
+  col: string = 'red';
 
   chatForm: ChatSend = null;
   race: Array<string> = ["Europeen", "Ragdoll", "MainCoon", "Persan",
     "Sphynx", "SacreDeBirmanie", "BritishShorthair",
     "Norvegien", "Chartreux", "Siamois", "Abyssin", "Bengal", "Autre"];
 
-  gardes : Array<Garde> = new Array<Garde>;
-  chats : Array<Chat>=new Array<Chat>;
-  reservations : Array<Reservation> = new Array<Reservation>;
-  adoptions : Array<Adoption> = new Array<Adoption>;
+  gardes: Array<Garde> = new Array<Garde>;
+  chats: Array<Chat> = new Array<Chat>;
+  reservations: Array<Reservation> = new Array<Reservation>;
+  adoptions: Array<Adoption> = new Array<Adoption>;
 
-  constructor(private gardeService: GardeService , private chatService: ChatService, private toastr: ToastrService, private formBuilder: FormBuilder, private compteService: CompteService, private router: Router, private reservationService : ReservationService, private adoptionService : AdoptionService) {
+  file: File = null; // Variable to store file
+  loading: boolean = false; // Flag variable
+  // Variable to store shortLink from api response
+  shortLink: string = "";
+  uploadImage=false;
+  catId:number;
+
+
+  constructor(private gardeService: GardeService, private chatService: ChatService, private toastr: ToastrService, private formBuilder: FormBuilder, private compteService: CompteService, private router: Router, private reservationService: ReservationService, private adoptionService: AdoptionService) {
 
 
 
@@ -46,7 +54,7 @@ export class CompteComponent {
     }
     this.findClientDetail();
     this.updateCompte = this.formBuilder.group({
-      nom: this.formBuilder.control(this.getDataClient().nom , [Validators.required]),
+      nom: this.formBuilder.control(this.getDataClient().nom, [Validators.required]),
       prenom: this.formBuilder.control(this.getDataClient().prenom, [Validators.required]),
       login: this.formBuilder.control(this.getDataClient().login, [Validators.required, Validators.email]),
       telephone: this.formBuilder.control(this.getDataClient().telephone, [Validators.required, Validators.minLength(8)])
@@ -65,13 +73,11 @@ export class CompteComponent {
   }
 
   getMyCat() {
-    //console.log("this.chatService.findAllByClientId(): ",this.chatService.findAllByClientId());
-    console.log("problème chat"+Chat);
     this.chats = this.chatService.findAllByClientId();
     return this.chats;
   }
 
-  getCatById(id:number){
+  getCatById(id: number) {
     return this.chatService.findById(id);
   }
 
@@ -81,15 +87,15 @@ export class CompteComponent {
     return this.gardes;
   }
 
-  getMyAdoption(){
+  getMyAdoption() {
     this.adoptions = this.adoptionService.findAllByClient();
     return this.adoptions;
   }
-  getDataClient() : Compte{
+  getDataClient(): Compte {
     return this.compteService.compte;
   }
 
-  getMyReservation(){
+  getMyReservation() {
     console.log("problème reservation");
     this.reservations = this.reservationService.findAllByClientId();
     return this.reservations;
@@ -99,11 +105,14 @@ export class CompteComponent {
     this.compteService.findClientById(this.compteService.auth.id);
   }
 
-update(){
+  fileChange(event: any) {
+    this.file = event.target.files[0];
+  }
+
+  update() {
 
 
     this.compteService.update(this.updateCompte.value).subscribe(resp => {
-      console.log("Resp: ", resp);
 
       if (resp?.id) {
         this.myCompte = resp;
@@ -146,6 +155,35 @@ update(){
 
   cancel() {
     this.chatForm = null;
+  }
+
+showuploadImageForm(id:number){
+  this.uploadImage=true;
+  this.catId=id;
+}
+  onChange(event: any) {
+    this.file = event.target.files[0];
+  }
+
+  // OnClick of button Upload
+  onUpload() {
+    this.uploadImage=false;
+    this.loading = !this.loading;
+    console.log(this.file);
+    this.chatService.upload(this.catId, this.file).subscribe(
+      (event: any) => {
+        if (typeof (event) === 'object') {
+          // Short link via api response
+          this.shortLink = event.link;
+          this.loading = false; // Flag variable 
+          this.router.navigate(['/']);          
+        }
+      }  
+    );
+    console.log("load");
+    
+
+
   }
 
 }

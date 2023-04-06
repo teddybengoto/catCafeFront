@@ -99,26 +99,34 @@
 
     <h2 class="my-5 ">Vos Chats </h2>
 
+    <div *ngIf="uploadImage" id="uploadImage" class="text-center">
+        <input class="form-control" type="file" 
+                (change)="onChange($event)">
+      
+        <button (click)="onUpload()" 
+            class="btn btn-success">
+            Upload
+        </button>
+      </div>
+
     <div class="contain">
-        <div class="contain2">
-            <div class="card-deck customdeck">
-                <div class="card" *ngIf="getMyCat().length == 0">Vous n'avez pas de chat</div>
-                <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyCat(); let i = index">
-                    <img class="card-img-top imgChat raccourcis " [src]="element.image" alt="Card image cap">
-                    <div class="card-header text-center upercase marron fontAmatic">{{element.nom}}</div>
-                    <div class="card-body gris">
-                        <ul class="liste fontAbel">
-                            <li>Race : {{element.race}}</li>
-                            <li class="capitalize">{{element.sexe}}</li>
-                            <li>Née le : {{element.naissance}}</li>
-                            <li *ngIf="element.sterile; else sterile2">Stérilisé : Oui</li>
-                            <ng-template #sterile2>
-                                <li *ngIf="element.sterile==false">Stérilisé : Non</li>
-                            </ng-template>
-                            <li *ngIf="element.pbSante!==null">Problème de santé : {{element.pbSante}} </li>
-                            <li *ngIf="(element.commentaire!==null)"><i>« {{element.commentaire}} »</i></li>
-                        </ul>
-                    </div>
+        <div class="card-deck customdeck">
+            <div class="card" *ngIf="getMyCat().length == 0">Vous n'avez pas de chat</div>
+            <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyCat(); let i = index">
+                <img (click)="showuploadImageForm(element.id)" class="card-img-top imgChat raccourcis " [src]="element.image" alt="Card image cap">
+                <div class="card-header text-center upercase marron fontAmatic">{{element.nom}}</div>
+                <div class="card-body gris">
+                    <ul class="liste fontAbel">
+                        <li>Race : {{element.race}}</li>
+                        <li class="capitalize">{{element.sexe}}</li>
+                        <li>Née le : {{element.naissance}}</li>
+                        <li *ngIf="element.sterile; else sterile2">Stérilisé : Oui</li>
+                        <ng-template #sterile2>
+                            <li *ngIf="element.sterile==false">Stérilisé : Non</li>
+                        </ng-template>
+                        <li *ngIf="element.pbSante!==null">Problème de santé : {{element.pbSante}} </li>
+                        <li *ngIf="(element.commentaire!==null)"><i>« {{element.commentaire}} »</i></li>
+                    </ul>
                 </div>
             </div>
         </div>

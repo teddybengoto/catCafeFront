@@ -1,6 +1,52 @@
 <p>test works!</p>
 
+<p>display image id 1</p>
 
-<select>
+<img id="titreChat" src="../../../assets/img/image 27.png">
+<img src="../../../assets/img/api/chat/1.jpg" alt="" srcset="">
+
+<img th:src="/@{${/image/chat/1.png}}" />
+  <select>
     <option *ngFor="let espapace of espaces" [ngValue]="espapace.toString()">{{espapace.toString()}}</option>
-</select>
+</select>  
+
+<form th:action="@{/users/save}"
+    th:object="${user}" method="post"
+    enctype="multipart/form-data"
+    >
+    ...
+    <div>
+     
+    <label>Photos: </label>
+     
+    </div>
+    ...
+</form>
+  <!--
+<form *ngIf="showUpdateForm" (ngSubmit)="updateImage()" [formGroup]="updateimage">
+  <div class="form-group">
+   
+      <input type="file" class="form-control" name="file"  formControlName="image" accept="image/png, image/jpeg" />
+    
+      <input ng-model="file_upload" name="file" type="file"  formControlName="image"  (change)="fileChange($event)" #fileInput>
+
+      <div class="text-danger"
+          *ngIf="updateimage.get('image')?.hasError('required')&&updateimage.get('image')?.dirty">
+          L'image est obligatoire
+      </div>
+  </div> 
+
+  <input type="submit" class="btn btn-primary mt-3" [disabled]="updateimage.invalid" value="save" />
+</form>
+
+ --> 
+
+<div class="text-center">
+  <input class="form-control" type="file" 
+          (change)="onChange($event)">
+
+  <button (click)="onUpload()" 
+      class="btn btn-success">
+      Upload
+  </button>
+</div>
