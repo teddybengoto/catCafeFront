@@ -102,6 +102,7 @@
     <div *ngIf="uploadImage" id="uploadImage" class="text-center">
         <input class="form-control" type="file" 
                 (change)="onChange($event)">
+                <br>
       
         <button (click)="onUpload()" 
             class="btn btn-success">
@@ -113,7 +114,8 @@
         <div class="card-deck customdeck">
             <div class="card" *ngIf="getMyCat().length == 0">Vous n'avez pas de chat</div>
             <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyCat(); let i = index">
-                <img (click)="showuploadImageForm(element.id)" class="card-img-top imgChat raccourcis " [src]="element.image" alt="Card image cap">
+                <img (click)="showuploadImageForm(element.id)" Style="cursor: pointer;"class="card-img-top imgChat raccourcis " [src]="element.image" alt="Card image cap">
+
                 <div class="card-header text-center upercase marron fontAmatic">{{element.nom}}</div>
                 <div class="card-body gris">
                     <ul class="liste fontAbel">
