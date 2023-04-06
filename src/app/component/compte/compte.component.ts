@@ -54,7 +54,7 @@ export class CompteComponent {
   showToaster() {
     this.toastr.error('everything is broken', 'Major Error', {
       timeOut: 3000,
-      positionClass: 'toast-top-left',
+      positionClass: 'toast-center-center',
     });
 
   }
@@ -98,9 +98,9 @@ update(){
 
       if (resp?.id) {
         this.myCompte = resp;
-        this.toastr.success('Modification enregistrés', 'succes', {
+        this.toastr.success('Modification enregistrées', "C'est tout bon !", {
           timeOut: 3000,
-          positionClass: 'toast-top-full-width',
+          positionClass: 'toast-center-center',
         });
         this.showUpdateForm = false;
 
