@@ -2,7 +2,7 @@
     <nav>
     
         <img class="NavImg" src="assets/img/patoune withe.png" [routerLink]="['/']" alt="Logo du site">
-        <p *ngIf="!compte.id">Connectez vous pour profitez de tous nos services : </p>
+        <p *ngIf="!compte.id">Connectez vous pour profiter de tous nos services : </p>
         <button *ngIf="!compte.id" class="btnNavBar" [routerLink]="['/connexion']" (click)="login()"> Connexion</button>
         <button *ngIf="(compte.id && compte.id!==1)" class="btnNavBar " [routerLink]="['/']"> Accueil </button>
         <button *ngIf="(compte.id && compte.id!==1)" class="btnNavBar " [routerLink]="['/adoption']"> Adopter un chat </button>
