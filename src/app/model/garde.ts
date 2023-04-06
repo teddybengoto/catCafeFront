@@ -6,13 +6,15 @@ export class Garde {
     prix: number;
     clientId: number;
     chatId: number;
+    id: number;
 
     constructor(
         dateDebut: Date = new Date(Date.now()),
         dateFin: Date = new Date(Date.now()),
         prix?: number,
         clientId?: number,
-        chatId?: number
+        chatId?: number,
+
          )
          {
             this.dateDebut = "";
@@ -20,5 +22,6 @@ export class Garde {
             this.prix = prix;
             this.clientId = clientId;
             this.chatId = chatId;
+            this.id  = 0;
     }
 }

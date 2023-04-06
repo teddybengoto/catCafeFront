@@ -1,77 +1,74 @@
 <app-healder></app-healder>
 
 <main class="d-flex flex-column  flex-direction-center align-items-center w-75">
+    <br>
+    <h1>Bienvenue: {{myCompte?.prenom}} {{myCompte?.nom}} </h1>
 
-    <h1>Bienvenue: {{myCompte?.nom}} </h1>
 
 
+    <div id="infoPerso">
+        <h2>Information personnelles </h2>
+        <form (ngSubmit)="update()" [formGroup]="updateCompte">
+            <table class="table table-hover">
+                <thead>
 
-    <div>
-        <h2 class="my-5 ">Information personnelles </h2>
+                </thead>
+                <tbody>
 
-        <table class="table table-hover">
-            <thead>
+                    <tr>
+                        <td>Nom</td>
+                        <td *ngIf="!showUpdateForm"> {{myCompte?.nom}}</td>
+                        <td *ngIf="showUpdateForm">
+                            <input class="form-control" formControlName="nom" value="test" />
+                            <div class="text-danger"
+                                *ngIf="updateCompte.get('nom')?.hasError('required')&&updateCompte.get('nom')?.dirty">
+                                Le nom est obligatoire
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Prenom</td>
+                        <td *ngIf="!showUpdateForm">{{myCompte?.prenom}}</td>
+                        <td *ngIf="showUpdateForm">
+                            <input class="form-control" formControlName="prenom" />
+                            <div class="text-danger"
+                                *ngIf="updateCompte.get('prenom')?.hasError('required')&&updateCompte.get('prenom')?.dirty">
+                                Le prénom est obligatoire
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Télephone</td>
+                        <td *ngIf="!showUpdateForm">{{myCompte?.telephone}}</td>
+                        <td *ngIf="showUpdateForm">
+                            <input class="form-control" type="tel" formControlName="telephone" />
+                            <div class="text-danger"
+                                *ngIf="updateCompte.get('telephone')?.hasError('telephone')&&updateCompte.get('telephone')?.dirty">
+                                Le numero de télephone est obligatoire
+                            </div>
+                        </td>
 
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Nom</td>
-                    <td> {{myCompte?.nom}}</td>
-                </tr>
-                <tr>
-                    <td>Prenom</td>
-                    <td>{{myCompte?.prenom}}</td>
-                </tr>
-                <tr>
-                    <td>Télephone</td>
-                    <td>{{myCompte?.telephone}}</td>
-                </tr>
-                <tr>
-                    <td>Login</td>
-                    <td>{{myCompte?.login}}</td>
-                </tr>
-            </tbody>
-            <span (click)="showUpdateForm=true" class="badge badge-secondary">Modifier mes informations</span>
-        </table>
+                    </tr>
+                    <tr>
+                        <td>Login</td>
+                        <td *ngIf="!showUpdateForm">{{myCompte?.login}}</td>
+                        <td *ngIf="showUpdateForm">
+                            <input type="email" class="form-control" formControlName="login" placeholder="Enter email">
+                            <div class="text-danger" *ngIf="updateCompte.get('login')?.hasError('login')">
+                                Email Incorrecte
+                            </div>
+                    </tr>
+                </tbody>
+                
+            </table>
+            <span *ngIf="!showUpdateForm" (click)="showUpdateForm=true" class="btnPrincipal">Modifier mes informations</span>
+            <input *ngIf="showUpdateForm" type="submit" class="btnPrincipal" [disabled]="updateCompte.invalid" value="Modifier !" />
+        </form>
+
     </div>
 
 
-    <form *ngIf="showUpdateForm" (ngSubmit)="update()" [formGroup]="updateCompte">
-        <div class="form-group">
-            <label>Nom </label>
-            <input class="form-control" formControlName="nom" />
-            <div class="text-danger"
-                *ngIf="updateCompte.get('nom')?.hasError('required')&&updateCompte.get('nom')?.dirty">
-                Le nom est obligatoire
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Prénom </label>
-            <input class="form-control" formControlName="prenom" />
-            <div class="text-danger"
-                *ngIf="updateCompte.get('prenom')?.hasError('required')&&updateCompte.get('prenom')?.dirty">
-                Le prénom est obligatoire
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" formControlName="login" placeholder="Enter email">
-            <div class="text-danger" *ngIf="updateCompte.get('login')?.hasError('login')">
-                Email Incorrecte
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>Télephone</label>
-            <input class="form-control" type="tel" formControlName="telephone" />
-            <div class="text-danger"
-                *ngIf="updateCompte.get('telephone')?.hasError('telephone')&&updateCompte.get('telephone')?.dirty">
-                Le numero de télephone est obligatoire
-            </div>
-        </div>
-
-        <input type="submit" class="btn btn-primary mt-3" [disabled]="updateCompte.invalid" value="Modifier !" />
-    </form>
+    
 
 
 
