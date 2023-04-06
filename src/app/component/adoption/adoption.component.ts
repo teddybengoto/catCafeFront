@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { Adoption } from 'src/app/model/adoption';
 import { Chat, ChatSend } from 'src/app/model/chat';
@@ -21,6 +22,7 @@ export class AdoptionComponent {
   constructor(private chatService: ChatService,
     private adoptionService: AdoptionService,
     private compteService: CompteService,
+    private toastr: ToastrService,
     private router: Router) {
     if (!compteService.auth?.id) {
       this.router.navigate(['/connexion']);
@@ -56,7 +58,14 @@ export class AdoptionComponent {
     this.adoption.prix = 10;
     this.adoption.date = date.toLocaleDateString();
     this.adoptionService.create(this.adoption);
-    alert("Votre demande d'adoption pour " + chat.nom + " à bien été pris en compte.");
+    //alert("Votre demande d'adoption pour " + chat.nom + " à bien été pris en compte.");
+    let message : string = "Votre demande d'adoption pour " + chatForm.nom  + " a bien été enregistré.";
+    this.toastr.success(message,"Merci", {
+          positionClass: 'toast-center-center',
+          closeButton : true,
+          disableTimeOut : true,
+        });
+        this.router.navigate(['/']);
   }
 
 }
