@@ -154,10 +154,9 @@
                 <p>Vous n'avez pas de chat mis à la garderie</p>
             </div>
             <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyReservation()">
-                <div class="card-header text-center upercase marron fontAmatic"> {{element.id}}</div>
                 <div class="card-body gris">
                     <ul class="liste fontAbel">
-                        <li>Reservation de : {{element.espace}}</li>
+                        <li>Reservation de la salle : {{element.espace}}</li>
                         <li>Pour le: {{element.jour}}</li>
                         <li>A : {{element.heure}}</li>
                         <li>Pour : {{element.effectif}} personnes</li>

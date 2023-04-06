@@ -61,7 +61,7 @@ export class CompteComponent {
 
   getMyCat() {
     //console.log("this.chatService.findAllByClientId(): ",this.chatService.findAllByClientId());
-    console.log("problème chat");
+    console.log("problème chat"+Chat);
     this.chats = this.chatService.findAllByClientId();
     return this.chats;
   }
