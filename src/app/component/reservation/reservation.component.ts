@@ -50,6 +50,7 @@ export class ReservationComponent {
             closeButton : true,
             disableTimeOut : true,
         });
+        this.reservationService.loadById();
         this.router.navigate(['/']);
       }
       else
