@@ -55,60 +55,103 @@
     </div>
     <div class="card mt-3" *ngIf="chatForm">
         <div class="card-header bg-primary text-white display-6">Edition d'un chat</div>
-        <div class="card-body">
-            <div class="form-group">
-                <label for="id">Identifiant :</label> <input readOnly type="number" class="form-control" id="id" name="id" readonly [(ngModel)]="chatForm.id"/>
-            </div>
-            <div class="form-group">
-                <label for="nom">Nom :</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="chatForm.nom"/>
-            </div>
-            <div class="form-group">
-                <label for="nom">Sexe :</label> 
-                <select class="form-group" id="sexe" name="sexe" [(ngModel)]="chatForm.sexe">
-                    <option selected value="male">Male</option>
-                    <option  value="femelle">Femelle</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="nom">Race :</label>
-                <select class="form-group" id="race" name="race" [(ngModel)]="chatForm.race">
-                    <option *ngFor="let r of race" [ngValue]="r">{{r}}</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="nom">Naissance :</label> <input class="form-control" type="date" name="date" [(ngModel)]="chatForm.naissance">
-            </div>
-            <div class="form-group">
-                <label for="nom">Adoptable :</label> <input type="checkbox" id="adoptable" name="adoptable" [(ngModel)]="chatForm.adoptable"/>
-            </div>
-            <div class="form-group">
-                <label for="nom">Permanent :</label> <input type="checkbox" id="permanent" name="permanent" [(ngModel)]="chatForm.permanent"/>
-            </div>
-            <div class="form-group">
-                <label for="nom">Sterile :</label> <input type="checkbox" id="sterile" name="sterile" [(ngModel)]="chatForm.sterile"/>
-            </div>
-            <div class="form-group">
-                <label for="nom">Client :</label> 
-                <select class="form-control" id="client" name="client" [(ngModel)]="chatForm.clientId">
-                    <option [value]="null">Aucun</option>
-                    <option [value]="fournisseur.id" *ngFor="let fournisseur of findAllClient()">{{fournisseur.id}} - {{fournisseur.nom}}</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="nom">Puce :</label> <input type="text" class="form-control" id="idPuce" name="idPuce" [(ngModel)]="chatForm.idPuce"/>
-            </div>
-            <div class="form-group">
-                <label for="nom">Tatouage :</label> <input type="text" class="form-control" id="idTatouage" name="idTatouage" [(ngModel)]="chatForm.idTatouage"/>
-            </div>
-            <div class="form-group">
-                <label for="nom">Probleme de santé:</label> <input type="text" class="form-control" id="pbSante" name="pbSante" [(ngModel)]="chatForm.pbSante"/>
-            </div>
-            <div class="form-group">
-                <label for="nom">Commenatire :</label> <input type="text" class="form-control" id="commentaire" name="commentaire" [(ngModel)]="chatForm.commentaire"/>
-            </div>
-            <div class="form-group">
-                <label for="nom">Image :</label> <input type="text" class="form-control" id="image" name="image" [(ngModel)]="chatForm.image"/>
-            </div>
+        <div class="card-body" style = "width: 50%;">
+            <table class="table table-striped">
+                <tr>
+                    <div class="form-group" style="display: none;" >
+                        <label for="id">Identifiant :</label> <input readOnly type="number" class="form-control" id="id"
+                            name="id" readonly [(ngModel)]="chatForm.id" />
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
+                        <label for="nom">Nom :</label> <input type="text" class="form-control" id="nom" name="nom"
+                            [(ngModel)]="chatForm.nom" />
+                    </div>
+                </tr>
+                <tr>
+                <div class="form-group">
+                    <label for="nom">Sexe :</label>
+                    <select class="form-group" id="sexe" name="sexe" [(ngModel)]="chatForm.sexe">
+                        <option selected value="male">Male</option>
+                        <option value="femelle">Femelle</option>
+                    </select>
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <label for="nom">Race :</label>
+                    <select class="form-group" id="race" name="race" [(ngModel)]="chatForm.race">
+                        <option *ngFor="let r of race" [ngValue]="r">{{r}}</option>
+                    </select>
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <label for="nom">Naissance :</label> <input class="form-control" type="date" name="date"
+                        [(ngModel)]="chatForm.naissance">
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <label for="nom">Adoptable :</label> <input type="checkbox" id="adoptable" name="adoptable"
+                        [(ngModel)]="chatForm.adoptable" />
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <label for="nom">Permanent :</label> <input type="checkbox" id="permanent" name="permanent"
+                        [(ngModel)]="chatForm.permanent" />
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <label for="nom">Sterile :</label> <input type="checkbox" id="sterile" name="sterile"
+                        [(ngModel)]="chatForm.sterile" />
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <label for="nom">Client :</label>
+                    <select class="form-control" id="client" name="client" [(ngModel)]="chatForm.clientId">
+                        <option [value]="null">Aucun</option>
+                        <option [value]="fournisseur.id" *ngFor="let fournisseur of findAllClient()">{{fournisseur.id}}
+                            - {{fournisseur.nom}}</option>
+                    </select>
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <label for="nom">Puce :</label> <input type="text" class="form-control" id="idPuce" name="idPuce"
+                        [(ngModel)]="chatForm.idPuce" />
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <label for="nom">Tatouage :</label> <input type="text" class="form-control" id="idTatouage"
+                        name="idTatouage" [(ngModel)]="chatForm.idTatouage" />
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <label for="nom">Probleme de santé:</label> <input type="text" class="form-control" id="pbSante"
+                        name="pbSante" [(ngModel)]="chatForm.pbSante" />
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <label for="nom">Commenatire :</label> <input type="text" class="form-control" id="commentaire"
+                        name="commentaire" [(ngModel)]="chatForm.commentaire" />
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <label for="nom">Image :</label> <input type="text" class="form-control" id="image" name="image"
+                        [(ngModel)]="chatForm.image" />
+                </div>
+            </tr>
+            
+            </table>
         </div>
         <div class="card-footer">
             <div class="btn-group btn-group-lg float-right">
@@ -117,5 +160,5 @@
             </div>
         </div>
     </div>
-    
+
 </div>

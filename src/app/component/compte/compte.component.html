@@ -6,7 +6,8 @@
         <div id="accueilLeft">
             <h1 style="text-align: center;">Bienvenue: {{myCompte?.prenom}} {{myCompte?.nom}} </h1>
             <br>
-            <div style="display: flex; justify-content: flex-start; align-items: center; height: 80px; margin-bottom: 60px;">
+            <div
+                style="display: flex; justify-content: flex-start; align-items: center; height: 80px; margin-bottom: 60px;">
                 <h3>Pour modifier mes données, c'est ici </h3><img src="../../../assets/img/arrow.png" alt="Flèche"
                     style="transform : scale(0.6);
                     width : 20%; margin-left: 40px;">
@@ -15,7 +16,8 @@
 
             <div style="display: flex; justify-content: space-around; flex-direction: row; width : 100%;">
                 <div id="chatBricoleur"></div>
-                <div style="display: flex; justify-content: start; align-items: center; flex-direction: column; width : 300px; ">
+                <div
+                    style="display: flex; justify-content: start; align-items: center; flex-direction: column; width : 300px; ">
                     <h3 style="text-align: center;">Pour voir vos chats et réservations en cours c'est par la !</h3><img
                         src="../../../assets/img/arrow.png" alt="Flèche"
                         style="transform : scale(0.2) rotate(0.25turn); height: 200px;">
@@ -98,76 +100,118 @@
     <h2 class="my-5 ">Vos Chats </h2>
 
     <div class="contain">
-        <div class="card-deck customdeck">
-            <div class="card" *ngIf="getMyCat().length == 0">Vous n'avez pas de chat</div>
-            <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyCat(); let i = index">
-                <img class="card-img-top imgChat raccourcis " [src]="element.image" alt="Card image cap">
-                <div class="card-header text-center upercase marron fontAmatic">{{element.nom}}</div>
-                <div class="card-body gris">
-                    <ul class="liste fontAbel">
-                        <li>Race : {{element.race}}</li>
-                        <li class="capitalize">{{element.sexe}}</li>
-                        <li>Née le : {{element.naissance}}</li>
-                        <li *ngIf="element.sterile; else sterile2">Stérilisé : Oui</li>
-                        <ng-template #sterile2>
-                            <li *ngIf="element.sterile==false">Stérilisé : Non</li>
-                        </ng-template>
-                        <li *ngIf="element.pbSante!==null">Problème de santé : {{element.pbSante}} </li>
-                        <li *ngIf="(element.commentaire!==null)"><i>« {{element.commentaire}} »</i></li>
-                    </ul>
+        <div class="contain2">
+            <div class="card-deck customdeck">
+                <div class="card" *ngIf="getMyCat().length == 0">Vous n'avez pas de chat</div>
+                <div class="card customcard border-dark gris mb-3" *ngFor="let element of getMyCat(); let i = index">
+                    <img class="card-img-top imgChat raccourcis " [src]="element.image" alt="Card image cap">
+                    <div class="card-header text-center upercase marron fontAmatic">{{element.nom}}</div>
+                    <div class="card-body gris">
+                        <ul class="liste fontAbel">
+                            <li>Race : {{element.race}}</li>
+                            <li class="capitalize">{{element.sexe}}</li>
+                            <li>Née le : {{element.naissance}}</li>
+                            <li *ngIf="element.sterile; else sterile2">Stérilisé : Oui</li>
+                            <ng-template #sterile2>
+                                <li *ngIf="element.sterile==false">Stérilisé : Non</li>
+                            </ng-template>
+                            <li *ngIf="element.pbSante!==null">Problème de santé : {{element.pbSante}} </li>
+                            <li *ngIf="(element.commentaire!==null)"><i>« {{element.commentaire}} »</i></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="contain2" style="flex-direction: column; font-family: 'AmaticaStandard';">
+            <div class="card-footer">
+                <a class="btnPrincipal" (click)="add()">Ajouter un chat</a>
+            </div>
+            <div class="card mt-3" *ngIf="chatForm" style="width : 40%;background: #ECE0C9;
+            border: 1px solid #000000;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            ; font-family: 'Abel';">
+                <div class="card-header bg-primary text-white display-6"
+                    style=" font-size : 25px; background-color: grey!important;">Ajouter un chat</div>
+
+                <div class="card-body" style="width: 90%;">
+                    <table style="width: 90%;">
+                        <tr>
+                            <div class="form-group">
+                                <label for="nom">Nom :</label> <input type="text" class="form-control" id="nom"
+                                    name="nom" [(ngModel)]="chatForm.nom" />
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                                <td>
+                                    <label for="nom">Sexe :</label>
+                                </td>
+                                <td>
+                                    <select class="form-group" id="sexe" name="sexe" [(ngModel)]="chatForm.sexe">
+                                        <option selected value="male">Male</option>
+                                        <option value="femelle">Femelle</option>
+                                    </select>
+                                </td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                                <label for="nom">Race :</label>
+                                <select class="form-group" id="race" name="race" [(ngModel)]="chatForm.race">
+                                    <option *ngFor="let r of race" [ngValue]="r">{{r}}</option>
+                                </select>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                                <label for="nom">Naissance :</label> <input class="form-control" type="date" name="date"
+                                    [(ngModel)]="chatForm.naissance">
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                                <label for="nom">Sterile :</label> <input type="checkbox" id="sterile" name="sterile"
+                                    [(ngModel)]="chatForm.sterile" />
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                                <label for="nom">Puce :</label> <input type="text" class="form-control" id="idPuce"
+                                    name="idPuce" [(ngModel)]="chatForm.idPuce" />
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                                <label for="nom">Tatouage :</label> <input type="text" class="form-control"
+                                    id="idTatouage" name="idTatouage" [(ngModel)]="chatForm.idTatouage" />
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                                <label for="nom">Probleme de santé:</label> <input type="text" class="form-control"
+                                    id="pbSante" name="pbSante" [(ngModel)]="chatForm.pbSante" />
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                                <label for="nom">Image :</label> <input type="text" class="form-control" id="image"
+                                    name="image" [(ngModel)]="chatForm.image" />
+                            </div>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <div class="btn-group btn-group-lg float-right">
+                        <a class="btn btn-success" (click)="save()">SAVE</a>
+                        <a class="btn btn-warning" (click)="cancel()">CANCEL</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
-    <div class="card-footer">
-        <a class="btn btn-success btn-lg" (click)="add()">ADD</a>
-    </div>
-    <div class="card mt-3" *ngIf="chatForm">
-        <div class="card-header bg-primary text-white display-6">Crée un chat</div>
-        <div class="card-body">
-            <div class="form-group">
-                <label for="nom">Nom :</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="chatForm.nom"/>
-            </div>
-            <div class="form-group">
-                <label for="nom">Sexe :</label> 
-                <select class="form-group" id="sexe" name="sexe" [(ngModel)]="chatForm.sexe">
-                    <option selected value="male">Male</option>
-                    <option  value="femelle">Femelle</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="nom">Race :</label>
-                <select class="form-group" id="race" name="race" [(ngModel)]="chatForm.race">
-                    <option *ngFor="let r of race" [ngValue]="r">{{r}}</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="nom">Naissance :</label> <input class="form-control" type="date" name="date" [(ngModel)]="chatForm.naissance">
-            </div>
-            <div class="form-group">
-                <label for="nom">Sterile :</label> <input type="checkbox" id="sterile" name="sterile" [(ngModel)]="chatForm.sterile"/>
-            </div>
-            <div class="form-group">
-                <label for="nom">Puce :</label> <input type="text" class="form-control" id="idPuce" name="idPuce" [(ngModel)]="chatForm.idPuce"/>
-            </div>
-            <div class="form-group">
-                <label for="nom">Tatouage :</label> <input type="text" class="form-control" id="idTatouage" name="idTatouage" [(ngModel)]="chatForm.idTatouage"/>
-            </div>
-            <div class="form-group">
-                <label for="nom">Probleme de santé:</label> <input type="text" class="form-control" id="pbSante" name="pbSante" [(ngModel)]="chatForm.pbSante"/>
-            </div>
-            <div class="form-group">
-                <label for="nom">Image :</label> <input type="text" class="form-control" id="image" name="image" [(ngModel)]="chatForm.image"/>
-            </div>
-        </div>
-        <div class="card-footer">
-            <div class="btn-group btn-group-lg float-right">
-                <a class="btn btn-success" (click)="save()">SAVE</a>
-                <a class="btn btn-warning" (click)="cancel()">CANCEL</a>
-            </div>
-        </div>
-    </div>
 
 
 
