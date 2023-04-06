@@ -8,6 +8,7 @@ export class Reservation{
     heure: string;
     espace: Espace;
     client_id: number;
+    client:any;
     
     constructor (id?: number, effectif?:number, jour?: string, heure?: string, espace?: Espace, client_id?: number){
         this.id=id;
