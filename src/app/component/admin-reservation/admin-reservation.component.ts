@@ -72,4 +72,8 @@ export class AdminReservationComponent {
   cancel(){
     this.reservationForm=null;
   }
+
+  retour(){
+    this.router.navigate(['/admin'])
+  }
 }
