@@ -12,6 +12,7 @@ export class ReservationService {
   private reservationApiPath : string;
   private reservations : Array<Reservation>;
   private reservationsById : Array<Reservation>;
+  private reservation2 : Array<Reservation>;
 
   constructor(private http: HttpClient, private clientService: CompteService) { 
     this.reservationApiPath = "http://localhost:8080/api" +"/reservation";

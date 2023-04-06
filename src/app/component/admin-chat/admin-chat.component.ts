@@ -30,7 +30,9 @@ export class AdminChatComponent {
     edit(id: number): void{
       this.chatService.findById(id).subscribe(resp =>{
         this.chatForm = resp;
+        //console.log(this.chatForm);
       });
+      //console.log(this.chatForm);
     }
   
     remove(id: number):void{
@@ -58,6 +60,11 @@ export class AdminChatComponent {
     findAllChat(): Array<Chat>{
       this.chats=this.chatService.findAll();
       return this.chats
+    }
+
+    findAllClient():Array<Compte>{
+      this.clients=this.compteService.findAll();
+      return this.clients;
     }
 
 }
