@@ -16,9 +16,6 @@
                     <th>Permanent</th>
                     <th>Stérile</th>
                     <th>Identifiant client</th>
-                    <th>Identifiant Puce</th>
-                    <th>Identifiant Tatouage</th>
-                    <th>Problème de santé</th>
                     <th>Commenatire</th>
                     <th>Image</th>
                     <th></th>
@@ -35,9 +32,6 @@
                     <td>{{chat.permanent}}</td>
                     <td>{{chat.sterile}}</td>
                     <td>{{chat?.client?.id}}</td>
-                    <td>{{chat.idPuce}}</td>
-                    <td>{{chat.idTatouage}}</td>
-                    <td>{{chat.pbSante}}</td>
                     <td>{{chat.commentaire}}</td>
                     <td>{{chat.image}}</td>
 
@@ -120,24 +114,6 @@
                         <option [value]="fournisseur.id" *ngFor="let fournisseur of findAllClient()">{{fournisseur.id}}
                             - {{fournisseur.nom}}</option>
                     </select>
-                </div>
-            </tr>
-            <tr>
-                <div class="form-group">
-                    <label for="nom">Puce :</label> <input type="text" class="form-control" id="idPuce" name="idPuce"
-                        [(ngModel)]="chatForm.idPuce" />
-                </div>
-            </tr>
-            <tr>
-                <div class="form-group">
-                    <label for="nom">Tatouage :</label> <input type="text" class="form-control" id="idTatouage"
-                        name="idTatouage" [(ngModel)]="chatForm.idTatouage" />
-                </div>
-            </tr>
-            <tr>
-                <div class="form-group">
-                    <label for="nom">Probleme de santé:</label> <input type="text" class="form-control" id="pbSante"
-                        name="pbSante" [(ngModel)]="chatForm.pbSante" />
                 </div>
             </tr>
             <tr>
