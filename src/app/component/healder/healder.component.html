@@ -9,6 +9,7 @@
         <button *ngIf="compte.id" class="btnNavBar" [routerLink]="['/garde']"> Faire garder son chat </button>
         <button *ngIf="compte.id" class="btnNavBar " [routerLink]="['/reservation']">Reservation </button>
         <button *ngIf="compte.id" class="btnNavBar " [routerLink]="['/profil']">Mes Infos </button>
+        <button *ngIf="compte.id" class="btnNavBar " [routerLink]="['/admin']">admin</button>
         <div id="connexion" *ngIf="compte.id">
             <p >Bienvenue {{compte.prenom}} !</p>
             <div class="btnNavBar " [routerLink]="['/connexion']" (click)="logOut()">Deconnexion </div>

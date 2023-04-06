@@ -26,6 +26,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AdminComponent } from './component/admin/admin.component';
 import { AdminChatComponent } from './component/admin-chat/admin-chat.component';
 import { CarouselElementComponent } from './component/carousel-element/carousel-element.component';
+import { AdminReservationComponent } from './component/admin-reservation/admin-reservation.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { CarouselElementComponent } from './component/carousel-element/carousel-
     AdminComponent,
     AdminChatComponent,
     CarouselElementComponent,
+    AdminReservationComponent,
     
   ],
   imports: [

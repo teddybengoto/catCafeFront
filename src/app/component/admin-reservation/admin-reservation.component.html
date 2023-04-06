@@ -1,0 +1,75 @@
+<div class="card mt-3">
+    <div class="card-header bg-primary text-white display-6">Liste des reserv'</div>
+    <app-admin></app-admin>
+
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Client</th>
+                    <th>Jour</th>
+                    <th>Heure</th>
+                    <th>Espace</th>
+                    <th>Effectif</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let reserv of findAllReservation()">
+                    <td>{{reserv.id}}</td>
+                    <td>{{reserv.client_id}}</td>
+                    <td>{{reserv.jour}}</td>
+                    <td>{{reserv.heure}}</td>
+                    <td>{{reserv.espace}}</td>
+                    <td>{{reserv.effectif}}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <a class="btn btn-primary" (click)="edit(reserv.id)">EDIT</a>
+                            <a class="btn btn-danger" (click)="remove(reserv.id)">delete</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            
+
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-success btn-lg" (click)="add()">ADD</a>
+    </div>
+
+    <div class="card mt-3" *ngIf="reservationForm">
+        <div class="card-header bg-primary text-white display-6">Edition d'une reservation </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="id">Identifiant :</label> <input type="number" class="form-control" id="id" name="id" readonly [(ngModel)]="reservationForm.id"/>
+            </div>
+            <div class="form-group">
+                <label for="id">Client :</label> <input type="number" class="form-control" id="id" name="id"  [(ngModel)]="reservationForm.client_id"/>
+            </div>
+            <div class="form-group">
+                <label for="id">Jour :</label> <input type="date" class="form-control" id="id" name="id"  [(ngModel)]="reservationForm.jour"/>
+            </div>
+            <div class="form-group">
+                <label for="id">Heure :</label> <input type="time" class="form-control" id="id" name="id"  [(ngModel)]="reservationForm.heure"/>
+            </div>
+            <div class="form-group">
+                <label for="id">Espace :</label>
+                <select class="bouton" id="espace" name="espace" [(ngModel)]="reservationForm.espace">
+                    <option *ngFor="let espace of keys(espaces)" [value]="espace" >{{espace}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="id">Effectif :</label> <input type="number" class="form-control" id="id" name="id"  [(ngModel)]="reservationForm.effectif"/>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="btn-group btn-group-lg float-right">
+                <a class="btn btn-success" (click)="save()">SAVE</a>
+                <a class="btn btn-warning" (click)="cancel()">CANCEL</a>
+            </div>
+        </div>
+    </div>
+    
+</div>
