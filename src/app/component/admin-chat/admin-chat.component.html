@@ -57,7 +57,7 @@
         <div class="card-header bg-primary text-white display-6">Edition d'un chat</div>
         <div class="card-body">
             <div class="form-group">
-                <label for="id">Identifiant :</label> <input type="number" class="form-control" id="id" name="id" readonly [(ngModel)]="chatForm.id"/>
+                <label for="id">Identifiant :</label> <input readOnly type="number" class="form-control" id="id" name="id" readonly [(ngModel)]="chatForm.id"/>
             </div>
             <div class="form-group">
                 <label for="nom">Nom :</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="chatForm.nom"/>
@@ -65,7 +65,7 @@
             <div class="form-group">
                 <label for="nom">Sexe :</label> 
                 <select class="form-group" id="sexe" name="sexe" [(ngModel)]="chatForm.sexe">
-                    <option  value="male">Male</option>
+                    <option selected value="male">Male</option>
                     <option  value="femelle">Femelle</option>
                 </select>
             </div>
@@ -88,7 +88,11 @@
                 <label for="nom">Sterile :</label> <input type="checkbox" id="sterile" name="sterile" [(ngModel)]="chatForm.sterile"/>
             </div>
             <div class="form-group">
-                <label for="nom">Client :</label> <input type="number" class="form-control" id="clientId" name="clientId" [(ngModel)]="chatForm.client.id"/>
+                <label for="nom">Client :</label> 
+                <select class="form-control" id="client" name="client" [(ngModel)]="chatForm.clientId">
+                    <option [value]="null">Aucun</option>
+                    <option [value]="fournisseur.id" *ngFor="let fournisseur of findAllClient()">{{fournisseur.id}} - {{fournisseur.nom}}</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="nom">Puce :</label> <input type="text" class="form-control" id="idPuce" name="idPuce" [(ngModel)]="chatForm.idPuce"/>
