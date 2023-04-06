@@ -68,7 +68,7 @@ export class CompteService {
     return this.http.get<Compte>(this.clientApiPath + "/client/" + id);
  }
 
-  private loadCurrentCompte() : void{
+  loadCurrentCompte() : void{
     this.http.get<Compte>(this.clientApiPath + "/client/" + this.auth.id).subscribe(resp => {
       this.compte = resp;
             console.log("connecté : " + this.compte.nom)

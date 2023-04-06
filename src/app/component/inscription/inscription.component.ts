@@ -37,6 +37,7 @@ export class InscriptionComponent implements OnInit {
 
   login() {
     this.compteService.login(this.connexionForm.value)
+    this.compteService.loadCurrentCompte();
   }
 
   showSigning(val: boolean) { this.connexion = val }
