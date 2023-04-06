@@ -83,4 +83,8 @@ export class AdminChatComponent {
     return this.clients;
   }
 
+  retour(){
+    this.router.navigate(['/admin'])
+  }
+
 }
